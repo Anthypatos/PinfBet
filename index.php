@@ -123,7 +123,7 @@ session_start();
                         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                            <div class="slider-contant" data-animation="animated fadeInRight">
                               <h3>Donde <span style="color: #ec8464;">apuestan</span><br>los que <span style="color: #ec8464">aprueban</span></h3>
-                              <button class="btn btn-primary btn-lg">Apuesta ya</button>
+                              <button class="btn btn-primary btn-lg"><a href="login.php">Apuesta ya</a></button>
                            </div>
                         </div>
                      </div>
