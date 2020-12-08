@@ -17,6 +17,8 @@ session_start();
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
+   
+   <link rel="stylesheet" href="css/master.css?n=1">
    <!-- Site Icons -->
    <link rel="shortcut icon" href="" type="image/x-icon" />
    <link rel="apple-touch-icon" href="">
