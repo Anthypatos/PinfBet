@@ -38,7 +38,7 @@
           </div>
           <div class="form-group">
             <button type="submit" name="save_profile" class="btn btn-primary btn-block">Guardar</button>
-            <a href="index.php" class="btn btn-primary btn-block">Volver</a>
+            <a href="main.php" class="btn btn-primary btn-block">Volver</a>
           </div>
         </form>
       </div>

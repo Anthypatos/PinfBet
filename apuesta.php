@@ -22,10 +22,9 @@ if(isset($_POST['apuestaid']))
 
 // Validate password
 if(empty ($_POST["cantidad"])){
-    $cantidad_err = "Introduce una cantidad";     
-} elseif($_POST["cantidad"] > 0 && $_POST["cantidad"] <= 50 && is_numeric($_POST["cantidad"])){
+    $cantidad_err = "Introduce una cantidad real";     
+} elseif($_POST["cantidad"] >=1 && $_POST["cantidad"] <= 50 && is_numeric($_POST["cantidad"])){
     $cantidad = $_POST["cantidad"];
-    
 } else{
     $cantidad_err = "Introduce un valor numérico superior a 0 hasta un máximo de 50.";
     
@@ -55,7 +54,7 @@ if(empty($cantidad_err)){
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             // Redirect to login page
-            header("location: index.php");
+            header("location: main.php");
         } else{
             echo $id_user;
             echo $apuestaid;
@@ -122,7 +121,7 @@ mysqli_close($link);
             </div>  
 
                 <input type="submit" class="btn btn-primary" value="Apostar">
-                <a href="index.php" class="btn btn-primary">Cancelar</a>
+                <a href="main.php" class="btn btn-primary">Cancelar</a>
             
         </form>
     </div>    

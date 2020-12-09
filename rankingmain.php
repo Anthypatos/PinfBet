@@ -30,7 +30,7 @@ $img_str = base64_encode($imgbinary);
                   </div>
                   <?php require __DIR__ . '/includesranking/components/getRanking/loader.php'; ?>
                   <div class="card-body text-center">
-                  <a href="index.php" class="btn btn">Volver</a>
+                  <a href="main.php" class="btn btn">Volver</a>
                   </div>
                </div>
             </div>
