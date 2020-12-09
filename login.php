@@ -90,8 +90,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
  
 <!DOCTYPE html>
-<html lang="en">
-   <!-- Basic -->
+<html lang="en"> 
+<!-- Basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <!-- Mobile Metas -->
@@ -124,6 +124,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
    <script src="js/3dslider.js"></script>
 </head>
+    
 <body>
     <div class="wrapper">
         <h2>Logueo</h2>
