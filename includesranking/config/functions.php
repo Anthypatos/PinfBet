@@ -16,206 +16,206 @@ function colorRank($position){
     return $color;
 }
 
-function levelRank($points){
-    if($points <= 83){
+function levelRank($pinfcoins){
+    if($pinfcoins <= 83){
         $rank = 'Level 1';
-    }elseif($points >= 83 && $points <= 174){
+    }elseif($pinfcoins >= 83 && $pinfcoins <= 174){
         $rank = 'Level 2';
-    }elseif($points >= 174 && $points <= 276){
+    }elseif($pinfcoins >= 174 && $pinfcoins <= 276){
         $rank = 'Level 3';
-    }elseif($points >= 276 && $points <= 388){
+    }elseif($pinfcoins >= 276 && $pinfcoins <= 388){
         $rank = 'Level 4';
-    }elseif($points >= 388 && $points <= 512){
+    }elseif($pinfcoins >= 388 && $pinfcoins <= 512){
         $rank = 'Level 5';
-    }elseif($points >= 512 && $points <= 650){
+    }elseif($pinfcoins >= 512 && $pinfcoins <= 650){
         $rank = 'Level 6';
-    }elseif($points >= 650 && $points <= 801){
+    }elseif($pinfcoins >= 650 && $pinfcoins <= 801){
         $rank = 'Level 7';
-    }elseif($points >= 801 && $points <= 969){
+    }elseif($pinfcoins >= 801 && $pinfcoins <= 969){
         $rank = 'Level 8';
-    }elseif($points >= 969 && $points <= 1154){
+    }elseif($pinfcoins >= 969 && $pinfcoins <= 1154){
         $rank = 'Level 9';
-    }elseif($points >= 1154 && $points <= 1358){
+    }elseif($pinfcoins >= 1154 && $pinfcoins <= 1358){
         $rank = 'Level 10';
-    }elseif($points >= 1358 && $points <= 1584){
+    }elseif($pinfcoins >= 1358 && $pinfcoins <= 1584){
         $rank = 'Level 11';
-    }elseif($points >= 1584 && $points <= 1833){
+    }elseif($pinfcoins >= 1584 && $pinfcoins <= 1833){
         $rank = 'Level 12';
-    }elseif($points >= 1833 && $points <= 2107){
+    }elseif($pinfcoins >= 1833 && $pinfcoins <= 2107){
         $rank = 'Level 13';
-    }elseif($points >= 2107 && $points <= 2411){
+    }elseif($pinfcoins >= 2107 && $pinfcoins <= 2411){
         $rank = 'Level 14';
-    }elseif($points >= 2411 && $points <= 2746){
+    }elseif($pinfcoins >= 2411 && $pinfcoins <= 2746){
         $rank = 'Level 15';
-    }elseif($points >= 2746 && $points <= 3115){
+    }elseif($pinfcoins >= 2746 && $pinfcoins <= 3115){
         $rank = 'Level 16';
-    }elseif($points >= 3115 && $points <= 3523){
+    }elseif($pinfcoins >= 3115 && $pinfcoins <= 3523){
         $rank = 'Level 17';
-    }elseif($points >= 3523 && $points <= 3973){
+    }elseif($pinfcoins >= 3523 && $pinfcoins <= 3973){
         $rank = 'Level 18';
-    }elseif($points >= 3973 && $points <= 4470){
+    }elseif($pinfcoins >= 3973 && $pinfcoins <= 4470){
         $rank = 'Level 19';
-    }elseif($points >= 4470 && $points <= 5018){
+    }elseif($pinfcoins >= 4470 && $pinfcoins <= 5018){
         $rank = 'Level 20';
-    }elseif($points >= 5018 && $points <= 5624){
+    }elseif($pinfcoins >= 5018 && $pinfcoins <= 5624){
         $rank = 'Level 21';
-    }elseif($points >= 5624 && $points <= 6291){
+    }elseif($pinfcoins >= 5624 && $pinfcoins <= 6291){
         $rank = 'Level 22';
-    }elseif($points >= 6291 && $points <= 7028){
+    }elseif($pinfcoins >= 6291 && $pinfcoins <= 7028){
         $rank = 'Level 23';
-    }elseif($points >= 7028 && $points <= 7842){
+    }elseif($pinfcoins >= 7028 && $pinfcoins <= 7842){
         $rank = 'Level 24';
-    }elseif($points >= 7842 && $points <= 8740){
+    }elseif($pinfcoins >= 7842 && $pinfcoins <= 8740){
         $rank = 'Level 25';
-    }elseif($points >= 8740 && $points <= 9730){
+    }elseif($pinfcoins >= 8740 && $pinfcoins <= 9730){
         $rank = 'Level 26';
-    }elseif($points >= 9730 && $points <= 10824){
+    }elseif($pinfcoins >= 9730 && $pinfcoins <= 10824){
         $rank = 'Level 27';
-    }elseif($points >= 10824 && $points <= 12031){
+    }elseif($pinfcoins >= 10824 && $pinfcoins <= 12031){
         $rank = 'Level 28';
-    }elseif($points >= 12031 && $points <= 13363){
+    }elseif($pinfcoins >= 12031 && $pinfcoins <= 13363){
         $rank = 'Level 29';
-    }elseif($points >= 13363 && $points <= 14833){
+    }elseif($pinfcoins >= 13363 && $pinfcoins <= 14833){
         $rank = 'Level 30';
-    }elseif($points >= 14833 && $points <= 16456){
+    }elseif($pinfcoins >= 14833 && $pinfcoins <= 16456){
         $rank = 'Level 31';
-    }elseif($points >= 16456 && $points <= 18247){
+    }elseif($pinfcoins >= 16456 && $pinfcoins <= 18247){
         $rank = 'Level 32';
-    }elseif($points >= 18247 && $points <= 20224){
+    }elseif($pinfcoins >= 18247 && $pinfcoins <= 20224){
         $rank = 'Level 33';
-    }elseif($points >= 20224 && $points <= 22406){
+    }elseif($pinfcoins >= 20224 && $pinfcoins <= 22406){
         $rank = 'Level 34';
-    }elseif($points >= 22406 && $points <= 24815){
+    }elseif($pinfcoins >= 22406 && $pinfcoins <= 24815){
         $rank = 'Level 35';
-    }elseif($points >= 24815 && $points <= 27473){
+    }elseif($pinfcoins >= 24815 && $pinfcoins <= 27473){
         $rank = 'Level 36';
-    }elseif($points >= 27473 && $points <= 30408){
+    }elseif($pinfcoins >= 27473 && $pinfcoins <= 30408){
         $rank = 'Level 37';
-    }elseif($points >= 30408 && $points <= 33648){
+    }elseif($pinfcoins >= 30408 && $pinfcoins <= 33648){
         $rank = 'Level 38';
-    }elseif($points >= 33648 && $points <= 37224){
+    }elseif($pinfcoins >= 33648 && $pinfcoins <= 37224){
         $rank = 'Level 39';
-    }elseif($points >= 37224 && $points <= 41171){
+    }elseif($pinfcoins >= 37224 && $pinfcoins <= 41171){
         $rank = 'Level 40';
-    }elseif($points >= 41171 && $points <= 45529){
+    }elseif($pinfcoins >= 41171 && $pinfcoins <= 45529){
         $rank = 'Level 41';
-    }elseif($points >= 45529 && $points <= 50339){
+    }elseif($pinfcoins >= 45529 && $pinfcoins <= 50339){
         $rank = 'Level 42';
-    }elseif($points >= 50339 && $points <= 55649){
+    }elseif($pinfcoins >= 50339 && $pinfcoins <= 55649){
         $rank = 'Level 43';
-    }elseif($points >= 55649 && $points <= 61512){
+    }elseif($pinfcoins >= 55649 && $pinfcoins <= 61512){
         $rank = 'Level 44';
-    }elseif($points >= 61512 && $points <= 67983){
+    }elseif($pinfcoins >= 61512 && $pinfcoins <= 67983){
         $rank = 'Level 45';
-    }elseif($points >= 67983 && $points <= 75127){
+    }elseif($pinfcoins >= 67983 && $pinfcoins <= 75127){
         $rank = 'Level 46';
-    }elseif($points >= 75127 && $points <= 83014){
+    }elseif($pinfcoins >= 75127 && $pinfcoins <= 83014){
         $rank = 'Level 47';
-    }elseif($points >= 83014 && $points <= 91721){
+    }elseif($pinfcoins >= 83014 && $pinfcoins <= 91721){
         $rank = 'Level 48';
-    }elseif($points >= 91721 && $points <= 101333){
+    }elseif($pinfcoins >= 91721 && $pinfcoins <= 101333){
         $rank = 'Level 49';
-    }elseif($points >= 101333 && $points <= 111945){
+    }elseif($pinfcoins >= 101333 && $pinfcoins <= 111945){
         $rank = 'Level 50';
-    }elseif($points >= 111945 && $points <= 123660){
+    }elseif($pinfcoins >= 111945 && $pinfcoins <= 123660){
         $rank = 'Level 51';
-    }elseif($points >= 123660 && $points <= 136594){
+    }elseif($pinfcoins >= 123660 && $pinfcoins <= 136594){
         $rank = 'Level 52';
-    }elseif($points >= 136594 && $points <= 150872){
+    }elseif($pinfcoins >= 136594 && $pinfcoins <= 150872){
         $rank = 'Level 53';
-    }elseif($points >= 150872 && $points <= 166636){
+    }elseif($pinfcoins >= 150872 && $pinfcoins <= 166636){
         $rank = 'Level 54';
-    }elseif($points >= 166636 && $points <= 184040){
+    }elseif($pinfcoins >= 166636 && $pinfcoins <= 184040){
         $rank = 'Level 55';
-    }elseif($points >= 184040 && $points <= 203254){
+    }elseif($pinfcoins >= 184040 && $pinfcoins <= 203254){
         $rank = 'Level 56';
-    }elseif($points >= 203254 && $points <= 224466){
+    }elseif($pinfcoins >= 203254 && $pinfcoins <= 224466){
         $rank = 'Level 57';
-    }elseif($points >= 224466 && $points <= 247886){
+    }elseif($pinfcoins >= 224466 && $pinfcoins <= 247886){
         $rank = 'Level 58';
-    }elseif($points >= 247886 && $points <= 273742){
+    }elseif($pinfcoins >= 247886 && $pinfcoins <= 273742){
         $rank = 'Level 59';
-    }elseif($points >= 273742 && $points <= 302288){
+    }elseif($pinfcoins >= 273742 && $pinfcoins <= 302288){
         $rank = 'Level 60';
-    }elseif($points >= 302288 && $points <= 333804){
+    }elseif($pinfcoins >= 302288 && $pinfcoins <= 333804){
         $rank = 'Level 61';
-    }elseif($points >= 333804 && $points <= 368599){
+    }elseif($pinfcoins >= 333804 && $pinfcoins <= 368599){
         $rank = 'Level 62';
-    }elseif($points >= 368599 && $points <= 407015){
+    }elseif($pinfcoins >= 368599 && $pinfcoins <= 407015){
         $rank = 'Level 63';
-    }elseif($points >= 407015 && $points <= 449428){
+    }elseif($pinfcoins >= 407015 && $pinfcoins <= 449428){
         $rank = 'Level 64';
-    }elseif($points >= 449428 && $points <= 496254){
+    }elseif($pinfcoins >= 449428 && $pinfcoins <= 496254){
         $rank = 'Level 65';
-    }elseif($points >= 496254 && $points <= 547953){
+    }elseif($pinfcoins >= 496254 && $pinfcoins <= 547953){
         $rank = 'Level 66';
-    }elseif($points >= 547953 && $points <= 605032){
+    }elseif($pinfcoins >= 547953 && $pinfcoins <= 605032){
         $rank = 'Level 67';
-    }elseif($points >= 605032 && $points <= 668051){
+    }elseif($pinfcoins >= 605032 && $pinfcoins <= 668051){
         $rank = 'Level 68';
-    }elseif($points >= 668051 && $points <= 737627){
+    }elseif($pinfcoins >= 668051 && $pinfcoins <= 737627){
         $rank = 'Level 69';
-    }elseif($points >= 737627 && $points <= 814445){
+    }elseif($pinfcoins >= 737627 && $pinfcoins <= 814445){
         $rank = 'Level 70';
-    }elseif($points >= 814445 && $points <= 899257){
+    }elseif($pinfcoins >= 814445 && $pinfcoins <= 899257){
         $rank = 'Level 71';
-    }elseif($points >= 899257 && $points <= 992895){
+    }elseif($pinfcoins >= 899257 && $pinfcoins <= 992895){
         $rank = 'Level 72';
-    }elseif($points >= 992895 && $points <= 1096278){
+    }elseif($pinfcoins >= 992895 && $pinfcoins <= 1096278){
         $rank = 'Level 73';
-    }elseif($points >= 1096278 && $points <= 1210421){
+    }elseif($pinfcoins >= 1096278 && $pinfcoins <= 1210421){
         $rank = 'Level 74';
-    }elseif($points >= 1210421 && $points <= 1336443){
+    }elseif($pinfcoins >= 1210421 && $pinfcoins <= 1336443){
         $rank = 'Level 75';
-    }elseif($points >= 1336443 && $points <= 1475581){
+    }elseif($pinfcoins >= 1336443 && $pinfcoins <= 1475581){
         $rank = 'Level 76';
-    }elseif($points >= 1475581 && $points <= 1629200){
+    }elseif($pinfcoins >= 1475581 && $pinfcoins <= 1629200){
         $rank = 'Level 77';
-    }elseif($points >= 1629200 && $points <= 1798808){
+    }elseif($pinfcoins >= 1629200 && $pinfcoins <= 1798808){
         $rank = 'Level 78';
-    }elseif($points >= 1798808 && $points <= 1986068){
+    }elseif($pinfcoins >= 1798808 && $pinfcoins <= 1986068){
         $rank = 'Level 79';
-    }elseif($points >= 1986068 && $points <= 2192818){
+    }elseif($pinfcoins >= 1986068 && $pinfcoins <= 2192818){
         $rank = 'Level 80';
-    }elseif($points >= 2192818 && $points <= 2421087){
+    }elseif($pinfcoins >= 2192818 && $pinfcoins <= 2421087){
         $rank = 'Level 81';
-    }elseif($points >= 2421087 && $points <= 2673114){
+    }elseif($pinfcoins >= 2421087 && $pinfcoins <= 2673114){
         $rank = 'Level 82';
-    }elseif($points >= 2673114 && $points <= 2951373){
+    }elseif($pinfcoins >= 2673114 && $pinfcoins <= 2951373){
         $rank = 'Level 83';
-    }elseif($points >= 2951373 && $points <= 3258594){
+    }elseif($pinfcoins >= 2951373 && $pinfcoins <= 3258594){
         $rank = 'Level 84';
-    }elseif($points >= 3258594 && $points <= 3597792){
+    }elseif($pinfcoins >= 3258594 && $pinfcoins <= 3597792){
         $rank = 'Level 85';
-    }elseif($points >= 3597792 && $points <= 3972294){
+    }elseif($pinfcoins >= 3597792 && $pinfcoins <= 3972294){
         $rank = 'Level 86';
-    }elseif($points >= 3972294 && $points <= 4385776){
+    }elseif($pinfcoins >= 3972294 && $pinfcoins <= 4385776){
         $rank = 'Level 87';
-    }elseif($points >= 4385776 && $points <= 4842295){
+    }elseif($pinfcoins >= 4385776 && $pinfcoins <= 4842295){
         $rank = 'Level 88';
-    }elseif($points >= 4842295 && $points <= 5346332){
+    }elseif($pinfcoins >= 4842295 && $pinfcoins <= 5346332){
         $rank = 'Level 89';
-    }elseif($points >= 5346332 && $points <= 5902831){
+    }elseif($pinfcoins >= 5346332 && $pinfcoins <= 5902831){
         $rank = 'Level 90';
-    }elseif($points >= 5902831 && $points <= 6517253){
+    }elseif($pinfcoins >= 5902831 && $pinfcoins <= 6517253){
         $rank = 'Level 91';
-    }elseif($points >= 6517253 && $points <= 7195629){
+    }elseif($pinfcoins >= 6517253 && $pinfcoins <= 7195629){
         $rank = 'Level 92';
-    }elseif($points >= 7195629 && $points <= 7944614){
+    }elseif($pinfcoins >= 7195629 && $pinfcoins <= 7944614){
         $rank = 'Level 93';
-    }elseif($points >= 7944614 && $points <= 8771558){
+    }elseif($pinfcoins >= 7944614 && $pinfcoins <= 8771558){
         $rank = 'Level 94';
-    }elseif($points >= 8771558 && $points <= 9684577){
+    }elseif($pinfcoins >= 8771558 && $pinfcoins <= 9684577){
         $rank = 'Level 95';
-    }elseif($points >= 9684577 && $points <= 10692629){
+    }elseif($pinfcoins >= 9684577 && $pinfcoins <= 10692629){
         $rank = 'Level 96';
-    }elseif($points >= 10692629 && $points <= 11805606){
+    }elseif($pinfcoins >= 10692629 && $pinfcoins <= 11805606){
         $rank = 'Level 97';
-    }elseif($points >= 11805606 && $points <= 13034431){
+    }elseif($pinfcoins >= 11805606 && $pinfcoins <= 13034431){
         $rank = 'Level 98';
-    }elseif($points >= 13034431 && $points <= 14391160){
+    }elseif($pinfcoins >= 13034431 && $pinfcoins <= 14391160){
         $rank = 'Level 99';
-    }elseif($points >= 14391160){
+    }elseif($pinfcoins >= 14391160){
         $rank = 'Level 100';
     }
 

@@ -1,13 +1,13 @@
 <?php
 include_once 'includesranking/config/functions.php';
-$qRes = "SELECT * FROM users WHERE points >= 0 ORDER BY points DESC LIMIT 0, 100";
+$qRes = "SELECT * FROM users WHERE pinfcoins >= 0 ORDER BY pinfcoins DESC LIMIT 0, 100";
 $qQuery = $mysqli->query($qRes);    
 $i = 0;
 echo '<ul class="list-group list-group-flush">';
 if ($qQuery->num_rows > 0){
 while($qRow = $qQuery->fetch_assoc()){ 
-//$qReplace = $qRow['points']; //shows the points as follows: 234252324
-$qReplace = number_format($qRow['points'], 0, '.', '.'); //shows the points as follows: 234.252.324
+//$qReplace = $qRow['pinfcoins']; //shows the pinfcoins as follows: 234252324
+$qReplace = number_format($qRow['pinfcoins'], 0, '.', '.'); //shows the pinfcoins as follows: 234.252.324
 $i++;
 ?>
 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -17,7 +17,7 @@ $i++;
 		<span class="pull-left"> &nbsp; <b><?php echo $i; ?></b> &nbsp; <?php echo $qRow['name'];echo ", '";echo $qRow['username'];echo "'"; ?></span>
 	<?php } ?>
     <span class="badge badge-primary badge-pill">
-		<span class="badge badge-primary badge-pill"><?php echo levelRank($qRow['points']); ?></span>
+		<span class="badge badge-primary badge-pill"><?php echo levelRank($qRow['pinfcoins']); ?></span>
 		&mdash;
 		<?php echo $qReplace; ?> <small>PinfCoins</small>
 	</span>
