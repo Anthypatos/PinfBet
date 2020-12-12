@@ -111,6 +111,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
    <link rel="stylesheet" href="css/bootstrap.min.css">
    <!-- Site CSS -->
    <link rel="stylesheet" href="style.css">
+   <!--Login CSS -->
+  <link rel="stylesheet" href="css/login.css">
    <!-- Colors CSS -->
    <link rel="stylesheet" href="css/colors.css">
    <!-- ALL VERSION CSS -->	
@@ -128,39 +130,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
    <script src="js/3dslider.js"></script>
     </head>
     
-    <body class="CasaDeApuestas" data-spy="scroll" data-target=".header">
-        <!--Logo-->
-        <div class="container">
-            <div class="header-top">
-                <div class="row">
-                    <div class="full">
-                        <div class="logo-login">
-                            <a href="index.php"><img src="images/logo.png"  height="80"/></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Fin Logo-->
-        <div class="wrapper">
-            <h2>Logueo</h2>
-            <p>Rellena tus datos para entrar.</p>
+    <body>
+        <div class = "login-box">
+            <a href="index.php"><img src="images/logo.png" class="avatar" alt="Imagen Avatar"></a>             
+            <h1>Iniciar Sesión</h1>          
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                    <label>Username</label>
-                    <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
+                    <label for="username">Usuario</label>
+                    <input type="text" placeholder="Introduce Usuario" name="username" class="form-control" value="<?php echo $username; ?>">
                     <span class="help-block"><?php echo $username_err; ?></span>
                 </div>    
                 <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                    <label>Contraseña</label>
-                    <input type="password" name="password" class="form-control">
+                    <label for="password">Contraseña</label>
+                    <input type="password" placeholder="Introduce Contraseña" name="password" class="form-control">
                     <span class="help-block"><?php echo $password_err; ?></span>
                 </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Login">
-                </div>
+                <input type="submit" class="btn btn-primary" value="Acceder">
                 <p>¿No tienes cuenta? <a href="register.php">Registrate aquí</a>.</p>
             </form>
-        </div>    
+        </div>   
     </body>
 </html>

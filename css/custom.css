@@ -1805,6 +1805,14 @@ body section#contant .post-info span h4 {
          text-align: left;
          line-height: 1.1;
     }
+
+     .slider-login h3 {
+        font-weight: 700;
+        text-shadow: none;
+        color: #fff;
+        text-align: left;
+        line-height: 1.1;
+     }
      .slider-contant {
          display: inline-block;
     }
