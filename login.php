@@ -66,6 +66,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["profile_image"] = $profile_image;  
                             $_SESSION["pinfcoins"] = $pinfcoins;
                             $_SESSION["bio"] = $bio;
+                            
                             // Redirect user to welcome page
                             header("location: main.php");
                         } else{

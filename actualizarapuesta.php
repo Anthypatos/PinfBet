@@ -11,7 +11,7 @@ $qQuery = mysqli_query($link,$qRes);
 ?>
 <br>
 
-	<table border="1" >
+	<table border="3" >
 		<tr>
 			<td>Asignatura</td>
 			<td>Apostado a</td>

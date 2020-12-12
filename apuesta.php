@@ -11,6 +11,7 @@ include_once "config.php";
 
 $query = mysqli_query($link,"SELECT id_apuesta,nombre FROM apuestasdisponibles");
 $id_user = $_SESSION['id']; // id del usuario cuya sesion esta iniciada.
+$pinfcoins = $_SESSION['pinfcoins'];
 $id_apuesta = $cantidad = $resultado = $cod_apuesta = "";
 $cantidad_err = "";
 
@@ -38,8 +39,12 @@ if(empty ($_POST["cantidad"])){
 } elseif($_POST["cantidad"] >=1 && $_POST["cantidad"] <= 50 && is_numeric($_POST["cantidad"])){
     $cantidad = $_POST["cantidad"];
 } else{
-    $cantidad_err = "Introduce un valor numérico superior a 0 hasta un máximo de 50.";
-    
+    $cantidad_err = "Introduce un valor numérico superior a 0 hasta un máximo de 50."; 
+}
+
+if($cantidad>$pinfcoins)
+{
+    $cantidad_err = "No tienes suficientes Pinfcoins. Tienes $pinfcoins PinfCoins";
 }
 
 if(isset($_POST['resultado']))
@@ -67,15 +72,22 @@ if(empty($cantidad_err)){
         // Ejecuta la orden
         if(mysqli_stmt_execute($stmt)){
             // Redirige a la pagina princial
-            echo "Tu Apuesta Ha sido realizada! Redirigiendo en 3s..";
-            sleep('3');
+            mysqli_stmt_close($stmt);
+            $pinfcoins = $pinfcoins % $cantidad;
+            $sql = "UPDATE users SET pinfcoins=? WHERE id=$id_user";
+            $stmt= $link->prepare($sql);
+            $stmt->bind_param("i",$pinfcoins);
+            $stmt->execute();
+
             header("location: main.php");
+            // Close statement
+            
+           
         } else{
             echo "Error, Puede que ya hayas apostado en esta asignatura, solo puedes apostar 1 vez.";
         }
-
-        // Close statement
-        mysqli_stmt_close($stmt);
+        
+       
     }
 }
 
