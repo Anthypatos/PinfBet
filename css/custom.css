@@ -196,12 +196,23 @@
      float: left;
      width: 100%;
 }
+
+ .logo-login {
+    float: left;
+    padding: 15px 0 10px;
+    margin: 0 0 0 0px;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
  .logo {
      float: center;
      padding: 7px 0 6px;
      margin: 0 0 0 0px;
      position: relative;
 }
+
  .menu {
      float: left;
      width: 100%;
