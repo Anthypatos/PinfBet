@@ -20,14 +20,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
+        $username_err = "Por favor, introduzca usuario.";
     } else{
         $username = trim($_POST["username"]);
     }
     
     // Check if password is empty
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
+        $password_err = "Por favor, introduzca contraseña.";
     } else{
         $password = trim($_POST["password"]);
     }
@@ -93,7 +93,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
  
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="es"> 
 <!-- Basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -112,7 +112,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
    <!-- Site CSS -->
    <link rel="stylesheet" href="style.css">
    <!--Login CSS -->
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/registro.css">
    <!-- Colors CSS -->
    <link rel="stylesheet" href="css/colors.css">
    <!-- ALL VERSION CSS -->	
@@ -123,15 +123,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
    <link rel="stylesheet" href="css/custom.css">
    <!-- font family -->
    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-   <!-- end font family -->
-   <link rel="stylesheet" href="css/3dslider.css" />
-   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-   <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-   <script src="js/3dslider.js"></script>
-    </head>
+   </head>
     
     <body>
-        <div class = "login-box">
+        <div class = "register-box">
             <a href="index.php"><img src="images/logo.png" class="avatar" alt="Imagen Avatar"></a>             
             <h1>Iniciar Sesión</h1>          
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -145,7 +140,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <input type="password" placeholder="Introduce Contraseña" name="password" class="form-control">
                     <span class="help-block"><?php echo $password_err; ?></span>
                 </div>
-                <input type="submit" class="btn btn-primary" value="Acceder">
+                <input type="submit" value="Acceder">
                 <p>¿No tienes cuenta? <a href="register.php">Registrate aquí</a>.</p>
             </form>
         </div>   
