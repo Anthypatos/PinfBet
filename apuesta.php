@@ -11,6 +11,7 @@ include_once "config.php";
 
 $query = mysqli_query($link,"SELECT id_apuesta,nombre FROM apuestasdisponibles");
 $id_user = $_SESSION['id']; // id del usuario cuya sesion esta iniciada.
+$pinfcoins = $_SESSION['pinfcoins'];
 $id_apuesta = $cantidad = $resultado = $cod_apuesta = "";
 $cantidad_err = "";
 
@@ -38,8 +39,12 @@ if(empty ($_POST["cantidad"])){
 } elseif($_POST["cantidad"] >=1 && $_POST["cantidad"] <= 50 && is_numeric($_POST["cantidad"])){
     $cantidad = $_POST["cantidad"];
 } else{
-    $cantidad_err = "Introduce un valor numérico superior a 0 hasta un máximo de 50.";
-    
+    $cantidad_err = "Introduce un valor numérico superior a 0 hasta un máximo de 50."; 
+}
+
+if($cantidad>$pinfcoins)
+{
+    $cantidad_err = "No tienes suficientes Pinfcoins. Tienes $pinfcoins PinfCoins";
 }
 
 if(isset($_POST['resultado']))
@@ -68,6 +73,8 @@ if(empty($cantidad_err)){
         if(mysqli_stmt_execute($stmt)){
             // Redirige a la pagina princial
             echo "Tu Apuesta Ha sido realizada! Redirigiendo en 3s..";
+            $pinfcoins = $pinfcoins - $cantidad;
+            $ejecutarupdatepinfcoins = mysqli_query($link,"UPDATE users SET pinfcoins = $pinfcoins WHERE id = $id");
             sleep('3');
             header("location: main.php");
         } else{

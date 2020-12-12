@@ -7,6 +7,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
+
+include_once "actualizardatos.php"; 
 ?>
 
 
@@ -70,9 +72,9 @@ img {
          <h4 class="w3-center"><b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h4>
          <p class="w3-center"><img src="<?php echo 'imagenesperfil/' . $_SESSION["profile_image"] ?>" width="90" height="90" alt=""></p>
          <hr>
-         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><?php echo $_SESSION["name"];?></p>
-         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+         <p><i class="fa fa-user-circle fa-fw w3-margin-right w3-text-theme"></i><?php echo $_SESSION["name"];?></p>
+         <p><i class="fa fa-money fa-fw w3-margin-right w3-text-theme"></i><?php echo $_SESSION["pinfcoins"];?> PinfCoins</p>
+         <p><i class="fa fa-commenting fa-fw w3-margin-right w3-text-theme"></i> "<?php echo $_SESSION["bio"];?>"</p>
         </div>
       </div>
       <br>
@@ -118,9 +120,7 @@ img {
 <!-- Footer -->
 
 
-<footer class="w3-container w3-theme-d5">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer>
+
  
 <script>
 // Accordion
