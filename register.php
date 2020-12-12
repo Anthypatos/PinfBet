@@ -178,6 +178,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="password" placeholder="Confirmar Contraseña" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
+
+            <label for="cajita">He leído y acepto los términos y condiciones</label> 
+            <input type="checkbox" id="lacajita">
+
             <div class="form-group">
                 <input type="submit" value="Registrarse">
             </div>
