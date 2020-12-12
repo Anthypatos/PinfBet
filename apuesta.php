@@ -72,17 +72,22 @@ if(empty($cantidad_err)){
         // Ejecuta la orden
         if(mysqli_stmt_execute($stmt)){
             // Redirige a la pagina princial
-            echo "Tu Apuesta Ha sido realizada! Redirigiendo en 3s..";
-            $pinfcoins = $pinfcoins - $cantidad;
-            $ejecutarupdatepinfcoins = mysqli_query($link,"UPDATE users SET pinfcoins = $pinfcoins WHERE id = $id");
-            sleep('3');
+            mysqli_stmt_close($stmt);
+            $pinfcoins = $pinfcoins % $cantidad;
+            $sql = "UPDATE users SET pinfcoins=? WHERE id=$id_user";
+            $stmt= $link->prepare($sql);
+            $stmt->bind_param("i",$pinfcoins);
+            $stmt->execute();
+
             header("location: main.php");
+            // Close statement
+            
+           
         } else{
             echo "Error, Puede que ya hayas apostado en esta asignatura, solo puedes apostar 1 vez.";
         }
-
-        // Close statement
-        mysqli_stmt_close($stmt);
+        
+       
     }
 }
 
