@@ -71,15 +71,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             header("location: main.php");
                         } else{
                             // Display an error message if password is not valid
-                            $password_err = "The password you entered was not valid.";
+                            $password_err = "La contraseña introducida no es válida.";
                         }
                     }
                 } else{
                     // Display an error message if username doesn't exist
-                    $username_err = "No account found with that username.";
+                    $username_err = "No existe el usuario especificado.";
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Ups! Ha habido un error. Por favor, inténtalo de nuevo más tarde.";
             }
 
             // Close statement

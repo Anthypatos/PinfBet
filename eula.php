@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>EULA</title>
 </head>
-<body>
+<body style= "font-family: verdana">
     <h2 style="text-align:center">DESCARGA DE RESPONSABILIDADES</h2>
     <div style="text-align:center">Al aceptar este documento de descarga de responsabilidades procedente del proyecto 5&Bet, acepto que:</div>
     <ol>
