@@ -183,11 +183,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="password" placeholder="Confirmar Contraseña" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
-
-            <label for="lacajita">He leído y acepto los <a href="eula.php">términos y condiciones</a></label> 
-            <input type="checkbox" name="lacajita">
-            <span class="help-block"><?php echo $cajita_err; ?></span>
-
+            <div class="form-group <?php echo (!empty($cajita_err)) ? 'has-error' : ''; ?>">
+                <label for="lacajita">He leído y acepto los <a href="eula.php">términos y condiciones</a></label> 
+                <input type="checkbox" name="lacajita">
+                <span class="help-block"><?php echo $cajita_err; ?></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Registrarse">
             </div>
