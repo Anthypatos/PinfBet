@@ -4,7 +4,7 @@ require_once "config.php";
  
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $email = "";
-$username_err = $password_err = $confirm_password_err = $email_err = "";
+$username_err = $password_err = $confirm_password_err = $email_err = $cajita_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -93,8 +93,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     
+    //Validar aceptación de los términos
+    if (!(isset($_POST["lacajita"]))) {
+        $cajita_err = "Debe aceptar los términos del servicio.";
+    }
+
     // Check input errors before inserting in database
-    if(empty($username_err)&& empty($email_err) && empty($password_err) && empty($confirm_password_err)){
+    if(empty($username_err)&& empty($email_err) && empty($password_err) && empty($confirm_password_err) && empty($cajita_err)){
         
         // Prepare an insert statement
         $sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
@@ -180,7 +185,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
 
             <label for="lacajita">He leído y acepto los <a href="eula.php">términos y condiciones</a></label> 
-            <input type="checkbox" id="lacajita">
+            <input type="checkbox" name="lacajita">
+            <span class="help-block"><?php echo $cajita_err; ?></span>
 
             <div class="form-group">
                 <input type="submit" value="Registrarse">
