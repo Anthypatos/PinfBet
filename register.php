@@ -179,7 +179,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
 
-            <label for="lacajita">He leído y acepto los términos y condiciones</label> 
+            <label for="lacajita">He leído y acepto los <a href="eula.php">términos y condiciones</a></label> 
             <input type="checkbox" id="lacajita">
 
             <div class="form-group">
