@@ -45,7 +45,7 @@ session_start();
    <body class="CasaDeApuestas" data-spy="scroll" data-target=".header">
       <!-- LOADER -->
       <div id="preloader">
-         <img class="preloader" src="images/loading-img.gif" alt="">
+         <img class="preloader" src="images/moneda.gif" alt="">
       </div>
       <!-- END LOADER -->
       <section id="top">

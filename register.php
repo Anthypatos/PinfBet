@@ -184,7 +184,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
             <div class="form-group <?php echo (!empty($cajita_err)) ? 'has-error' : ''; ?>">
-                <label for="lacajita">He leído y acepto los <a href="eula.php">términos y condiciones</a></label> 
+                <label for="lacajita">He leído y acepto los <a href="Documentaci_n_PINF.pdf" target="_blank">términos y condiciones</a></label> 
                 <input type="checkbox" name="lacajita">
                 <span class="help-block"><?php echo $cajita_err; ?></span>
             </div>
