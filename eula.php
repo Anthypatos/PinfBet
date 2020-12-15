@@ -47,7 +47,7 @@
         plataforma.</li>
     </ol>
 
-    <a href="index.php"><img src="images/footer-logo.png" height = "80" style = 
+    <a href="register.php"><img src="images/footer-logo.png" height = "80" style = 
     "display:block; margin-left:auto; margin-right: auto;"/></a>
 </body>
 </html>
