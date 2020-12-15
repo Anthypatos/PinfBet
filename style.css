@@ -2097,7 +2097,7 @@ aside#sidebar .team-btw-match ul li.vs span {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: #fff;
+	background: rgb(255, 255, 255);
 	z-index: 11000;
 	position: fixed;
 	display: block

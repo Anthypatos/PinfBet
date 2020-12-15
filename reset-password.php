@@ -99,7 +99,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <body>
     <div class="register-box">
-        <a href="index.php"><img src="images/logo.png" class="avatar" alt="Imagen Avatar"></a>             
+        <img src="images/logo.png" class="avatar" alt="Imagen Avatar">           
         <h1>Cambiar Contraseña</h1>
         <p>Por favor, rellena los campos para cambiar la contraseña.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
