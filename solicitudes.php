@@ -20,11 +20,13 @@ include_once 'config.php';
 </head>
 <body>
 
-<form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self">
-    <input type= "text" id = "busqueda" name = "busqueda" placeholder = "Busca un usuario..."><br><br>
-    <input type = "hidden" name = "tipo" value = "buscar_users">
-    <input type = "submit" value = "Buscar">
-</form>
+<p>
+    <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self">
+        <input type= "text" id = "busqueda" name = "busqueda" placeholder = "Busca un usuario...">
+        <input type = "hidden" name = "tipo" value = "buscar_users">
+        <input type = "submit" value = "Buscar">
+    </form>
+</p>
 
 <?php
     if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -65,8 +67,7 @@ include_once 'config.php';
                 $elem_busq=mysqli_fetch_array($buscar_consulta);
                 ?>
 
-                <br>
-
+                <p>
                 <table class="table table-bordered">
                     <thead>
                         <th>Usuario</th>
@@ -107,7 +108,7 @@ include_once 'config.php';
                                     {
                                         ?>
 
-                                        <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self">
+                                        <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self" onsubmit="mensajito('¡Solicitud de amistad enviada!')">
                                             <input type = "hidden" name = "tipo" value = "enviar">
                                             <input type = "hidden" name = "cliente" value = "<?php echo htmlspecialchars($user_actual); ?>">
                                             <input type = "hidden" name = "otro" value = "<?php echo htmlspecialchars($user_buscado); ?>">
@@ -136,7 +137,9 @@ include_once 'config.php';
     ?>
     </tbody>
     </table>
+</p>
 
+<p>
 <table class="table table-bordered">
     <thead>
         <th>Solicitudes de amistad recibidas</th>
@@ -161,13 +164,13 @@ include_once 'config.php';
                     <tr>
                         <td> <?php echo $solicitante['usuario1']; ?> </td>
                         <td>
-                            <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self">
+                            <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self" onsubmit="mensajito('¡Solicitud de amistad aceptada!')">
                                 <input type = "hidden" name = "tipo" value = "aceptar">
                                 <input type = "hidden" name = "cliente" value = "<?php echo htmlspecialchars($user_actual); ?>">
                                 <input type = "hidden" name = "otro" value = "<?php echo htmlspecialchars($solicitante['usuario1']); ?>">
                                 <input type = "submit" value = "Aceptar">
                             </form>
-                            <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self">
+                            <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self" onsubmit="mensajito('Solicitud de amistad rechazada.')">
                                 <input type = "hidden" name = "tipo" value = "rechazar">
                                 <input type = "hidden" name = "cliente" value = "<?php echo htmlspecialchars($user_actual); ?>">
                                 <input type = "hidden" name = "otro" value = "<?php echo htmlspecialchars($solicitante['usuario1']); ?>">
@@ -181,6 +184,13 @@ include_once 'config.php';
     ?>
     </tbody>
 </table>
+</p>
 
+<script>
+    function mensajito($cadena)
+    {
+        alert($cadena);
+    }
+</script>
 </body>
 </html>
