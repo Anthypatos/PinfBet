@@ -14,9 +14,9 @@
   <div class="container">
     <div class="row">
       <div class="col-4 offset-md-4 form-div">
-        <a href="profiles.php">View all profiles</a>
+        <a href="profiles.php">Ver todos los perfiles</a>
         <form action="form.php" method="post" enctype="multipart/form-data">
-          <h2 class="text-center mb-3 mt-3">Update profile</h2>
+          <h2 class="text-center mb-3 mt-3">Actualizar perfil</h2>
           <?php if (!empty($msg)): ?>
             <div class="alert <?php echo $msg_class ?>" role="alert">
               <?php echo $msg; ?>
@@ -25,12 +25,12 @@
           <div class="form-group text-center" style="position: relative;" >
             <span class="img-div">
               <div class="text-center img-placeholder"  onClick="triggerClick()">
-                <h4>Update image</h4>
+                <h4>Cambiar imagen</h4>
               </div>
-              <img src="images/avatar.jpg" onClick="triggerClick()" id="profileDisplay">
+              <img src="<?php echo 'imagenesperfil/' . $_SESSION["profile_image"] ?>" onClick="triggerClick()" id="profileDisplay">
             </span>
             <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;">
-            <label>Profile Image</label>
+            <label>Imagen de perfil</label>
           </div>
           <div class="form-group">
             <label>Bio</label>
