@@ -41,7 +41,18 @@ img {
   <div class="w3-dropdown-hover w3-hide-small">
     <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>     
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
-      <a href="#" class="w3-bar-item w3-button">One new friend request</a>
+      <?php
+        $user_actual = $_SESSION['username'];
+        $comprobar_solicitudes = "SELECT usuario1, solicitud FROM amistades WHERE '$user_actual' = usuario2 and solicitud = 1 and amigos = 0";
+        $comprobar_consulta = mysqli_query($link, $comprobar_solicitudes);
+
+        if (mysqli_num_rows($comprobar_consulta) != 0)
+        {
+          ?>
+            <a href="solicitudes.php" class="w3-bar-item w3-button">Nuevas solicitudes de amistad</a>
+          <?php
+        }
+      ?>
       <a href="#" class="w3-bar-item w3-button">John Doe posted on your wall</a>
       <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
     </div>
