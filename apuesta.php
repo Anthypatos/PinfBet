@@ -15,6 +15,8 @@ $pinfcoins = $_SESSION['pinfcoins'];
 $id_apuesta = $cantidad = $resultado = $cod_apuesta = "";
 $cantidad_err = "";
 
+$user_actual = $_SESSION['username'];
+$amigos_consulta = mysqli_query($link, "SELECT id, username FROM users, amistades WHERE usuario1 = '$user_actual' AND usuario2 = username AND amigos = 1");
 
 
 if(isset($_POST['id_apuesta']))
@@ -56,15 +58,16 @@ if(isset($_POST['resultado']))
 if(empty($cantidad_err)){
     
     // Preparamos la consulta que vamos a introducir a la base de datos.
-    $sql = "INSERT INTO apuestas (id_user, id_apuesta,cod_apuesta, cantidad_apostada, resultado_user) VALUES (?,?,?,?,?)";
+    $sql = "INSERT INTO apuestas (id_user, id_apuesta, id_apostado, cod_apuesta, cantidad_apostada, resultado_user) VALUES (?,?,?,?,?,?)";
      
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "iiiii",$param_iduser, $param_apuesta,$param_codapuesta, $param_cantidad, $param_resultado);
+        mysqli_stmt_bind_param($stmt, "iiiiii",$param_iduser, $param_apuesta, $param_apostado, $param_codapuesta, $param_cantidad, $param_resultado);
         
         // Ponemos los parametros con sus respectivos valores.
         $param_iduser = $id_user;
         $param_apuesta = $id_apuesta;
+        $param_apostado = $_POST['objetivo'];
         $param_cantidad = $cantidad; 
         $param_resultado = $resultado;
         $param_codapuesta = $cod_apuesta;
@@ -128,6 +131,26 @@ mysqli_close($link);
                     }
                 ?>
                 </select>
+            </div>
+
+            <div class="form-group">
+                <label>Objetivo</label>
+                    <select id="objetivo" name="objetivo" required>
+                        <option value = "">---</option>
+                        <option value = "<?php echo $_SESSION['id']?>">
+                            <?php echo $_SESSION['username']?>
+                        </option>
+                        <?php
+                            while ($amigos = mysqli_fetch_array($amigos_consulta))
+                            {
+                            ?>
+                                <option value = "<?php echo $amigos['id']?>">
+                                    <?php echo $amigos['username']?>
+                                </option>
+                            <?php
+                            }
+                        ?>
+                    </select>
             </div>
            
             <div class="form-group <?php echo (!empty($cantidad_err)) ? 'has-error' : ''; ?>">
