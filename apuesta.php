@@ -134,12 +134,10 @@ mysqli_close($link);
             </div>
 
             <div class="form-group">
-                <label>Objetivo</label>
+                <label>Objetivo de la apuesta</label>
                     <select id="objetivo" name="objetivo" required>
                         <option value = "">---</option>
-                        <option value = "<?php echo $_SESSION['id']?>">
-                            <?php echo $_SESSION['username']?>
-                        </option>
+                        <option value = "<?php echo $_SESSION['id']?>">Tú (apuesta personal)</option>
                         <?php
                             while ($amigos = mysqli_fetch_array($amigos_consulta))
                             {

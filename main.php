@@ -9,6 +9,19 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 
 include_once "actualizardatos.php"; 
+
+$contador_notis = 0;
+$bandera_solicitudes = false;
+
+$user_actual = $_SESSION['username'];
+$comprobar_solicitudes = "SELECT usuario1, solicitud FROM amistades WHERE '$user_actual' = usuario2 and solicitud = 1 and amigos = 0";
+$comprobar_consulta = mysqli_query($link, $comprobar_solicitudes);
+
+if (mysqli_num_rows($comprobar_consulta) != 0)
+{
+  $bandera_solicitudes = true;
+  $contador_notis++;
+}
 ?>
 
 
@@ -34,19 +47,22 @@ img {
  <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
   <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Logo</a>
-  <a href="rankingmain.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>
-  <a href="perfil.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
-  <a href="apuesta.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
+  <a href="rankingmain.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Ranking"><i class="fa fa-globe"></i></a>
+  <a href="perfil.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Perfil"><i class="fa fa-user"></i></a>
+  <a href="apuesta.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Apostar"><i class="fa fa-envelope"></i></a>
   <a href="solicitudes.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Busqueda"><i class="fa fa-user"></i></a>
   <div class="w3-dropdown-hover w3-hide-small">
-    <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>     
+    <button class="w3-button w3-padding-large" title="Notificaciones">
+      <i class="fa fa-bell"></i>
+      <span class="w3-badge w3-right w3-small w3-green">
+        <?php
+          if ($contador_notis > 0) echo $contador_notis;
+        ?>
+      </span>
+    </button>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
       <?php
-        $user_actual = $_SESSION['username'];
-        $comprobar_solicitudes = "SELECT usuario1, solicitud FROM amistades WHERE '$user_actual' = usuario2 and solicitud = 1 and amigos = 0";
-        $comprobar_consulta = mysqli_query($link, $comprobar_solicitudes);
-
-        if (mysqli_num_rows($comprobar_consulta) != 0)
+        if ($bandera_solicitudes)
         {
           ?>
             <a href="solicitudes.php" class="w3-bar-item w3-button">Nuevas solicitudes de amistad</a>
@@ -57,7 +73,7 @@ img {
       <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
     </div>
   </div>
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
+  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="Mi cuenta">
     <img src="<?php echo 'imagenesperfil/' . $_SESSION["profile_image"] ?>" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
   </a>
  </div>

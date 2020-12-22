@@ -9,6 +9,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 
 include_once 'config.php';
+
+$user_actual = $_SESSION['username'];
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +20,8 @@ include_once 'config.php';
     <title>Solicitudes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
 </head>
-<body>
+<body style="text-align:center">
+<h2>Amigos</h2>
 
 <p>
     <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self">
@@ -49,6 +52,16 @@ include_once 'config.php';
 
                 $rechazar_solicitud = "UPDATE amistades SET solicitud = '0' WHERE amistades.usuario1 = '$user_otro' AND amistades.usuario2 = '$user_cliente'";
                 $consulta_rechazar = mysqli_query($link, $rechazar_solicitud);
+                break;
+            case 'borrar':
+                $user_cliente = $_POST['cliente'];
+                $user_otro = $_POST['otro'];
+
+                $borrar_amigo = "UPDATE amistades SET solicitud = '0', amigos = '0' WHERE amistades.usuario1 = '$user_actual' AND amistades.usuario2 = '$user_otro'";
+                $consulta_borrar = mysqli_query($link, $borrar_amigo);
+
+                $borrar_amigo = "UPDATE amistades SET solicitud = '0', amigos = '0' WHERE amistades.usuario1 = '$user_otro' AND amistades.usuario2 = '$user_actual'";
+                $consulta_borrar = mysqli_query($link, $borrar_amigo);
                 break;
             default:
 
@@ -84,7 +97,6 @@ include_once 'config.php';
                         <td><?php echo $elem_busq['username'] ?></td>
                         <td>
                             <?php
-                                $user_actual = $_SESSION['username'];
                                 $user_buscado = $elem_busq['username'];
 
                                 if ($user_actual == $user_buscado)
@@ -146,7 +158,6 @@ include_once 'config.php';
     </thead>
     <tbody>
     <?php
-        $user_actual = $_SESSION['username'];
         $comprobar_solicitudes = "SELECT usuario1, solicitud FROM amistades WHERE '$user_actual' = usuario2 and solicitud = 1 and amigos = 0";
         $comprobar_consulta = mysqli_query($link, $comprobar_solicitudes);
 
@@ -175,6 +186,46 @@ include_once 'config.php';
                                 <input type = "hidden" name = "cliente" value = "<?php echo htmlspecialchars($user_actual); ?>">
                                 <input type = "hidden" name = "otro" value = "<?php echo htmlspecialchars($solicitante['usuario1']); ?>">
                                 <input type = "submit" value = "Rechazar">
+                            </form>
+                        </td>
+                    </tr>
+                <?php
+            }
+        }
+    ?>
+    </tbody>
+</table>
+</p>
+
+<p>
+<table class="table table-bordered">
+    <thead>
+        <th>Tu lista de amigos</th>
+    </thead>
+    <tbody>
+    <?php
+        $lista_amigos = "SELECT usuario2 FROM amistades WHERE '$user_actual' = usuario1 and amigos = '1'";
+        $lista_consulta = mysqli_query($link, $lista_amigos);
+
+        if (mysqli_num_rows($lista_consulta) == 0)
+        {
+            ?>
+            <td>Tu lista de amigos está vacía.</td>
+            <?php
+        }
+        else
+        {
+            while ($nombre_amigo = mysqli_fetch_array($lista_consulta))
+            {
+                ?>
+                    <tr>
+                        <td> <?php echo $nombre_amigo['usuario2']; ?> </td>
+                        <td>
+                            <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self" onsubmit="mensajito('Amigo eliminado.')">
+                                <input type = "hidden" name = "tipo" value = "borrar">
+                                <input type = "hidden" name = "cliente" value = "<?php echo htmlspecialchars($user_actual); ?>">
+                                <input type = "hidden" name = "otro" value = "<?php echo htmlspecialchars($nombre_amigo['usuario2']); ?>">
+                                <input type = "submit" value = "Borrar">
                             </form>
                         </td>
                     </tr>
