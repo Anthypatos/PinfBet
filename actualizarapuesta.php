@@ -51,7 +51,7 @@ $qQuery = mysqli_query($link,$qRes);
 
 			if($mostrar['resultado_final'] == 0)
 			{
-				$resultado = "Pediente";
+				$resultado = "Pendiente";
 			}else if($mostrar['resultado_final'] == 1)
 			{
 				$resultado = "Ganada";

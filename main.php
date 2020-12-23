@@ -14,13 +14,13 @@ $contador_notis = 0;
 $bandera_solicitudes = false;
 
 $user_actual = $_SESSION['username'];
-$comprobar_solicitudes = "SELECT usuario1, solicitud FROM amistades WHERE '$user_actual' = usuario2 and solicitud = 1 and amigos = 0";
+$comprobar_solicitudes = "SELECT * FROM amistades WHERE usuario2 = '$user_actual' and solicitud = 1 and amigos = 0";
 $comprobar_consulta = mysqli_query($link, $comprobar_solicitudes);
 
-if (mysqli_num_rows($comprobar_consulta) != 0)
+if (($numero_solicitudes = mysqli_num_rows($comprobar_consulta)) != 0)
 {
   $bandera_solicitudes = true;
-  $contador_notis++;
+  $contador_notis += $numero_solicitudes;
 }
 ?>
 
@@ -65,7 +65,12 @@ img {
         if ($bandera_solicitudes)
         {
           ?>
-            <a href="solicitudes.php" class="w3-bar-item w3-button">Nuevas solicitudes de amistad</a>
+            <a href="solicitudes.php" class="w3-bar-item w3-button">
+              <?php
+              if ($numero_solicitudes == 1) echo "Nueva solicitud de amistad";
+              else echo "$numero_solicitudes nuevas solicitudes de amistad";
+              ?>
+            </a>
           <?php
         }
       ?>

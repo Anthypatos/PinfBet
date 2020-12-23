@@ -11,7 +11,8 @@ include_once "config.php";
 
 $query = mysqli_query($link,"SELECT id_apuesta,nombre FROM apuestasdisponibles");
 $id_user = $_SESSION['id']; // id del usuario cuya sesion esta iniciada.
-$pinfcoins = $_SESSION['pinfcoins'];
+$pinfcoins_array = mysqli_fetch_array(mysqli_query($link, "SELECT pinfcoins FROM users WHERE '$id_user' = id"));
+$pinfcoins = $pinfcoins_array['pinfcoins'];
 $id_apuesta = $cantidad = $resultado = $cod_apuesta = "";
 $cantidad_err = "";
 
@@ -76,7 +77,7 @@ if(empty($cantidad_err)){
         if(mysqli_stmt_execute($stmt)){
             // Redirige a la pagina princial
             mysqli_stmt_close($stmt);
-            $pinfcoins = $pinfcoins % $cantidad;
+            $pinfcoins = $pinfcoins - $cantidad;
             $sql = "UPDATE users SET pinfcoins=? WHERE id=$id_user";
             $stmt= $link->prepare($sql);
             $stmt->bind_param("i",$pinfcoins);
@@ -155,7 +156,8 @@ mysqli_close($link);
                 <label>Cantidad (PinfCoins)</label>
                 <input type="text" name="cantidad" class="form-control" value="<?php echo $cantidad; ?>">
                 <span class="help-block"><?php echo $cantidad_err; ?></span>
-            </div>  
+                <?php echo "Tus pinfcoins: $pinfcoins"; ?>
+            </div>
             <div class="form-group <?php echo (!empty($cantidad_err)) ? 'has-error' : ''; ?>">
             <label>Resultado</label>
             <select id="resultado" name="resultado">
