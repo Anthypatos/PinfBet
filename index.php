@@ -63,16 +63,42 @@ session_start();
                      <div class="col-md-6">
                         <div class="right_top_section">
                            <!-- button section -->
-                           <ul class="login">
-                              <li class="login-modal">
-                                 <a href="login.php" class="login"><i class="fa fa-user"></i>Iniciar Sesión</a>
-                              </li>
-                              <li>
-                                 <div class="cart-option">
-                                    <a href="register.php"><i class ="fa fa-user"></i>Registrarse</a>
-                                 </div>
-                              </li>
-                           </ul>
+
+                           <?php
+                              if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
+                              {
+                                 $nombre = $_SESSION['username'];
+                                 echo "Bienvenido, $nombre";
+                           ?>
+                                 <ul class="login">
+                                    <li class="login-modal">
+                                       <a href="main.php" class="login"><i class="fa fa-user"></i> Menú principal </a>
+                                    </li>
+                                    <li>
+                                       <div class="cart-option">
+                                          <a href="logout.php"><i class ="fa fa-user"></i> Cerrar sesión </a>
+                                       </div>
+                                    </li>
+                                 </ul>
+                              <?php
+                              }
+                              else
+                              {
+                              ?>
+                                 <ul class="login">
+                                    <li class="login-modal">
+                                       <a href="login.php" class="login"><i class="fa fa-user"></i> Iniciar sesión </a>
+                                    </li>
+                                    <li>
+                                       <div class="cart-option">
+                                          <a href="register.php"><i class ="fa fa-user"></i> Registrarse </a>
+                                       </div>
+                                    </li>
+                                 </ul>
+                           <?php
+                              }
+                           ?>
+
                            <!-- end button section -->
                         </div>
                      </div>
@@ -123,7 +149,7 @@ session_start();
                         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                            <div class="slider-contant" data-animation="animated fadeInRight">
                               <h3>Donde <span style="color: #ec8464;">apuestan</span><br>los que <span style="color: #ec8464">aprueban</span></h3>
-                              <button class="btn btn-primary btn-lg"><a href="login.php">Apuesta ya</a></button>
+                              <button class="btn btn-primary btn-lg"><a href="main.php">Apuesta ya</a></button>
                            </div>
                         </div>
                      </div>

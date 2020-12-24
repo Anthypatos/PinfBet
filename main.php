@@ -50,7 +50,7 @@ img {
   <a href="rankingmain.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Ranking"><i class="fa fa-globe"></i></a>
   <a href="perfil.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Perfil"><i class="fa fa-user"></i></a>
   <a href="apuesta.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Apostar"><i class="fa fa-envelope"></i></a>
-  <a href="solicitudes.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Busqueda"><i class="fa fa-user"></i></a>
+  <a href="social.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Social"><i class="fa fa-user"></i></a>
   <div class="w3-dropdown-hover w3-hide-small">
     <button class="w3-button w3-padding-large" title="Notificaciones">
       <i class="fa fa-bell"></i>
@@ -65,7 +65,7 @@ img {
         if ($bandera_solicitudes)
         {
           ?>
-            <a href="solicitudes.php" class="w3-bar-item w3-button">
+            <a href="social.php" class="w3-bar-item w3-button">
               <?php
               if ($numero_solicitudes == 1) echo "Nueva solicitud de amistad";
               else echo "$numero_solicitudes nuevas solicitudes de amistad";
