@@ -19,7 +19,8 @@ $qQuery = mysqli_query($link,$qRes);
 			<td>Cantidad</td>
 			<td>Fecha</td>
 			<td>Resultado</td>
-			<td>Ganancia/Pérdida</td>	
+			<td>Ganancia/Pérdida</td>
+			<td>Compartir</td>
 		</tr>
 
 		<?php 
@@ -34,14 +35,16 @@ $qQuery = mysqli_query($link,$qRes);
 			//Si es a ti mismo, saltamos este paso
 			if($mostrar['id_apostado'] == $id_user)
 			{
-				$nombre_apostado = $_SESSION['username'];
-
+				$user_apostado = $_SESSION['username'];
+				$nombre_apostado = "yo";
 			}else{
 				
 				$id_apostado= $mostrar['id_apostado'];
-				$nombre_apostado_sql = "SELECT username FROM users WHERE id = $id_apostado"; 
-				$nombre_apostado_result = mysqli_query($link,$nombre_apostado_sql);
-				$nombre_apostado = $nombre_apostado_result->fetch_array()['username'];
+				$user_apostado_sql = "SELECT `name`, username FROM users WHERE id = $id_apostado"; 
+				$user_apostado_result = mysqli_query($link, $user_apostado_sql);
+
+				$user_apostado = $user_apostado_result->fetch_array()['username'];
+				$nombre_apostado = $user_apostado_result->fetch_array()['name'];
 			}
 			//Sacamos la prediccion de la apuesta Aprobado/Suspendo
 			if($mostrar['resultado_user'] == 1)
@@ -65,12 +68,18 @@ $qQuery = mysqli_query($link,$qRes);
 
 		<tr>
 			<td><?php echo $nombre_apuesta ?></td>
-			<td><?php echo $nombre_apostado ?></td>
+			<td><?php echo $user_apostado ?></td>
 			<td><?php echo $resultado_user ?></td>
 			<td><?php echo $mostrar['cantidad_apostada']; echo " PinfCoins" ?></td>
 			<td><?php echo $mostrar['fecha_apuesta'] ?></td>
 			<td><?php echo $resultado ?></td>
 			<td><?php echo $cantidad_resultado ?></td>
+			<td>
+				<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="<?php
+					echo "Acabo de apostar a que $user_apostado ($nombre_apostado) " . strtoupper($resultado_user) . " $nombre_apuesta en 5&Bet"; 
+					?>"  data-related="" data-lang="es" data-dnt="true" data-show-count="false">Tweet</a>
+				<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+			</td>
 		</tr>
 	<?php 
 	}

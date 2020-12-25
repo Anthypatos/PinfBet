@@ -29,7 +29,7 @@
               </div>
               <img src="<?php echo 'imagenesperfil/' . $_SESSION["profile_image"] ?>" onClick="triggerClick()" id="profileDisplay">
             </span>
-            <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;">
+            <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" accept = "image/*">
             <label>Imagen de perfil</label>
           </div>
           <div class="form-group">

@@ -16,7 +16,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     $bio = stripslashes($_POST['bio']);
     $profileImageName = time() . '-' . $_FILES["profileImage"]["name"];
     // For image upload
-    $target_dir = "images/";
+    $target_dir = "imagenesperfil/";
     $target_file = $target_dir . basename($profileImageName);
     // VALIDATION
     // validate image size. Size is calculated in Bytes
@@ -41,9 +41,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
           $msg_class = "alert-danger";
         }
       } else {
-        $error = "There was an erro uploading the file";
+        $error = "There was an error uploading the file";
         $msg = "alert-danger";
       }
     }
+    header("location: main.php");
   }
 ?>
