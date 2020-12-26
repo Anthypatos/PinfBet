@@ -41,10 +41,11 @@ $qQuery = mysqli_query($link,$qRes);
 				
 				$id_apostado= $mostrar['id_apostado'];
 				$user_apostado_sql = "SELECT `name`, username FROM users WHERE id = $id_apostado"; 
-				$user_apostado_result = mysqli_query($link, $user_apostado_sql);
+				$user_apostado_result = mysqli_fetch_array(mysqli_query($link, $user_apostado_sql));
 
-				$user_apostado = $user_apostado_result->fetch_array()['username'];
-				$nombre_apostado = $user_apostado_result->fetch_array()['name'];
+				$user_apostado = $user_apostado_result['username'];
+				if ($user_apostado_result['name'] != "") $nombre_apostado = $user_apostado_result['name'];
+				else $nombre_apostado = "";
 			}
 			//Sacamos la prediccion de la apuesta Aprobado/Suspendo
 			if($mostrar['resultado_user'] == 1)
@@ -75,9 +76,9 @@ $qQuery = mysqli_query($link,$qRes);
 			<td><?php echo $resultado ?></td>
 			<td><?php echo $cantidad_resultado ?></td>
 			<td>
-				<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="<?php
-					echo "Acabo de apostar a que $user_apostado ($nombre_apostado) " . strtoupper($resultado_user) . " $nombre_apuesta en 5&Bet"; 
-					?>"  data-related="" data-lang="es" data-dnt="true" data-show-count="false">Tweet</a>
+				<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<?php
+					echo "Acabo de apostar a que $user_apostado ($nombre_apostado) " . strtoupper($resultado_user) . " $nombre_apuesta en #5&Bet"; 
+					?>" data-lang="es" data-dnt="true" data-show-count="false">Tweet</a>
 				<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 			</td>
 		</tr>

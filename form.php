@@ -15,7 +15,7 @@
     <div class="row">
       <div class="col-4 offset-md-4 form-div">
         <a href="profiles.php">Ver todos los perfiles</a>
-        <form action="form.php" method="post" enctype="multipart/form-data">
+        <form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method = "post" enctype = "multipart/form-data">
           <h2 class="text-center mb-3 mt-3">Editar perfil</h2>
           <?php if (!empty($msg)): ?>
             <div class="alert <?php echo $msg_class ?>" role="alert">
@@ -31,6 +31,10 @@
             </span>
             <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" accept = "image/*">
             <label>Imagen de perfil</label>
+          </div>
+          <div class="form-group">
+            <label for = "nombre">Nombre</label>
+            <input type= "text" id = "nombre" name= "nombre" class= "form-control">
           </div>
           <div class="form-group">
             <label>Bio</label>

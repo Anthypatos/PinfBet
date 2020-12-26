@@ -29,7 +29,7 @@ $user_actual = $_SESSION['username'];
 <!-- FORMULARIO DE BÚSQUEDA, siempre se muestra -->
 <p>
     <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self">
-        <input type= "text" id = "busqueda" name = "busqueda" placeholder = "Busca un usuario..." minlength = "3" required>
+        <input type= "search" id = "busqueda" name = "busqueda" placeholder = "Busca un usuario..." minlength = "3" required>
         <input type = "hidden" name = "tipo" value = "buscar_users">    <!-- Tipo de formulario que se envía -->
         <input type = "submit" value = "Buscar">
     </form>
@@ -88,7 +88,7 @@ $user_actual = $_SESSION['username'];
 
                 // Se obtiene el término de búsqueda y se hace la consulta
                 $busq = $_POST['busqueda'];
-                $buscar = "SELECT username, profile_image FROM users WHERE username like '%$busq%'";
+                $buscar = "SELECT username, profile_image FROM users WHERE username LIKE '%$busq%' ORDER BY username ASC";
                 $buscar_sql = mysqli_query($link,$buscar);
 
                 if (mysqli_num_rows($buscar_sql) == 0) echo "No se encontraron resultados.";    // Si la búsqueda no encuentra resultados
@@ -115,9 +115,9 @@ $user_actual = $_SESSION['username'];
                             <td> <?php echo $elem_busq['username'] ?> </td>
                             <td>
                                 <?php
-                                    $user_buscado = $elem_busq['username']; // Se obtiene cada nombre de usuario del resultado
+                                    $user_encontrado = $elem_busq['username']; // Se obtiene cada nombre de usuario del resultado
 
-                                    if ($user_actual == $user_buscado)  // Si el cliente se encuentra a sí mismo
+                                    if ($user_actual == $user_encontrado)  // Si el cliente se encuentra a sí mismo
                                     {
                                         echo "Eres tú.";
                                     }
@@ -125,7 +125,7 @@ $user_actual = $_SESSION['username'];
                                     {
                                         // Se consulta si el cliente y cada uno de los usuarios encontrados son ya amigos o no
                                         // La consulta devolverá 0 ó 1 tuplas
-                                        $amistad = "SELECT solicitud, amigos FROM amistades WHERE ('$user_actual' = usuario1 and '$user_buscado' = usuario2)";
+                                        $amistad = "SELECT solicitud, amigos FROM amistades WHERE ('$user_actual' = usuario1 and '$user_encontrado' = usuario2)";
                                         $amistad_sql = mysqli_query($link,$amistad);
 
                                         // Se comprueba si se ha recibido la tupla
@@ -138,7 +138,7 @@ $user_actual = $_SESSION['username'];
                                             <!-- FORMULARIO PARA ENVIAR SOLICITUD DE AMISTAD -->
                                             <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self" onsubmit="mensajito('¡Solicitud de amistad enviada!')">
                                                 <input type = "hidden" name = "tipo" value = "enviar"> <!-- Tipo de formulario que se envía -->
-                                                <input type = "hidden" name = "otro" value = "<?php echo htmlspecialchars($user_buscado); ?>"> <!-- Usuario objetivo -->
+                                                <input type = "hidden" name = "otro" value = "<?php echo $user_encontrado; ?>"> <!-- Usuario objetivo -->
                                                 <input type = "hidden" name = "busqueda" value = "<?php echo htmlspecialchars($_POST['busqueda']); ?>"> <!-- Se reenviará la búsqueda de usuarios anterior, para que vuelva a aparecer la tabla -->
                                                 <input type = "submit" value = "Enviar solicitud">
                                             </form>
@@ -177,7 +177,7 @@ $user_actual = $_SESSION['username'];
 <p>
 <table class="table table-bordered">
     <thead>
-        <th>Solicitudes de amistad recibidas</th>
+        <th colspan = "4">Solicitudes de amistad recibidas</th>
     </thead>
     <tbody>
     <?php
@@ -202,13 +202,13 @@ $user_actual = $_SESSION['username'];
                             <!-- FORMULARIO PARA ACEPTAR SOLICITUD DE AMISTAD -->
                             <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self" onsubmit="mensajito('¡Solicitud de amistad aceptada!')">
                                 <input type = "hidden" name = "tipo" value = "aceptar"> <!-- Tipo de formulario que se envía -->
-                                <input type = "hidden" name = "otro" value = "<?php echo htmlspecialchars($solicitante['usuario1']); ?>">   <!-- Usuario objetivo -->
+                                <input type = "hidden" name = "otro" value = "<?php echo $solicitante['usuario1']; ?>">   <!-- Usuario objetivo -->
                                 <input type = "submit" value = "Aceptar">
                             </form>
                             <!-- FORMULARIO PARA RECHAZAR SOLICITUD DE AMISTAD -->
                             <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self" onsubmit="mensajito('Solicitud de amistad rechazada.')">
                                 <input type = "hidden" name = "tipo" value = "borrar"> <!-- Tipo de formulario que se envía, rechazar es igual que borrar de la lista -->
-                                <input type = "hidden" name = "otro" value = "<?php echo htmlspecialchars($solicitante['usuario1']); ?>">   <!-- Usuario objetivo -->
+                                <input type = "hidden" name = "otro" value = "<?php echo $solicitante['usuario1']; ?>">   <!-- Usuario objetivo -->
                                 <input type = "submit" value = "Rechazar">
                             </form>
                         </td>
@@ -225,7 +225,7 @@ $user_actual = $_SESSION['username'];
 <p>
 <table class="table table-bordered">
     <thead>
-        <th>Tu lista de amigos</th>
+        <th colspan = "4">Tu lista de amigos</th>
     </thead>
     <tbody>
     <?php
@@ -278,7 +278,7 @@ $user_actual = $_SESSION['username'];
     }
 
     // Para evitar el reenvío de formularios al actualizar o moverse por las páginas
-    if ( window.history.replaceState )
+    if (window.history.replaceState)
     {
         window.history.replaceState(null, null, window.location.href);
     }
