@@ -161,18 +161,18 @@
     
   <!-- End Middle Column -->
   
-    <div class="w3-col m8">
+    <!--<div class="w3-col m8">
       <div class="w3-row-padding">
         <div class="w3-col m12">
           <div class="w3-card w3-round w3-white">
             <div class="w3-container w3-padding">
               <h4>Muro</h4>
-                <?php require "muros.php"; ?>
+                <?php //require "muros.php"; ?>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
     
     <!-- Right Column -->
    

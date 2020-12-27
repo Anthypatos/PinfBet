@@ -13,17 +13,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
   if (isset($_POST['save_profile'])) 
   {
-    $nombre = "";
-    $bio = "";
     $profileImageName = "";
 
     $conn = mysqli_connect("localhost", "root", "", "pinf");
 
     // for the database
-    if ($_POST['nombre'] != "") $nombre = stripslashes($_POST['nombre']); // Si se ha introducido nombre
-
-    if ($_POST['bio'] != "") $bio = stripslashes($_POST['bio']);  // Si se ha introducido bio
-
     if ($_FILES['profileImage']['error'] == 0)  // Si no hay error en la subida
     {
       $profileImageName = time() . '-' . $_FILES["profileImage"]["name"];
@@ -56,12 +50,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         {
           $sql = "UPDATE users SET profile_image = '$profileImageName' WHERE id = $id";
           
-          if(mysqli_query($conn, $sql))
-          {
-            $msg = "Image uploaded and saved in the Database";
-            $msg_class = "alert-success";
-          }
-          else 
+          if(!(mysqli_query($conn, $sql)))
           {
             $msg = "There was an error in the database";
             $msg_class = "alert-danger";
@@ -74,17 +63,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         }
       }
 
-      if ($bio != "")  // Si se ha cambiado la bio
-      {
-        mysqli_query($conn, "UPDATE users SET bio = '$bio' WHERE id = $id");
-      }
+      // Actualizar nombre y bio
+      $nombre = $_POST['nombre'];
+      $bio = $_POST['bio'];
+      
+      mysqli_query($conn, "UPDATE users SET `name` = '$nombre', bio = '$bio' WHERE id = $id");
 
-      if ($nombre != "")  // Si se ha cambiado el nombre
-      {
-        mysqli_query($conn, "UPDATE users SET `name` = '$nombre' WHERE id = $id");
-      }
+      // Mensaje de confirmación
+      $msg = "Perfil actualizado";
+      $msg_class = "alert-success";
     }
     mysqli_close($conn);
-    header("location: main.php");
+    //header("location: main.php");
   }
 ?>

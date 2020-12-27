@@ -49,20 +49,18 @@ $qQuery = mysqli_query($link,$qRes);
 				$nombre_apuesta_result = mysqli_query($link, $nombre_apuesta_sql);
 				$nombre_apuesta = $nombre_apuesta_result->fetch_array()['nombre_resumido'];
 
-				//Sacamos el nombre de la persona a la que apuestas a partir de su id.
-				//Si es a ti mismo, saltamos este paso
-				if($mostrar['id_apostado'] == $id_user)
+				//Sacamos el nombre de la persona a la que apuesta a partir de su id.
+				$id_apostado = $mostrar['id_apostado'];
+				$user_apostado_sql = "SELECT `name`, username FROM users WHERE id = $id_apostado"; 
+				$user_apostado_result = mysqli_fetch_array(mysqli_query($link, $user_apostado_sql));
+				
+				if($mostrar['id_apostado'] == $_SESSION['id'])	// Si el objetivo de la apuesta es el cliente
 				{
-					$user_apostado = $id_user;
+					$user_apostado = "Tú";
 					$nombre_apostado = "yo";
-				}
-				else
+				} 
+				else	// Si no
 				{
-					
-					$id_apostado = $mostrar['id_apostado'];
-					$user_apostado_sql = "SELECT `name`, username FROM users WHERE id = $id_apostado"; 
-					$user_apostado_result = mysqli_fetch_array(mysqli_query($link, $user_apostado_sql));
-
 					$user_apostado = $user_apostado_result['username'];
 					$nombre_apostado = $user_apostado_result['name'];
 				}
@@ -94,12 +92,12 @@ $qQuery = mysqli_query($link,$qRes);
 
 			<tr>
 				<td><?php echo $nombre_apuesta ?></td>
-				<td><?php echo $user_apostado ?></td>
-				<td><?php echo $resultado_user ?></td>
-				<td><?php echo $mostrar['cantidad_apostada']; echo " PinfCoins" ?></td>
-				<td><?php echo $mostrar['fecha_apuesta'] ?></td>
-				<td><?php echo $resultado ?></td>
-				<td><?php echo $cantidad_resultado ?></td>
+				<td><a href = "<?php echo "main.php" . "?id=" . $mostrar['id_apostado']; ?>"><?php echo $user_apostado; ?></a></td>
+				<td><?php echo $resultado_user; ?></td>
+				<td><?php echo $mostrar['cantidad_apostada'] . " PinfCoins"; ?></td>
+				<td><?php echo $mostrar['fecha_apuesta']; ?></td>
+				<td><?php echo $resultado; ?></td>
+				<td><?php echo $cantidad_resultado; ?></td>
 				<?php
 					if ($id_user == $_SESSION['id'])
 					{
