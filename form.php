@@ -34,11 +34,11 @@
           </div>
           <div class="form-group">
             <label for = "nombre">Nombre</label>
-            <input type= "text" id = "nombre" name= "nombre" class= "form-control">
+            <input type= "text" id = "nombre" name= "nombre" class= "form-control" placeholder = "Escribe tu nombre...">
           </div>
           <div class="form-group">
-            <label>Bio</label>
-            <textarea name="bio" class="form-control"></textarea>
+            <label for = "bio">Bio</label>
+            <textarea id = "bio" name="bio" class="form-control" placeholder = "Escribe tu bio..."></textarea>
           </div>
           <div class="form-group">
             <button type="submit" name="save_profile" class="btn btn-primary btn-block">Guardar</button>

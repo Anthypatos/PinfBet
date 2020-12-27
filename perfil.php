@@ -36,7 +36,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <p>
         <a href="reset-password.php" class="btn btn-warning">Cambiar contraseña.</a>
         <a href="logout.php" class="btn btn-danger">Cerrar sesión.</a>
-        <a href="form.php" class="btn btn-danger">Cambiar información de perfil</a>
+        <a href="form.php" class="btn btn-danger">Editar información de perfil</a>
         <a href="main.php" class="btn btn-primary">Volver</a>
     </p>
 </body>

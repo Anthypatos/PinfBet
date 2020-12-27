@@ -84,6 +84,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         mysqli_query($conn, "UPDATE users SET `name` = '$nombre' WHERE id = $id");
       }
     }
+    mysqli_close($conn);
     header("location: main.php");
   }
 ?>

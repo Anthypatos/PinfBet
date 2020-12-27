@@ -22,7 +22,7 @@ $user_actual = $_SESSION['username'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
 </head>
 <body style="text-align:center">
-<h2>Social</h2>
+<h1>Social</h1>
 
 <!-- Hay distintos tipos de formularios en la página para realizar las distintas acciones -->
 
@@ -34,6 +34,8 @@ $user_actual = $_SESSION['username'];
         <input type = "submit" value = "Buscar">
     </form>
 </p>
+
+<hr>
 
 <?php
     if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -48,13 +50,19 @@ $user_actual = $_SESSION['username'];
             case 'aceptar':
                 $user_otro = $_POST['otro'];    // Se recibe el usuario objetivo
 
-                // Actualizar la tupla del usuario que manda la solicitud
-                $aceptar_solicitud = "UPDATE amistades SET amigos = '1' WHERE usuario1 = '$user_otro' AND usuario2 = '$user_actual'";
-                $consulta_aceptar = mysqli_query($link, $aceptar_solicitud);
+                // Comprobación para el caso de las solicitudes cruzadas
+                $comprobar_estado = "SELECT * FROM amistades WHERE usuario1 = '$user_otro' AND usuario2 = '$user_actual'";
+                if (mysqli_num_rows(mysqli_query($link, $comprobar_estado)) > 0)
+                {
+                    // Actualizar la tupla del usuario que manda la solicitud
+                    $aceptar_solicitud = "UPDATE amistades SET amigos = '1' WHERE usuario1 = '$user_otro' AND usuario2 = '$user_actual'";
+                    $consulta_aceptar = mysqli_query($link, $aceptar_solicitud);
 
-                // Insertar la nueva tupla del usuario que acepta la solicitud
-                $aceptar_solicitud = "INSERT INTO amistades (usuario1, usuario2, solicitud, amigos) VALUES ('$user_actual', '$user_otro', 1, 1)";
-                $consulta_aceptar = mysqli_query($link, $aceptar_solicitud);
+                    // Insertar la nueva tupla del usuario que acepta la solicitud
+                    $aceptar_solicitud = "INSERT INTO amistades (usuario1, usuario2, solicitud, amigos) VALUES ('$user_actual', '$user_otro', 1, 1)";
+                    $consulta_aceptar = mysqli_query($link, $aceptar_solicitud);
+                }
+
                 break;
 
             // Rechazar solicitud de amistad y borrar usuarios de la lista de amigos
@@ -69,7 +77,7 @@ $user_actual = $_SESSION['username'];
                 $borrar_amigo = "DELETE FROM amistades WHERE usuario1 = '$user_otro' AND usuario2 = '$user_actual'";
                 $consulta_borrar = mysqli_query($link, $borrar_amigo);
 
-                // No hay problema si al rechazar sólo existe una de las tuplas
+                // No hay problema si al rechazar no existe alguna de las tuplas
                 break;
 
             // Para los casos de enviar solicitud y buscar usuarios queremos mostrar siempre la tabla de búsqueda así que 
@@ -177,12 +185,12 @@ $user_actual = $_SESSION['username'];
 <p>
 <table class="table table-bordered">
     <thead>
-        <th colspan = "4">Solicitudes de amistad recibidas</th>
+        <th colspan = "3">Solicitudes de amistad recibidas</th>
     </thead>
     <tbody>
     <?php
         // Comprobación de la existencia de solicitudes por parte de algún usuario
-        $comprobar_solicitudes = "SELECT usuario1, solicitud FROM amistades WHERE '$user_actual' = usuario2 and solicitud = 1 and amigos = 0";
+        $comprobar_solicitudes = "SELECT id, username, profile_image FROM amistades, users WHERE usuario2 = '$user_actual' AND solicitud = 1 AND amigos = 0 AND usuario1 = username ORDER BY username ASC";
         $comprobar_sql = mysqli_query($link, $comprobar_solicitudes);
 
         if (mysqli_num_rows($comprobar_sql) == 0)   // Si no se hallan solicitudes
@@ -197,18 +205,19 @@ $user_actual = $_SESSION['username'];
             {
                 ?>
                     <tr>
-                        <td> <?php echo $solicitante['usuario1']; ?> </td>
+                        <td> <img src="<?php echo 'imagenesperfil/' . $solicitante['profile_image'] ?>" width="90" height="90" alt="Avatar de <?php echo $solicitante['username'] ?>"> </td>
+                        <td> <a href = " <?php echo "main.php" . "?id=" . $solicitante['id']; ?> "> <?php echo $solicitante['username']; ?> </a> </td>
                         <td>
                             <!-- FORMULARIO PARA ACEPTAR SOLICITUD DE AMISTAD -->
                             <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self" onsubmit="mensajito('¡Solicitud de amistad aceptada!')">
                                 <input type = "hidden" name = "tipo" value = "aceptar"> <!-- Tipo de formulario que se envía -->
-                                <input type = "hidden" name = "otro" value = "<?php echo $solicitante['usuario1']; ?>">   <!-- Usuario objetivo -->
+                                <input type = "hidden" name = "otro" value = "<?php echo $solicitante['username']; ?>">   <!-- Usuario objetivo -->
                                 <input type = "submit" value = "Aceptar">
                             </form>
                             <!-- FORMULARIO PARA RECHAZAR SOLICITUD DE AMISTAD -->
                             <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self" onsubmit="mensajito('Solicitud de amistad rechazada.')">
                                 <input type = "hidden" name = "tipo" value = "borrar"> <!-- Tipo de formulario que se envía, rechazar es igual que borrar de la lista -->
-                                <input type = "hidden" name = "otro" value = "<?php echo $solicitante['usuario1']; ?>">   <!-- Usuario objetivo -->
+                                <input type = "hidden" name = "otro" value = "<?php echo $solicitante['username']; ?>">   <!-- Usuario objetivo -->
                                 <input type = "submit" value = "Rechazar">
                             </form>
                         </td>
@@ -225,11 +234,11 @@ $user_actual = $_SESSION['username'];
 <p>
 <table class="table table-bordered">
     <thead>
-        <th colspan = "4">Tu lista de amigos</th>
+        <th colspan = "3">Tu lista de amigos</th>
     </thead>
     <tbody>
     <?php
-        $lista_sql = "SELECT usuario2, profile_image FROM amistades, users WHERE '$user_actual' = usuario1 AND amigos = 1 AND usuario2 = username";
+        $lista_sql = "SELECT id, username, profile_image FROM users, amistades WHERE usuario1 = '$user_actual' AND usuario2 = username AND amigos = 1 ORDER BY username ASC";
         $lista_amigos = mysqli_query($link, $lista_sql);
 
         if (mysqli_num_rows($lista_amigos) == 0)    // Si no se encuentran amigos
@@ -244,20 +253,13 @@ $user_actual = $_SESSION['username'];
             {
                 ?>
                     <tr>
-                        <td> <img src="<?php echo 'imagenesperfil/' . $datos_amigo['profile_image'] ?>" width="90" height="90" alt="Avatar de <?php echo $datos_amigo['usuario2'] ?>"> </td>
-                        <td> <?php echo $datos_amigo['usuario2']; ?> </td>
-                        <!-- En construcción -->
-                        <td>No funciona de momento
-                            <form method = "post" action="apuesta.php" target = "_self">
-                                <input type = "hidden" name = "objetivo" value = "<?php echo htmlspecialchars($datos_amigo['usuario2']); ?>">
-                                <input type = "submit" value = "Apostar">
-                            </form>
-                        </td>
+                        <td> <img src="<?php echo 'imagenesperfil/' . $datos_amigo['profile_image'] ?>" width="90" height="90" alt="Avatar de <?php echo $datos_amigo['username'] ?>"> </td>
+                        <td> <a href = " <?php echo "main.php" . "?id=" . $datos_amigo['id']; ?> "> <?php echo $datos_amigo['username']; ?> </a> </td>
                         <!-- FORMULARIO PARA BORRAR AMIGO DE LA LISTA -->
                         <td>
                             <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" target = "_self" onsubmit="mensajito('Amigo eliminado.')">
                                 <input type = "hidden" name = "tipo" value = "borrar">  <!-- Tipo de formulario que se envía, borrar es igual que rechazar solicitud --> 
-                                <input type = "hidden" name = "otro" value = "<?php echo htmlspecialchars($datos_amigo['usuario2']); ?>">   <!-- Usuario objetivo -->
+                                <input type = "hidden" name = "otro" value = "<?php echo htmlspecialchars($datos_amigo['username']); ?>">   <!-- Usuario objetivo -->
                                 <input type = "submit" value = "Borrar">
                             </form>
                         </td>
@@ -265,6 +267,8 @@ $user_actual = $_SESSION['username'];
                 <?php
             }
         }
+
+        mysqli_close($link);
     ?>
     </tbody>
 </table>
@@ -272,9 +276,9 @@ $user_actual = $_SESSION['username'];
 
 <script>
     // Función para mostrar mensaje al realizar una acción
-    function mensajito($cadena)
+    function mensajito(cadena)
     {
-        alert($cadena);
+        alert(cadena);
     }
 
     // Para evitar el reenvío de formularios al actualizar o moverse por las páginas

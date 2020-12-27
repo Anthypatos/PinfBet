@@ -102,17 +102,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err)&& empty($email_err) && empty($password_err) && empty($confirm_password_err) && empty($cajita_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password, email, profile_image) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password, $param_email);
+
             // Set parameters
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             $param_email = $email;
-            $param_img = "default_avatar.gif";
-
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssss", $param_username, $param_password, $param_email, $param_img);
 
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -170,7 +169,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>    
             <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
                 <label>Email</label>
-                <input type="text" placeholder ="Introduzca Email" name="email" class="form-control" value="<?php echo $email; ?>">
+                <input type="email" placeholder ="Introduzca Email" name="email" class="form-control" value="<?php echo $email; ?>">
                 <span class="help-block"><?php echo $email_err; ?></span>
             </div> 
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">

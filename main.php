@@ -1,27 +1,28 @@
 <?php
-// Initialize the session
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
-    exit;
-}
+  // Initialize the session
+  session_start();
+  
+  // Check if the user is logged in, if not then redirect him to login page
+  if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+      header("location: login.php");
+      exit;
+  }
 
-include_once "actualizardatos.php"; 
+  include_once "actualizardatos.php"; 
 
-$contador_notis = 0;
-$bandera_solicitudes = false;
+  $contador_notis = 0;
+  $bandera_solicitudes = false;
 
-$user_actual = $_SESSION['username'];
-$comprobar_solicitudes = "SELECT * FROM amistades WHERE usuario2 = '$user_actual' and solicitud = 1 and amigos = 0";
-$comprobar_consulta = mysqli_query($link, $comprobar_solicitudes);
+  $user_actual = $_SESSION['username']; // Usuario cliente
 
-if (($numero_solicitudes = mysqli_num_rows($comprobar_consulta)) != 0)
-{
-  $bandera_solicitudes = true;
-  $contador_notis += $numero_solicitudes;
-}
+  $comprobar_solicitudes = "SELECT * FROM amistades WHERE usuario2 = '$user_actual' and solicitud = 1 and amigos = 0";
+  $comprobar_consulta = mysqli_query($link, $comprobar_solicitudes);
+
+  if (($numero_solicitudes = mysqli_num_rows($comprobar_consulta)) != 0)
+  {
+    $bandera_solicitudes = true;
+    $contador_notis += $numero_solicitudes;
+  }
 ?>
 
 
@@ -31,7 +32,7 @@ if (($numero_solicitudes = mysqli_num_rows($comprobar_consulta)) != 0)
   <title>5&Bet</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/all.css" >
+  <link rel="stylesheet" href="css/all.css" > <!-- Iconos de FontAwesome -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
@@ -49,7 +50,7 @@ if (($numero_solicitudes = mysqli_num_rows($comprobar_consulta)) != 0)
 <div class="w3-top">
  <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
   <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Logo</a>
+  <a href="main.php" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Logo</a>
   <a href="perfil.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Mi perfil"><i class="fas fa-user"></i></a>
   <a href="apuesta.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Apostar"><i class="fas fa-coins"></i></a>
   <a href="rankingmain.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Ranking"><i class="fas fa-list-ol"></i></a>
@@ -120,12 +121,12 @@ if (($numero_solicitudes = mysqli_num_rows($comprobar_consulta)) != 0)
       <div class="w3-card w3-round w3-white">
       
         <div class="w3-container">
-         <h4 class="w3-center"><b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h4>
-         <p class="w3-center"><img src="<?php echo 'imagenesperfil/' . $_SESSION["profile_image"] ?>" width="90" height="90" alt=""></p>
+         <h4 class="w3-center"><b><?php echo htmlspecialchars($username_user); ?></b></h4>
+         <p class="w3-center"><img src="<?php echo 'imagenesperfil/' . $profile_image_user ?>" width="90" height="90" alt=""></p>
          <hr>
-         <p><i class="fas fa-user-circle fa-fw w3-margin-right w3-text-theme"></i><?php echo $_SESSION["name"];?></p>
-         <p><i class="fas fa-money-bill fa-fw w3-margin-right w3-text-theme"></i><?php echo $_SESSION["pinfcoins"];?> PinfCoins</p>
-         <p><i class="fas fa-comment-dots fa-fw w3-margin-right w3-text-theme"></i>"<?php echo $_SESSION["bio"];?>"</p>
+         <p><i class="fas fa-user-circle fa-fw w3-margin-right w3-text-theme"></i><?php echo $name_user;?></p>
+         <p><i class="fas fa-money-bill fa-fw w3-margin-right w3-text-theme"></i><?php echo $pinfcoins_user;?> PinfCoins</p>
+         <p><i class="fas fa-comment-dots fa-fw w3-margin-right w3-text-theme"></i><?php echo $bio_user;?></p>
         </div>
       </div>
       <br>
@@ -145,22 +146,33 @@ if (($numero_solicitudes = mysqli_num_rows($comprobar_consulta)) != 0)
     </div>
     
     <div class="w3-col m8">
-    
-    <div class="w3-row-padding">
-      <div class="w3-col m12">
-        <div class="w3-card w3-round w3-white">
-          <div class="w3-container w3-padding">
-            <h4>Tus Últimas Apuestas</h4>
-            <?php require __DIR__ . '/actualizarapuesta.php'; ?>
-            
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h4>Últimas Apuestas</h4>
+              <?php require __DIR__ . '/actualizarapuesta.php'; ?>
+              
+            </div>
           </div>
         </div>
       </div>
     </div>
     
-    
   <!-- End Middle Column -->
-  </div>
+  
+    <div class="w3-col m8">
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h4>Muro</h4>
+                <?php require "muros.php"; ?>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     
     <!-- Right Column -->
    

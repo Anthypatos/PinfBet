@@ -11,8 +11,11 @@ include_once "config.php";
 
 $query = mysqli_query($link,"SELECT id_apuesta,nombre FROM apuestasdisponibles");
 $id_user = $_SESSION['id']; // id del usuario cuya sesion esta iniciada.
+
+// Consultar pinfcoins actuales
 $pinfcoins_array = mysqli_fetch_array(mysqli_query($link, "SELECT pinfcoins FROM users WHERE '$id_user' = id"));
 $pinfcoins = $pinfcoins_array['pinfcoins'];
+
 $id_apuesta = $cantidad = $resultado = $cod_apuesta = "";
 $cantidad_err = "";
 
