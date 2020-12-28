@@ -74,6 +74,5 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       $msg_class = "alert-success";
     }
     mysqli_close($conn);
-    //header("location: main.php");
   }
 ?>

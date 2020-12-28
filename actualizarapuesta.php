@@ -53,15 +53,15 @@ $qQuery = mysqli_query($link,$qRes);
 				$id_apostado = $mostrar['id_apostado'];
 				$user_apostado_sql = "SELECT `name`, username FROM users WHERE id = $id_apostado"; 
 				$user_apostado_result = mysqli_fetch_array(mysqli_query($link, $user_apostado_sql));
+
+				$user_apostado = $user_apostado_result['username'];
 				
 				if($mostrar['id_apostado'] == $_SESSION['id'])	// Si el objetivo de la apuesta es el cliente
 				{
-					$user_apostado = "Tú";
 					$nombre_apostado = "yo";
 				} 
 				else	// Si no
 				{
-					$user_apostado = $user_apostado_result['username'];
 					$nombre_apostado = $user_apostado_result['name'];
 				}
 
