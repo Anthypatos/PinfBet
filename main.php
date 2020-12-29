@@ -13,7 +13,7 @@
   $contador_notis = 0;
   $bandera_solicitudes = false; // Bandera solicitudes de amistad
 
-  $user_actual = $_SESSION['username']; // Usuario cliente
+  $user_actual = $_SESSION['id']; // Usuario cliente
 
   // Comprobar solicitudes de amistad pendientes
   $comprobar_solicitudes = "SELECT * FROM amistades WHERE usuario2 = '$user_actual' and solicitud = 1 and amigos = 0";
@@ -158,7 +158,7 @@
     
   <!-- End Middle Column -->
   
-      <?php //include "muros.php"; ?>
+      <?php include "muros.php"; ?>
     
     <!-- Right Column -->
    

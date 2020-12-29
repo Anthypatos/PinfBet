@@ -19,8 +19,8 @@ $pinfcoins = $pinfcoins_array['pinfcoins'];
 $id_apuesta = $cantidad = $resultado = $cod_apuesta = "";
 $cantidad_err = "";
 
-$user_actual = $_SESSION['username'];
-$amigos_consulta = mysqli_query($link, "SELECT id, username FROM users, amistades WHERE usuario1 = '$user_actual' AND usuario2 = username AND amigos = 1");
+$user_actual = $_SESSION['id'];
+$amigos_consulta = mysqli_query($link, "SELECT id, username FROM users, amistades WHERE usuario1 = '$user_actual' AND usuario2 = id AND amigos = 1");
 
 
 if(isset($_POST['id_apuesta']))

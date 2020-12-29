@@ -3,7 +3,7 @@
     {
         $msj = $_POST['muro'];
 
-        $insertar_sql = "INSERT INTO muros (usuario_env, usuario_rec, mensaje) VALUES ('$user_actual', '$username_user', '$msj')";
+        $insertar_sql = "INSERT INTO muros (usuario_env, usuario_rec, mensaje) VALUES ('$user_actual', '$id_user', '$msj')";
         $insertar_consulta = mysqli_query($link, $insertar_sql);
     }
 ?>
@@ -25,22 +25,22 @@
                 <h4>Muro</h4>
 
 <?php
-    $amigos_sql = "SELECT * FROM amistades WHERE usuario1 = '$user_actual' AND usuario2 = '$username_user' AND amigos = 1";
+    $amigos_sql = "SELECT * FROM amistades WHERE usuario1 = '$user_actual' AND usuario2 = '$id_user' AND amigos = 1";
     $amigos_consulta = mysqli_query($link, $amigos_sql);
 
-    if (mysqli_num_rows($amigos_consulta) > 0)
+    if (mysqli_num_rows($amigos_consulta) > 0 || $id_user == $_SESSION['id'])
     {
 ?>
-    <form action = "<?php echo "main.php?id=" . $id_user;?>" method = "post" style = "text-align:center">
-        <label for = "muro">Escribir en el muro:</label>
-        <textarea id = "muro" name = "muro" class="form-control" placeholder = "Escribe en el muro..." rows = "2" cols = "50" maxlength = "300" required></textarea>
-        <input type = "submit" value = "Enviar">
-    </form>
-    <hr>
+        <form action = "<?php echo "main.php?id=" . $id_user;?>" method = "post" style = "text-align:center">
+            <label for = "muro">Escribir en el muro:</label>
+            <textarea id = "muro" name = "muro" class="form-control" placeholder = "Escribe en el muro..." rows = "2" cols = "50" maxlength = "300" required></textarea>
+            <input type = "submit" value = "Enviar">
+        </form>
+        <hr>
 <?php
     }
 
-    $mensajes_sql = "SELECT usuario_env, mensaje, fecha FROM muros WHERE usuario_rec = '$username_user' ORDER BY fecha DESC";
+    $mensajes_sql = "SELECT usuario_env, mensaje, fecha FROM muros WHERE usuario_rec = '$id_user' ORDER BY fecha DESC";
     $mensajes_consulta = mysqli_query($link, $mensajes_sql);
 
     if (mysqli_num_rows($mensajes_consulta) == 0)
@@ -56,14 +56,14 @@
 <?php
     while ($publicacion = mysqli_fetch_array($mensajes_consulta))
     {
-        $user_env = $publicacion['usuario_env'];
-        $id_env = mysqli_fetch_array(mysqli_query($link, "SELECT id FROM users WHERE username = '$user_env'"))['id'];
+        $id_env = $publicacion['usuario_env'];
+        $nombre_env = mysqli_fetch_array(mysqli_query($link, "SELECT username FROM users WHERE id = '$id_env'"))['username'];
 ?>
         <tr>
             <td>
                 <?php echo $publicacion['mensaje']; ?> <br>
                 <div style = "font-size:11px;">
-                    <i><?php echo "Escrito por "?><a title = "Acceder a perfil" href = "<?php echo "main.php?id=" . $id_env; ?>"><?php echo $publicacion['usuario_env']; ?></a><?php echo " el " . $publicacion['fecha']; ?></i>
+                    <i><?php echo "Escrito por "?><a title = "Acceder a perfil" href = "<?php echo "main.php?id=" . $id_env; ?>"><?php echo $nombre_env; ?></a><?php echo " el " . $publicacion['fecha']; ?></i>
                 </div>
             </td>
         </tr>

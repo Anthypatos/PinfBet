@@ -3,7 +3,7 @@
     <h4><b>Amigos</b></h4>
     <hr>
 <?php
-        $lista_sql = "SELECT id, username, profile_image, email FROM users, amistades WHERE usuario1 = '$username_user' AND usuario2 = username AND amigos = 1 ORDER BY username ASC";
+        $lista_sql = "SELECT id, username, profile_image, email FROM users, amistades WHERE usuario1 = '$id_user' AND usuario2 = id AND amigos = 1 ORDER BY username ASC";
         $lista_amigos = mysqli_query($link, $lista_sql);
 
         if (mysqli_num_rows($lista_amigos) == 0)    // Si no se encuentran amigos

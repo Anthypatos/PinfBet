@@ -9,7 +9,7 @@
         exit;
     }
 
-    $user_actual = $_SESSION['username'];
+    $user_actual = $_SESSION['id'];
     $link = mysqli_connect("localhost", "root", "", "pinf");
 ?>
 
@@ -28,7 +28,7 @@
 
 <!-- FORMULARIO DE BÚSQUEDA, siempre se muestra -->
 <p>
-    <form method = "get" action = "social.php" target = "_self">
+    <form method = "get" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" target = "_self">
         <input type= "search" id = "q" name = "q" placeholder = "Busca un usuario..." minlength = "3" autocomplete = "off" required>
         <input type = "submit" value = "Buscar">
     </form>
@@ -136,7 +136,7 @@
                     <td> <a title = "Acceder a perfil" href = "<?php echo "main.php" . "?id=" . $elem_busq['id']; ?>"><?php echo $elem_busq['username']; ?></a> </td>
                     <td>
 <?php
-                            $user_encontrado = $elem_busq['username']; // Se obtiene cada nombre de usuario del resultado
+                            $user_encontrado = $elem_busq['id']; // Se obtiene cada nombre de usuario del resultado
 
                             if ($user_actual == $user_encontrado)  // Si el cliente se encuentra a sí mismo
                             {
@@ -146,8 +146,8 @@
                             {
                                 // Se consulta si el cliente y cada uno de los usuarios encontrados son ya amigos o no
                                 // La consulta devolverá 0 ó 1 tuplas
-                                $amistad = "SELECT solicitud, amigos FROM amistades WHERE ('$user_actual' = usuario1 and '$user_encontrado' = usuario2)";
-                                $amistad_sql = mysqli_query($link,$amistad);
+                                $amistad = "SELECT solicitud, amigos FROM amistades WHERE usuario1 = '$user_actual' AND usuario2 = '$user_encontrado'";
+                                $amistad_sql = mysqli_query($link, $amistad);
 
                                 // Se comprueba si se ha recibido la tupla
                                 $existe_amigo = mysqli_num_rows($amistad_sql);
@@ -156,7 +156,7 @@
                                 {
 ?>
                                     <!-- FORMULARIO PARA ENVIAR SOLICITUD DE AMISTAD -->
-                                    <form method = "post" action = "<?php echo "social.php?q=" . $busq; ?>" target = "_self">
+                                    <form method = "post" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . "?q=" . $busq; ?>" target = "_self">
                                         <input type = "hidden" name = "tipo" value = "enviar"> <!-- Tipo de formulario que se envía -->
                                         <input type = "hidden" name = "otro" value = "<?php echo $user_encontrado; ?>"> <!-- Usuario objetivo -->
                                         <input type = "submit" value = "Enviar solicitud">
@@ -200,7 +200,7 @@
     <tbody>
 <?php
         // Comprobación de la existencia de solicitudes por parte de algún usuario
-        $comprobar_solicitudes = "SELECT id, username, profile_image FROM amistades, users WHERE usuario2 = '$user_actual' AND solicitud = 1 AND amigos = 0 AND usuario1 = username ORDER BY username ASC";
+        $comprobar_solicitudes = "SELECT id, username, profile_image FROM amistades, users WHERE usuario2 = '$user_actual' AND solicitud = 1 AND amigos = 0 AND usuario1 = id ORDER BY username ASC";
         $comprobar_sql = mysqli_query($link, $comprobar_solicitudes);
 
         if (mysqli_num_rows($comprobar_sql) == 0)   // Si no se hallan solicitudes
@@ -219,15 +219,15 @@
                         <td> <a title = "Acceder a perfil" href = "<?php echo "main.php" . "?id=" . $solicitante['id']; ?>"><?php echo $solicitante['username']; ?></a> </td>
                         <td>
                             <!-- FORMULARIO PARA ACEPTAR SOLICITUD DE AMISTAD -->
-                            <form method = "post" action = "social.php" target = "_self">
+                            <form method = "post" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" target = "_self">
                                 <input type = "hidden" name = "tipo" value = "aceptar"> <!-- Tipo de formulario que se envía -->
-                                <input type = "hidden" name = "otro" value = "<?php echo $solicitante['username']; ?>">   <!-- Usuario objetivo -->
+                                <input type = "hidden" name = "otro" value = "<?php echo $solicitante['id']; ?>">   <!-- Usuario objetivo -->
                                 <input type = "submit" value = "Aceptar">
                             </form>
                             <!-- FORMULARIO PARA RECHAZAR SOLICITUD DE AMISTAD -->
-                            <form method = "post" action = "social.php" target = "_self">
+                            <form method = "post" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" target = "_self">
                                 <input type = "hidden" name = "tipo" value = "borrar"> <!-- Tipo de formulario que se envía, rechazar es igual que borrar de la lista -->
-                                <input type = "hidden" name = "otro" value = "<?php echo $solicitante['username']; ?>">   <!-- Usuario objetivo -->
+                                <input type = "hidden" name = "otro" value = "<?php echo $solicitante['id']; ?>">   <!-- Usuario objetivo -->
                                 <input type = "submit" name = "rechazar" value = "Rechazar">
                             </form>
                         </td>
@@ -250,7 +250,7 @@
     </thead>
     <tbody>
 <?php
-        $lista_sql = "SELECT id, username, profile_image FROM users, amistades WHERE usuario1 = '$user_actual' AND usuario2 = username AND amigos = 1 ORDER BY username ASC";
+        $lista_sql = "SELECT id, username, profile_image FROM users, amistades WHERE usuario1 = '$user_actual' AND usuario2 = id AND amigos = 1 ORDER BY username ASC";
         $lista_amigos = mysqli_query($link, $lista_sql);
 
         if (mysqli_num_rows($lista_amigos) == 0)    // Si no se encuentran amigos
@@ -269,9 +269,9 @@
                         <td> <a title = "Acceder a perfil" href = "<?php echo "main.php" . "?id=" . $datos_amigo['id']; ?>"><?php echo $datos_amigo['username']; ?></a> </td>
                         <!-- FORMULARIO PARA BORRAR AMIGO DE LA LISTA -->
                         <td>
-                            <form method = "post" action = "social.php" target = "_self">
+                            <form method = "post" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" target = "_self">
                                 <input type = "hidden" name = "tipo" value = "borrar">  <!-- Tipo de formulario que se envía, borrar es igual que rechazar solicitud --> 
-                                <input type = "hidden" name = "otro" value = "<?php echo htmlspecialchars($datos_amigo['username']); ?>">   <!-- Usuario objetivo -->
+                                <input type = "hidden" name = "otro" value = "<?php echo $datos_amigo['id']; ?>">   <!-- Usuario objetivo -->
                                 <input type = "submit" name = "borrar" value = "Borrar">
                             </form>
                         </td>
