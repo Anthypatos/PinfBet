@@ -29,7 +29,7 @@
 <!-- FORMULARIO DE BÚSQUEDA, siempre se muestra -->
 <p>
     <form method = "get" action = "social.php" target = "_self">
-        <input type= "search" id = "q" name = "q" placeholder = "Busca un usuario..." minlength = "3" required>
+        <input type= "search" id = "q" name = "q" placeholder = "Busca un usuario..." minlength = "3" autocomplete = "off" required>
         <input type = "submit" value = "Buscar">
     </form>
 </p>
@@ -132,8 +132,8 @@
 ?>
 
                 <tr>
-                    <td> <a href = "<?php echo "main.php" . "?id=" . $elem_busq['id']; ?>"><img src = "<?php echo 'imagenesperfil/' . $elem_busq['profile_image'] ?>" width = "50" height = "50" alt = "Avatar de <?php echo $elem_busq['username'] ?>"></a> </td>
-                    <td> <a href = "<?php echo "main.php" . "?id=" . $elem_busq['id']; ?>"><?php echo $elem_busq['username']; ?></a> </td>
+                    <td> <a title = "Acceder a perfil" href = "<?php echo "main.php" . "?id=" . $elem_busq['id']; ?>"><img src = "<?php echo 'imagenesperfil/' . $elem_busq['profile_image'] ?>" width = "50" height = "50" alt = "Avatar de <?php echo $elem_busq['username'] ?>"></a> </td>
+                    <td> <a title = "Acceder a perfil" href = "<?php echo "main.php" . "?id=" . $elem_busq['id']; ?>"><?php echo $elem_busq['username']; ?></a> </td>
                     <td>
 <?php
                             $user_encontrado = $elem_busq['username']; // Se obtiene cada nombre de usuario del resultado
@@ -215,8 +215,8 @@
             {
 ?>
                     <tr>
-                        <td> <a href = "<?php echo "main.php" . "?id=" . $solicitante['id']; ?>"><img src = "<?php echo 'imagenesperfil/' . $solicitante['profile_image'] ?>" width = "50" height = "50" alt = "Avatar de <?php echo $solicitante['username'] ?>"></a> </td>
-                        <td> <a href = "<?php echo "main.php" . "?id=" . $solicitante['id']; ?>"><?php echo $solicitante['username']; ?></a> </td>
+                        <td> <a title = "Acceder a perfil" href = "<?php echo "main.php" . "?id=" . $solicitante['id']; ?>"><img src = "<?php echo 'imagenesperfil/' . $solicitante['profile_image'] ?>" width = "50" height = "50" alt = "Avatar de <?php echo $solicitante['username'] ?>"></a> </td>
+                        <td> <a title = "Acceder a perfil" href = "<?php echo "main.php" . "?id=" . $solicitante['id']; ?>"><?php echo $solicitante['username']; ?></a> </td>
                         <td>
                             <!-- FORMULARIO PARA ACEPTAR SOLICITUD DE AMISTAD -->
                             <form method = "post" action = "social.php" target = "_self">
@@ -265,8 +265,8 @@
             {
                 ?>
                     <tr>
-                        <td> <a href = "<?php echo "main.php" . "?id=" . $datos_amigo['id']; ?>"><img src = "<?php echo 'imagenesperfil/' . $datos_amigo['profile_image'] ?>" width = "50" height = "50" alt = "Avatar de <?php echo $datos_amigo['username'] ?>"></a> </td>
-                        <td> <a href = "<?php echo "main.php" . "?id=" . $datos_amigo['id']; ?>"><?php echo $datos_amigo['username']; ?></a> </td>
+                        <td> <a title = "Acceder a perfil" href = "<?php echo "main.php" . "?id=" . $datos_amigo['id']; ?>"><img src = "<?php echo 'imagenesperfil/' . $datos_amigo['profile_image'] ?>" width = "50" height = "50" alt = "Avatar de <?php echo $datos_amigo['username'] ?>"></a> </td>
+                        <td> <a title = "Acceder a perfil" href = "<?php echo "main.php" . "?id=" . $datos_amigo['id']; ?>"><?php echo $datos_amigo['username']; ?></a> </td>
                         <!-- FORMULARIO PARA BORRAR AMIGO DE LA LISTA -->
                         <td>
                             <form method = "post" action = "social.php" target = "_self">

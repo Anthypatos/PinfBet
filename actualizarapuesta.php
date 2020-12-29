@@ -10,7 +10,7 @@ $qRes = "SELECT * FROM apuestas WHERE id_user = $id_user";
 $qQuery = mysqli_query($link,$qRes);    
 
 ?>
-<br>
+<hr>
 
 <?php
 	if (mysqli_num_rows($qQuery) == 0)	// Comprobar que se han hecho apuestas
@@ -21,7 +21,7 @@ $qQuery = mysqli_query($link,$qRes);
 	else
 	{
 ?>
-		<table border="1" >
+		<table border="1" style = "margin-left:auto; margin-right:auto;">
 			<tr>
 				<td>Asignatura</td>
 				<td>Apostado a</td>
@@ -92,7 +92,7 @@ $qQuery = mysqli_query($link,$qRes);
 
 			<tr>
 				<td><?php echo $nombre_apuesta ?></td>
-				<td><a href = "<?php echo "main.php" . "?id=" . $mostrar['id_apostado']; ?>"><?php echo $user_apostado; ?></a></td>
+				<td><a title = "Acceder a perfil" href = "<?php echo "main.php" . "?id=" . $mostrar['id_apostado']; ?>"><?php echo $user_apostado; ?></a></td>
 				<td><?php echo $resultado_user; ?></td>
 				<td><?php echo $mostrar['cantidad_apostada'] . " PinfCoins"; ?></td>
 				<td><?php echo $mostrar['fecha_apuesta']; ?></td>

@@ -1,8 +1,6 @@
 <?php
-// Initialize the session
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
+   // Initialize the session
+   session_start();
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +18,7 @@ session_start();
    
       <link rel="stylesheet" href="css/master.css?n=1">
       <!-- Site Icons -->
+      <link rel="stylesheet" href="css/all.css" > <!-- Iconos de FontAwesome -->
       <link rel="shortcut icon" href="" type="image/x-icon" />
       <link rel="apple-touch-icon" href="">
       <!-- Bootstrap CSS -->
@@ -63,41 +62,41 @@ session_start();
                      <div class="col-md-6">
                         <div class="right_top_section">
                            <!-- button section -->
-
-                           <?php
-                              if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
-                              {
-                                 $nombre = $_SESSION['username'];
-                                 echo "Bienvenido, $nombre";
-                           ?>
-                                 <ul class="login">
-                                    <li class="login-modal">
-                                       <a href="main.php" class="login"><i class="fa fa-user"></i> Menú principal </a>
-                                    </li>
-                                    <li>
-                                       <div class="cart-option">
-                                          <a href="logout.php"><i class ="fa fa-user"></i> Cerrar sesión </a>
-                                       </div>
-                                    </li>
-                                 </ul>
-                              <?php
-                              }
-                              else
-                              {
-                              ?>
-                                 <ul class="login">
-                                    <li class="login-modal">
-                                       <a href="login.php" class="login"><i class="fa fa-user"></i> Iniciar sesión </a>
-                                    </li>
-                                    <li>
-                                       <div class="cart-option">
-                                          <a href="register.php"><i class ="fa fa-user"></i> Registrarse </a>
-                                       </div>
-                                    </li>
-                                 </ul>
-                           <?php
-                              }
-                           ?>
+<?php
+                           // Si el usuario está logueado se le da la bienvenida y cambian los iconos
+                           if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
+                           {
+                              $nombre = $_SESSION['username'];
+                              echo "Bienvenido, $nombre";
+?>
+                              <ul class="login">
+                                 <li class="login-modal">
+                                    <a href="main.php" class="login"><i class="fa fa-user"></i>Menú principal</a>
+                                 </li>
+                                 <li>
+                                    <div class="cart-option">
+                                       <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Cerrar sesión</a>
+                                    </div>
+                                 </li>
+                              </ul>
+<?php
+                           }
+                           else
+                           {
+?>
+                              <ul class="login">
+                                 <li class="login-modal">
+                                    <a href="login.php" class="login"><i class="fas fa-sign-in-alt"></i>Iniciar sesión</a>
+                                 </li>
+                                 <li>
+                                    <div class="cart-option">
+                                       <a href="register.php"><i class ="fa fa-user"></i>Registrarse</a>
+                                    </div>
+                                 </li>
+                              </ul>
+<?php
+                           }
+?>
 
                            <!-- end button section -->
                         </div>
@@ -181,7 +180,9 @@ session_start();
                         <div class="footer-logo">
                            <a href="#"><img src="images/footer-logo.png" alt="#" /></a>
                         </div>
-                        <p>Juega con responsabilidad.<br>+18<br><br>"La suerte, mala o buena, siempre está<br> con nosotros. Pero tiene una manera de favorecer a los inteligentes y darle la espalda a la estupidez."</p>
+                        <p>Juega con responsabilidad.<br>+18<br><br>
+                        <i class="fas fa-quote-left fa-pull-left fa-2x"></i>
+                        "La suerte, mala o buena, siempre está<br> con nosotros. Pero tiene una manera de favorecer a los inteligentes y darle la espalda<br>a la estupidez."</p>
                         <ul class="social-icons style-4 pull-left">
                            <!--<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -194,9 +195,27 @@ session_start();
                <div class="col-md-2">
                   <div class="full">
                      <div class="footer-widget">
-                        <h3>Menu</h3>
+                        <h3>Mapa del sitio</h3>
                         <ul class="footer-menu">
-                           <li><a href="index.html">Inicio</a></li>
+                           <li><a href="#top">Inicio</a></li>
+<?php
+                           if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
+                           {
+                              
+?>
+                              <li><a href="main.php" target="_self">Menú principal</a></li>
+<?php
+                           }
+                           else
+                           {
+?>
+                              <li><a href="login.php" target="_self">Iniciar sesión</a></li>
+                              <li><a href="register.php" target="_self">Registrarse</a></li>
+<?php
+                           }
+?>
+                           <li><a href="terminosYcondiciones-5&Bet.pdf" target="_blank">Términos y condiciones</a></li>
+                           <li>Acerca de</li>
                         </ul>
                      </div>
                   </div>
@@ -208,7 +227,7 @@ session_start();
                         <ul class="address-list">
                            <li><i class="fa fa-map-marker"></i>Av. Universidad de Cádiz, 10, 11519 Puerto Real, Cádiz</li>
                            <li><i class="fa fa-phone"></i> 956 48 32 00</li>
-                           <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i> 5&bet@gmail.com</li>
+                           <li><i style="font-size:20px;top:5px;" class="fa fa-envelope"></i><a href = "mailto:5&bet@gmail.com"> 5&bet@gmail.com </a></li>
                         </ul>
                      </div>
                   </div>
