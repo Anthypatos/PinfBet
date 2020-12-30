@@ -81,7 +81,7 @@
 
 ?>
                 <!-- Muestra mensaje de confirmación tras rechazar o borrar -->
-                <div class = "alert alert-warning" role = "alert" style = "text-align:center"><?php
+                <div class = "alert alert-info" role = "alert" style = "text-align:center"><?php
                     if (isset($_POST['rechazar'])) echo "Solicitud de amistad rechazada";
                     else echo "Amigo borrado";
                 ?></div>

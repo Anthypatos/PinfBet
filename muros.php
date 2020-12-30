@@ -8,16 +8,6 @@
     }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muros</title>
-</head>
-<body>
-
-<div class="w3-col m8">
     <div class="w3-row-padding">
         <div class="w3-col m12">
             <div class="w3-card w3-round w3-white">
@@ -25,10 +15,7 @@
                 <h4>Muro</h4>
 
 <?php
-    $amigos_sql = "SELECT * FROM amistades WHERE usuario1 = '$user_actual' AND usuario2 = '$id_user' AND amigos = 1";
-    $amigos_consulta = mysqli_query($link, $amigos_sql);
-
-    if (mysqli_num_rows($amigos_consulta) > 0 || $id_user == $_SESSION['id'])
+    if ($amigos || $id_user == $_SESSION['id'])
     {
 ?>
         <form action = "<?php echo "main.php?id=" . $id_user;?>" method = "post" style = "text-align:center">
@@ -79,7 +66,6 @@
             </div>
         </div>
     </div>
-</div>
 
 <script>
     // Para evitar el reenvío de formularios al actualizar o moverse por las páginas
@@ -88,6 +74,3 @@
         window.history.replaceState(null, null, window.location.href);
     }
 </script>
-
-</body>
-</html>

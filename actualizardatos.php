@@ -2,7 +2,7 @@
 include_once 'config.php';
 $id_user = $_SESSION['id']; // id del usuario cuya sesion esta iniciada.
 
-$qRes = "SELECT name,username,created_at,pinfcoins,profile_image,bio FROM users WHERE id = $id_user";
+$qRes = "SELECT * FROM users WHERE id = $id_user";
 $qQuery = mysqli_query($link,$qRes);    
 
 //Descargamos todos los datos de la base de datos.
@@ -18,6 +18,7 @@ $created_at_user = $_SESSION["created_at"] =  $mostrar["created_at"];
 $pinfcoins_user = $_SESSION["pinfcoins"] = $mostrar["pinfcoins"];
 $profile_image_user = $_SESSION["profile_image"] = $mostrar["profile_image"];
 $bio_user = $_SESSION["bio"] = $mostrar["bio"];
+$privacidad_user = $_SESSION["privacidad"] = $mostrar["privacidad"];
 // Ejecuta la orden
 
 // Usuario específico
@@ -42,6 +43,7 @@ if (isset($_GET['id']))
                 $pinfcoins_user = $datos['pinfcoins'];
                 $profile_image_user = $datos['profile_image'];
                 $bio_user = $datos['bio'];
+                $privacidad_user = $datos['privacidad'];
         }
         else    header("location: main.php");   // Si el id introducido no existe
 }

@@ -10,10 +10,11 @@
 
   include_once "actualizardatos.php"; 
 
+  $user_actual = $_SESSION['id']; // Usuario cliente
+
+  /* Bloque comprobar notificaciones */
   $contador_notis = 0;
   $bandera_solicitudes = false; // Bandera solicitudes de amistad
-
-  $user_actual = $_SESSION['id']; // Usuario cliente
 
   // Comprobar solicitudes de amistad pendientes
   $comprobar_solicitudes = "SELECT * FROM amistades WHERE usuario2 = '$user_actual' and solicitud = 1 and amigos = 0";
@@ -24,6 +25,14 @@
     $bandera_solicitudes = true;
     $contador_notis += $numero_solicitudes;
   }
+  /* Fin bloque notificaciones */
+
+  /* Consultar si el usuario que hay en pantalla es amigo del cliente */
+  $amigos_sql = "SELECT * FROM amistades WHERE usuario1 = '$user_actual' AND usuario2 = '$id_user' AND amigos = 1";
+  $amigos_consulta = mysqli_query($link, $amigos_sql);
+
+  if (mysqli_num_rows($amigos_consulta) > 0) $amigos = true;
+  else $amigos = false;
 ?>
 
 
@@ -136,29 +145,45 @@
       </div>
       <br>
     
-      <!-- Lista de amigos -->
-      <?php include "lista_amigos.php"; ?>
-    
-    <!-- End Left Column -->
-    </div>
-    
-    <div class="w3-col m9">
-      <div class="w3-row-padding">
-        <div class="w3-col m12">
-          <div class="w3-card w3-round w3-white">
-            <div class="w3-container w3-padding">
-              <h4>Últimas Apuestas</h4>
-              <?php require __DIR__ . '/actualizarapuesta.php'; ?>
-              
-            </div>
+  <!-- Lista de amigos -->
+  <?php if ($privacidad_user && !($amigos) && $id_user != $_SESSION['id'])
+        {
+  ?>
           </div>
-        </div>
-      </div>
-    </div>
+          <div style = "text-align:center; margin-top:150px;"><i class="fas fa-user-lock"></i> Este perfil es privado</div>
+  <?php
+        }
+        else
+        {
+          include "lista_amigos.php";
+  ?>
     
-  <!-- End Middle Column -->
+<!-- End Left Column -->
+</div>
+    
+          <div class="w3-col m9">
+
+            <div class="w3-row-padding">
+              <div class="w3-col m12">
+                <div class="w3-card w3-round w3-white">
+                  <div class="w3-container w3-padding">
+                    <h4>Últimas Apuestas</h4>
+                    <?php require __DIR__ . '/actualizarapuesta.php'; ?>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Muros de perfil -->
+            <hr>
+            <?php include "muros.php"; ?>
+
+          </div>
+    
+          <!-- End Middle Column -->
   
-      <?php include "muros.php"; ?>
+          
     
     <!-- Right Column -->
    
@@ -168,7 +193,7 @@
 
 <!-- Footer -->
 
-
+<?php } ?>
 
  
 <script>
