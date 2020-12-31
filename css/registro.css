@@ -46,7 +46,7 @@ body {
     margin-bottom: 20px;
   }
   
-  .register-box input[type="text"], .register-box input[type="password"] {
+  .register-box input[type="text"], .register-box input[type="password"], .register-box input[type="email"] {
     border: none;
     border-bottom: 1px solid #fff;
     background: transparent;

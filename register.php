@@ -3,8 +3,8 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = $email = "";
-$username_err = $password_err = $confirm_password_err = $email_err = $cajita_err = "";
+$username = $password = $confirm_password = $email = $fecha_nacim = "";
+$username_err = $password_err = $confirm_password_err = $email_err = $cajita_err = $fecha_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -98,9 +98,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $confirm_password_err = "Las contraseñas no coinciden.";
         }
     }
+
+    /* Validar fecha de nacimiento
+    if (empty(trim($_POST['fecha'])))
+    {
+        $fecha_err = "Introduce tu fecha de nacimiento";
+    }
+    else
+    {
+        $fecha_nacim = new DateTime($_POST['fecha']);
+        $fecha_actual = new DateTime(date("Y-m-d"));
+        
+        if ($fecha_actual->diff($fecha_nacim)->format("%y") < 18)
+        {
+            $fecha_err = "Debes ser mayor de 18 años";
+        }
+        $fecha_nacim = $_POST['fecha'];
+    }*/
     
-    //Validar aceptación de los términos
-    if (!(isset($_POST["lacajita"]))) {
+    // Validar aceptación de los términos
+    if (!(isset($_POST["lacajita"]))) 
+    {
         $cajita_err = "Debe aceptar los términos del servicio.";
     }
 
@@ -108,7 +126,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err)&& empty($email_err) && empty($password_err) && empty($confirm_password_err) && empty($cajita_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO users (username, `password`, email) VALUES (?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -118,6 +136,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             $param_email = $email;
+            $param_fecha = $fecha_nacim;
 
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -171,36 +190,45 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <!-- Nombre de usuario -->
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Usuario</label>
-                <input type="text" placeholder="Introduzca Usuario" name="username" class="form-control" value="<?php echo $username; ?>" autocomplete = "off">
+                <label for = "username">Usuario</label>
+                <input type="text" placeholder="Introduzca Usuario" id = "username" name="username" class="form-control" value="<?php echo $username; ?>" autocomplete = "off">
                 <span class="help-block"><?php echo $username_err; ?></span>
             </div>
 
             <!-- E-mail -->
             <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-                <label>Email</label>
-                <input type="email" placeholder ="Introduzca Email" name="email" class="form-control" value="<?php echo $email; ?>" autocomplete = "off">
+                <label for = "email">Email</label>
+                <input type="email" placeholder ="Introduzca Email" id = "email" name="email" class="form-control" value="<?php echo $email; ?>" autocomplete = "off">
                 <span class="help-block"><?php echo $email_err; ?></span>
             </div>
 
             <!-- Contraseña -->
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Contraseña</label>
-                <input type="password" placeholder="Introduzca Contraseña" name="password" class="form-control" value="<?php echo $password; ?>">
+                <label for = "password">Contraseña</label>
+                <input type="password" placeholder="Introduzca Contraseña" id = "password" name="password" class="form-control" value="<?php echo $password; ?>">
                 <span class="help-block"><?php echo $password_err; ?></span>
             </div>
 
             <!-- Confirmar contraseña -->
             <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                <label>Repite Contraseña</label>
-                <input type="password" placeholder="Confirmar Contraseña" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
+                <label for = "confirm_password">Repite Contraseña</label>
+                <input type="password" placeholder="Confirmar Contraseña" id = "confirm_password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
+
+            <!-- Fecha de nacimiento
+            <div class="form-group <?php /*echo (!empty($fecha_err)) ? 'has-error' : ''; ?>">
+                <label for = "fecha">Fecha de nacimiento</label>
+                <input type="date" id = "fecha" name="fecha" class="form-control" value="<?php echo $fecha_nacim; ?>">
+                <span class="help-block"><?php echo $fecha_err;*/ ?></span>
+            </div>-->
+
+            <br>
 
             <!-- Confirmar términos -->
             <div class="form-group <?php echo (!empty($cajita_err)) ? 'has-error' : ''; ?>">
                 <label for="lacajita">He leído y acepto los <a href="terminosYcondiciones-5&Bet.pdf" target="_blank">términos y condiciones</a></label> 
-                <input type="checkbox" name="lacajita">
+                <input type="checkbox" id = "lacajita" name="lacajita">
                 <span class="help-block"><?php echo $cajita_err; ?></span>
             </div>
 

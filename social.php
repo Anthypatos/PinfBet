@@ -19,10 +19,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>5&Bet - Social</title>
+    <link rel="stylesheet" href="css/all.css" > <!-- Iconos de FontAwesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 <body style = "text-align:center">
-<h1>Social</h1>
+
+<?php include "barra_navegacion.php"; ?>
+
+<h1 style = "margin-top:75px;">Social</h1>
 
 <!-- Hay distintos tipos de formularios en la página para realizar las distintas acciones -->
 
@@ -138,7 +142,15 @@
 <?php
                             $user_encontrado = $elem_busq['id']; // Se obtiene cada nombre de usuario del resultado
 
-                            if ($user_actual == $user_encontrado)  // Si el cliente se encuentra a sí mismo
+                            // Se consulta si existe alguna solicitud pendiente de ese usuario
+                            // La consulta devolverá 0 ó 1 tuplas
+                            $solicitud_pendiente = "SELECT solicitud, amigos FROM amistades WHERE usuario1 = '$user_encontrado' AND usuario2 = '$user_actual' AND solicitud = 1 AND amigos = 0";
+                            
+                            if (mysqli_num_rows(mysqli_query($link, $solicitud_pendiente)) > 0)
+                            {
+                                echo "Solicitud pendiente";
+                            }
+                            else if ($user_actual == $user_encontrado)  // Si el cliente se encuentra a sí mismo
                             {
                                 echo "Eres tú.";
                             }
@@ -149,10 +161,7 @@
                                 $amistad = "SELECT solicitud, amigos FROM amistades WHERE usuario1 = '$user_actual' AND usuario2 = '$user_encontrado'";
                                 $amistad_sql = mysqli_query($link, $amistad);
 
-                                // Se comprueba si se ha recibido la tupla
-                                $existe_amigo = mysqli_num_rows($amistad_sql);
-
-                                if ($existe_amigo == 0) // Si no se ha recibido tupla es que los usuarios no son amigos
+                                if ((mysqli_num_rows($amistad_sql)) == 0) // Si no se ha recibido tupla es que los usuarios no son amigos
                                 {
 ?>
                                     <!-- FORMULARIO PARA ENVIAR SOLICITUD DE AMISTAD -->
@@ -170,9 +179,9 @@
 
                                     if ($elem_amistad['solicitud'] == 1 && $elem_amistad['amigos'] == 0)
                                     {
-                                        echo "Ya le has enviado una solicitud.";
+                                        echo "Ya le has enviado una solicitud";
                                     }
-                                    else echo "Ya sois amigos.";
+                                    else echo "Ya sois amigos";
                                 }
                             }
                         ?>

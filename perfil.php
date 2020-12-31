@@ -8,7 +8,7 @@
         exit;
     }
 
-    if (isset($_GET['p']))
+    if (isset($_GET['p']) && ($_GET['p'] == 0 || $_GET['p'] == 1))
     {
         $_SESSION['privacidad'] = $privacidad = $_GET['p'];
         $id = $_SESSION['id'];
