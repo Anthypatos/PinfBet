@@ -255,7 +255,7 @@
 <div class="container">
 <table class = "table table-bordered">
     <thead>
-        <th colspan = "3">Tu lista de amigos</th>
+        <th colspan = "4">Tu lista de amigos</th>
     </thead>
     <tbody>
 <?php
@@ -276,6 +276,13 @@
                     <tr>
                         <td> <a title = "Acceder a perfil" href = "<?php echo "main.php" . "?id=" . $datos_amigo['id']; ?>"><img src = "<?php echo 'imagenesperfil/' . $datos_amigo['profile_image'] ?>" width = "50" height = "50" alt = "Avatar de <?php echo $datos_amigo['username'] ?>"></a> </td>
                         <td> <a title = "Acceder a perfil" href = "<?php echo "main.php" . "?id=" . $datos_amigo['id']; ?>"><?php echo $datos_amigo['username']; ?></a> </td>
+                        <!-- FORMULARIO PARA CHATEAR CON AMIGO -->
+                        <td>
+                            <form method = "get" action = "chat.php" target = "_self">
+                                <input type = "hidden" name = "id" value = "<?php echo $datos_amigo['id']; ?>">   <!-- Usuario objetivo -->
+                                <input type = "submit" name = "chatear" value = "Chatear">
+                            </form>
+                        </td>
                         <!-- FORMULARIO PARA BORRAR AMIGO DE LA LISTA -->
                         <td>
                             <form method = "post" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" target = "_self">
