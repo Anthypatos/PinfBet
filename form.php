@@ -25,7 +25,6 @@
   <div class="container">
     <div class="row">
       <div class="col-4 offset-md-4 form-div" style = "margin-top:20px;">
-        <a href="profiles.php">Ver todos los perfiles</a>
         <form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method = "post" enctype = "multipart/form-data">
           <h2 class="text-center mb-3 mt-3">Editar perfil</h2>
 
