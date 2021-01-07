@@ -19,40 +19,63 @@
 ?>
  
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Perfil</title>
-    <link rel="stylesheet" href="css/all.css" > <!-- Iconos de FontAwesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; text-align: center; }
-    </style>
-</head>
-<body>
-    <div class="page-header">
-        <h1>Hola, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>, este es tu perfil.</h1>
-        <div class="w3-card w3-round w3-white">
-      
-        <div class="w3-container">
-            <div style = "color:royalblue;"><b>Privacidad:</b></div>
-            <?php if ($_SESSION['privacidad']) { ?><div style = "color:crimson"><i class="fas fa-lock" style = "color:black;"></i> privado</div><?php }
-                else { ?><div style = "color:lime"><i class="fas fa-lock-open" style = "color:black;"></i> público</div><?php } ?>
-            <p class="w3-center"><img src="<?php echo 'imagenesperfil/' . $_SESSION["profile_image"] ?>" width="90" height="90" alt=""></p>
-            <hr>
+<html lang="es">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Mobile Metas -->
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <!-- Site Metas -->
+        <title>Casa de Apuestas</title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Site Icons -->
+        <link rel="shortcut icon" href="" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!-- Site CSS -->
+        <link rel="stylesheet" href="style.css">
+        <!--Login CSS -->
+        <link rel="stylesheet" href="css/registro.css">
+        <!-- Colors CSS -->
+        <link rel="stylesheet" href="css/colors.css">
+        <!-- ALL VERSION CSS -->	
+        <link rel="stylesheet" href="css/versions.css">
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="css/responsive.css">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/custom.css">
+        <!-- font family -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+   </head>
 
-            <p><i class="fas fa-user-circle fa-fw w3-margin-right w3-text-theme"></i> <?php echo $_SESSION["name"];?></p>
-            <p><i class="fas fa-money-bill fa-fw w3-margin-right w3-text-theme"></i> <?php echo $_SESSION["pinfcoins"];?> PinfCoins</p>
-            <p><i class="fas fa-comment-dots fa-fw w3-margin-right w3-text-theme"></i> "<?php echo $_SESSION["bio"];?>"</p>
+    <body>
+        <div class="control-usuario">
+            <a><img src="<?php echo 'imagenesperfil/' . $_SESSION["profile_image"] ?>" class="avatar" alt="Imagen Avatar"></a>
+                <h1>Hola <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>, este es tu perfil.</h1>
+
+                <h3 style="color: #337ab7;">Privacidad:
+                    <?php if ($_SESSION['privacidad']) { ?>
+                        <span style="color: #d8302f"> Privado <i class="fas fa-lock"></i></span>
+                    <?php } else { ?>
+                        <span style="color: lime"> Publico <i class="fas fa-lock-open"></i></span>
+                    <?php } ?>
+                </h3>
+                <hr>
+
+                    <p><i class="fas fa-user-circle"></i><span style="color: #337ab7; font-size: 16px; font-weight: 600"> Nombre: </span> <?php echo $_SESSION["name"];?></p>
+                    <p><i class="fas fa-coins"></i></i><span style="color: #337ab7; font-size: 16px; font-weight: 600"> Creditos: </span> <?php echo $_SESSION["pinfcoins"];?> PinfCoins</p>
+                    <p><i class="fas fa-comment"></i><span style="color: #337ab7; font-size: 16px; font-weight: 600"> Bio: </span> "<?php echo $_SESSION["bio"];?>"</p>
+                
+            <p>
+                <a href = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']) . "?p=" . (($_SESSION['privacidad']) ? "0" : "1"); ?>" class = "btn2 btn-warning">Cambiar privacidad</a>
+                <a href="reset-password.php" class="btn2 btn-warning">Cambiar contraseña</a>
+                <a href="form.php" class="btn2 btn-warning">Editar perfil</a>
+                <a href="logout.php" class="btn2 btn-danger">Cerrar sesión</a>
+                <a href="main.php" class="btn2 btn-primary">Volver</a>
+            </p>
         </div>
-    </div>
-    
-    <p>
-        <a href = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']) . "?p=" . (($_SESSION['privacidad']) ? "0" : "1"); ?>" class = "btn btn-warning">Cambiar privacidad</a>
-        <a href="reset-password.php" class="btn btn-warning">Cambiar contraseña</a>
-        <a href="logout.php" class="btn btn-danger">Cerrar sesión</a>
-        <a href="form.php" class="btn btn-danger">Editar perfil</a>
-        <a href="main.php" class="btn btn-primary">Volver</a>
-    </p>
-</body>
+    </body>
 </html>

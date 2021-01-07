@@ -6,7 +6,7 @@ body {
     font-family: sans-serif;
     height: 100vh;
   }
-  
+
   .register-box {
     width: 320px;
     background: #1a0e0a;
@@ -88,4 +88,96 @@ body {
   .register-box a:hover {
     color: #fff;
   }
+
+  /*************** CONTROL DEL PERFIL ***************/
+  
+  .control-usuario {
+    width: 850px;
+    background: #1a0e0a;
+    color: #f3d6cd;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 60px 30px 20px;
+  }
+    
+  .control-usuario .avatar {
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    top: -120px;
+    left: 345px;
+  }
+
+  .control-usuario h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 22px;
+    color: #f8d8cd;
+  }
+
+  .control-usuario h3 {
+    margin: 0;
+    text-align: center;
+    font-weight: 700;
+
+  }
+  
+  .control-usuario hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #ff5e5e;
+  }
+
+  .control-usuario .btn2 {
+    color: #fff;
+    padding: 5px 15px;
+    font-size: 15px;
+    border-radius: 50px;
+    margin-top: 5px;
+    font-weight: 500;
+  }
+
+  .control-usuario .btn-warning {
+    color: #fff;
+    background-color: #e9931b;
+  }
+  
+  .control-usuario .btn-warning:hover {
+    color: #fff;
+    background-color: #ffa11e;
+  }
+
+  .control-usuario .btn-danger {
+    color: #fff;
+    background-color: #9c1a3d;
+  }
+  
+  .control-usuario .btn-danger:hover {
+    color: #fff;
+    background-color: #d40c41;
+
+  }
+
+  .control-usuario .btn-primary {
+    color: #fff;
+    background-color: #0073d5;
+  }
+  
+  .control-usuario .btn-primary:hover {
+    color: #fff;
+    background-color: #027fec;
+
+  }
+   
+  .control-usuario p{
+    font-size: 15px;
+    text-align: center;
+    color: #f8d8cd;
+    line-height: 28px;
+  }
+  
 

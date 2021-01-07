@@ -3380,8 +3380,8 @@ fieldset[disabled] .btn-info:hover {
 }
 .btn-warning {
   color: #fff;
-  background-color: #f0ad4e;
-  border-color: #eea236;
+  background-color: #f8a735;
+  border-color: #f1a539;
 }
 .btn-warning.focus,
 .btn-warning:focus {
