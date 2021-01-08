@@ -96,12 +96,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html lang="es"> 
 <!-- Basic -->
-   <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />
+    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <!-- Mobile Metas -->
    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
    <!-- Site Metas -->
-   <title>Casa de Apuestas</title>
+   <title>Iniciar Sesion</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">

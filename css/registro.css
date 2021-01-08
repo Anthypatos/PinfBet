@@ -29,7 +29,14 @@ body {
   .register-box h1 {
     margin: 0;
     text-align: center;
-    font-size: 22px;
+    font-size: 24px;
+    color: #f8d8cd;
+  }
+
+  .register-box h2 {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 20px;
     color: #f8d8cd;
   }
   
@@ -38,6 +45,7 @@ body {
     padding: 0;
     font-weight: bold;
     display: block;
+    font-size: 17px;
   }
 
   
@@ -53,7 +61,16 @@ body {
     outline: none;
     height: 40px;
     color: #f8d8cd;
-    font-size: 16px;
+    font-size: 15px;
+  }
+
+  .register-box textarea[type="bio"] {
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 100px;
+    color: #f8d8cd;
+    font-size: 15px;
   }
   
   .register-box input[type="submit"] {
@@ -63,7 +80,7 @@ body {
     color: #fff;
     font-size: 20px;
     border-radius: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
   }
   
   .register-box input[type="submit"]:hover {
@@ -87,6 +104,28 @@ body {
   
   .register-box a:hover {
     color: #fff;
+  }
+
+  .register-box .boton {
+    text-decoration: none;
+    padding: 0px 92px;
+    font-weight: 300;
+    font-size: 21px;
+    font-weight: 400;
+    color: #ffffff;
+    background-color: #227dfa;
+    border-radius: 15px;
+  }
+
+  .register-box .boton:hover {
+    text-decoration: none;
+    padding: 0px 92px;
+    font-weight: 300;
+    font-size: 21px;
+    font-weight: 400;
+    color: #ffffff;
+    background-color: #7cadf3;
+    border-radius: 15px;
   }
 
   /*************** CONTROL DEL PERFIL ***************/

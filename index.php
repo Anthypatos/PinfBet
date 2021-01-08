@@ -5,13 +5,14 @@
 
 <!DOCTYPE html>
 <html lang="es">
+   <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />
    <!-- Basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <!-- Mobile Metas -->
    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
    <!-- Site Metas -->
-   <title>Casa de Apuestas</title>
+   <title>5&Bet - Casa de Apuestas</title>
    <meta name="keywords" content="Apuestas">
    <meta name="description" content="Casa de apuestas de 5&Bet">
    <meta name="author" content="5&Bet">

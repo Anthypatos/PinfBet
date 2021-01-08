@@ -110,8 +110,9 @@ mysqli_close($link);
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />      
     <meta charset="UTF-8">
-    <title>Apuesta</title>
+    <title>Zona de Apuestas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         body{ font: 14px sans-serif; }

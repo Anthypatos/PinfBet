@@ -21,14 +21,12 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />  
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- Mobile Metas -->
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <!-- Site Metas -->
-        <title>Casa de Apuestas</title>
-        <meta name="keywords" content="">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <title>Perfil</title>
         <!-- Site Icons -->
         <link rel="shortcut icon" href="" type="image/x-icon" />
         <link rel="apple-touch-icon" href="">

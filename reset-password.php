@@ -74,7 +74,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-    <title>Registro</title>
+<link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />
+    <title>Cambiar Contraseña</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <!-- Site Icons -->
    <link rel="shortcut icon" href="" type="image/x-icon" />
@@ -114,7 +115,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
             <input type="submit" value="Aceptar">
-            <a href="main.php">Cancelar</a>
+            <a href="perfil.php">Cancelar</a>
         </form>
     </div>    
 </body>

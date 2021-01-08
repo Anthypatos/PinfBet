@@ -10,6 +10,7 @@ $img_str = base64_encode($imgbinary);
 <!DOCTYPE html>
 <html lang="en">
    <head>
+      <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />
       <meta charset="utf-8">
       <title>5&Bet Ranking</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
