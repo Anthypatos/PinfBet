@@ -9,7 +9,7 @@ body {
 
   .register-box {
     width: 320px;
-    background: #1a0e0a;
+    background: linear-gradient(to bottom, #1a0e0a, #630f28);
     color: #f3d6cd;
     top: 53.5%;
     left: 50%;
@@ -98,7 +98,7 @@ body {
   .register-box p{
     font-size: 15px;
     text-align: center;
-    color: #94163b;
+    color: #e7235e;
     line-height: 28px;
   }
   
@@ -132,7 +132,7 @@ body {
   
   .control-usuario {
     width: 850px;
-    background: #1a0e0a;
+    background:  linear-gradient(to bottom, #1a0e0a, #630f28);
     color: #f3d6cd;
     top: 50%;
     left: 50%;
@@ -140,6 +140,7 @@ body {
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     padding: 60px 30px 20px;
+    
   }
     
   .control-usuario .avatar {
