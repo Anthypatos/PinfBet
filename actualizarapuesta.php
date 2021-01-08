@@ -4,10 +4,67 @@ include_once 'actualizardatos.php';
 
 $id_apuesta = $cantidad = $resultado = $cod_apuesta = "";
 $cantidad_err = "";
-
+$param_resultadofinal = 0;
 
 $qRes = "SELECT * FROM apuestas WHERE id_user = $id_user";
 $qQuery = mysqli_query($link,$qRes);    
+
+$qRes2 = "SELECT * FROM resultados";
+$qQuery2 = mysqli_query($link,$qRes2);   
+
+
+
+//Vamos a actualizar toda la informacion de la apuesta incluida la ganancia/perdida de pinfcoins
+
+while($resultados = mysqli_fetch_array($qQuery2))
+{
+	while($mostrar = mysqli_fetch_array($qQuery))
+	{
+
+		if($resultados['id_user'] == $mostrar['id_apostado'] && $resultados['id_apuesta'] == $mostrar['id_apuesta']) //Coincide el resultado guardado con alguna apuesta realizada
+		{	
+			$id_apuesta_actual = $resultados['id_apuesta'];
+			$qRes3 = "SELECT cuota_aprobado,cuota_suspenso FROM apuestasdisponibles WHERE id_apuesta = $id_apuesta_actual";
+			$stmt = mysqli_prepare($link, $qRes3);
+			mysqli_stmt_store_result($stmt);
+			mysqli_stmt_bind_result($stmt,$cuota_aprobado,$cuota_suspenso); //Cogemos los valores de las cuotas
+
+			if($resultados['resultado'] ==  1)  //Si el usuario ha aprobado y...
+			{
+				if($mostrar['resultado_user'] == 1) //El otro usuario aposto a que aprobara
+				{
+					$param_resultadofinal = 1;
+					$param_cantidadresultado = $mostrar['cantidad_apostada'] * $cuota_aprobado;
+				}
+				if($mostrar['resultado_user'] == -1) //EL otro usuario aposto al suspenso
+				{ //POndria else pero mientras sea pendiente puede ser 0
+					$param_resultadofinal = -1;
+					$param_cantidadresultado = -$mostrar['cantidad_apostada'];
+				}
+			}else{ //En este caso se puede porque si el usuario no tiene la nota no aparece en la base de datos, si el usuario ha suspendido y...
+				if($mostrar['resultado_user'] == 1) //aposto a que aprobaba
+				{
+					$param_resultadofinal = -1;
+					$param_cantidadresultado = -$mostrar['cantidad_apostada'];
+				}
+				if($mostrar['resultado_user'] == -1) //POndria else pero mientras sea pendiente puede ser 0 //Aposto a que suspendia
+					
+					$param_resultadofinal = 1;
+					$param_cantidadresultado = $mostrar['cantidad_apostada'] * $cuota_suspenso;
+				}
+			}
+			
+			if($param_resultadofinal!=0)
+			{
+				$sql = "UPDATE apuestas SET resultado_final = ?, cantidad_resultado = ? WHERE id_apuesta = $id_apuesta_actual";
+				$stmt = mysqli_prepare($link, $sql);
+				mysqli_stmt_bind_param($stmt, "ii",$param_resultadofinal ,$param_cantidadresultado);
+				mysqli_stmt_execute($stmt);
+			}
+		}
+	}
+
+	
 
 ?>
 <hr>
@@ -65,7 +122,7 @@ $qQuery = mysqli_query($link,$qRes);
 					$nombre_apostado = $user_apostado_result['name'];
 				}
 
-				//Sacamos la prediccion de la apuesta Aprobado/Suspendo
+				//En funcion de la informacion sacada anteriormente mostramos la informacion en la pantalla principal de usuario
 				if($mostrar['resultado_user'] == 1)
 				{
 					$resultado_user = "Aprueba";
