@@ -14,6 +14,7 @@ $qQuery2 = mysqli_query($link,$qRes2);
 
 
 
+
 //Vamos a actualizar toda la informacion de la apuesta incluida la ganancia/perdida de pinfcoins
 
 while($resultados = mysqli_fetch_array($qQuery2))
@@ -28,29 +29,30 @@ while($resultados = mysqli_fetch_array($qQuery2))
 			$stmt = mysqli_prepare($link, $qRes3);
 			mysqli_stmt_store_result($stmt);
 			mysqli_stmt_bind_result($stmt,$cuota_aprobado,$cuota_suspenso); //Cogemos los valores de las cuotas
+			$cantidad_apostada = $mostrar['cantidad_apostada'] ;
 
 			if($resultados['resultado'] ==  1)  //Si el usuario ha aprobado y...
 			{
 				if($mostrar['resultado_user'] == 1) //El otro usuario aposto a que aprobara
 				{
 					$param_resultadofinal = 1;
-					$param_cantidadresultado = $mostrar['cantidad_apostada'] * $cuota_aprobado;
+					$param_cantidadresultado = $cantidad_apostada * $cuota_aprobado;
 				}
 				if($mostrar['resultado_user'] == -1) //EL otro usuario aposto al suspenso
 				{ //POndria else pero mientras sea pendiente puede ser 0
 					$param_resultadofinal = -1;
-					$param_cantidadresultado = -$mostrar['cantidad_apostada'];
+					$param_cantidadresultado = -$cantidad_apostada;
 				}
 			}else{ //En este caso se puede porque si el usuario no tiene la nota no aparece en la base de datos, si el usuario ha suspendido y...
 				if($mostrar['resultado_user'] == 1) //aposto a que aprobaba
 				{
 					$param_resultadofinal = -1;
-					$param_cantidadresultado = -$mostrar['cantidad_apostada'];
+					$param_cantidadresultado = -$cantidad_apostada;
 				}
 				if($mostrar['resultado_user'] == -1) //POndria else pero mientras sea pendiente puede ser 0 //Aposto a que suspendia
 					
 					$param_resultadofinal = 1;
-					$param_cantidadresultado = $mostrar['cantidad_apostada'] * $cuota_suspenso;
+					$param_cantidadresultado =  $cantidad_apostada * $cuota_suspenso;
 				}
 			}
 			
@@ -61,6 +63,7 @@ while($resultados = mysqli_fetch_array($qQuery2))
 				mysqli_stmt_bind_param($stmt, "ii",$param_resultadofinal ,$param_cantidadresultado);
 				mysqli_stmt_execute($stmt);
 			}
+
 		}
 	}
 
