@@ -1,6 +1,6 @@
 <div class="w3-card w3-round w3-white">
     <div class="w3-container w3-padding" style = "text-align:center">
-    <h4><b>Amigos</b></h4>
+    <h4><b>5&Bet - Amigos</b></h4>
     <hr>
 <?php
 	$lista_sql = "SELECT id, username, profile_image FROM users, amistades WHERE usuario1 = '$id_user' AND usuario2 = id AND amigos = 1 ORDER BY username ASC";

@@ -25,7 +25,7 @@
 <html>
 <head>
   <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />  
-  <title>Menu Principal</title>
+  <title>5&Bet - Menu Principal</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/all.css" > <!-- Iconos de FontAwesome -->

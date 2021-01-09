@@ -25,7 +25,7 @@ $img_str = base64_encode($imgbinary);
 
    <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />
    <meta charset="utf-8">
-   <title>5&Bet Ranking</title>
+   <title>5&Bet - Ranking</title>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="icon" href="favicon.ico" type="image/x-icon" />
    <link rel="stylesheet" href="css/reset.css">

@@ -26,7 +26,7 @@
         <!-- Mobile Metas -->
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <!-- Site Metas -->
-        <title>Perfil</title>
+        <title>5&Bet - Perfil</title>
         <!-- Site Icons -->
         <link rel="shortcut icon" href="" type="image/x-icon" />
         <link rel="apple-touch-icon" href="">

@@ -162,9 +162,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />
     <meta charset="UTF-8">
-    <title>Nuevo registro</title>
+    <title>5&Bet - Nuevo registro</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <!-- Site Icons -->
+    <!-- Sie Icons -->
    <link rel="shortcut icon" href="" type="image/x-icon" />
    <link rel="apple-touch-icon" href="">
    <!-- Bootstrap CSS -->

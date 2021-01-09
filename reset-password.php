@@ -75,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
 <meta charset="UTF-8">
 <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />
-    <title>Cambiar Contraseña</title>
+    <title>5&Bet - Cambiar Contraseña</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <!-- Site Icons -->
    <link rel="shortcut icon" href="" type="image/x-icon" />
