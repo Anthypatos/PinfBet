@@ -2,9 +2,10 @@
 include_once 'config.php';
 include_once 'actualizardatos.php';
 
+$user_actual = $_SESSION['id'];
 $id_apuesta = $cantidad = $resultado = $cod_apuesta = "";
 $cantidad_err = "";
-$param_resultadofinal = 0;
+$param_resultadofinal = $param_cantidadresultado= 0;
 
 $qRes = "SELECT * FROM apuestas WHERE id_user = $id_user";
 $qQuery = mysqli_query($link,$qRes);    
@@ -12,58 +13,55 @@ $qQuery = mysqli_query($link,$qRes);
 $qRes2 = "SELECT * FROM resultados";
 $qQuery2 = mysqli_query($link,$qRes2);   
 
-
-//hey
-
 //Vamos a actualizar toda la informacion de la apuesta incluida la ganancia/perdida de pinfcoins
 
 while($resultados = mysqli_fetch_array($qQuery2))
 {
 	while($mostrar = mysqli_fetch_array($qQuery))
 	{
-
-		if($resultados['id_user'] == $mostrar['id_apostado'] && $resultados['id_apuesta'] == $mostrar['id_apuesta']) //Coincide el resultado guardado con alguna apuesta realizada
+		
+		if($resultados['id_user'] == $mostrar['id_apostado'] && $resultados['id_apuesta'] == $mostrar['id_apuesta'] && $mostrar['resultado_final'] == 0) //Coincide el resultado guardado con alguna apuesta realizada
 		{	
 			$id_apuesta_actual = $resultados['id_apuesta'];
-			$qRes3 = "SELECT cuota_aprobado,cuota_suspenso FROM apuestasdisponibles WHERE id_apuesta = $id_apuesta_actual";
-			$stmt = mysqli_prepare($link, $qRes3);
-			mysqli_stmt_store_result($stmt);
-			mysqli_stmt_bind_result($stmt,$cuota_aprobado,$cuota_suspenso); //Cogemos los valores de las cuotas
-			$cantidad_apostada = $mostrar['cantidad_apostada'] ;
+			$qRes3 = "SELECT * FROM apuestasdisponibles WHERE id_apuesta = $id_apuesta_actual";
+			$qQuery3 = mysqli_query($link,$qRes3);
+			$apuestasdisponibles = mysqli_fetch_array($qQuery3);
 
 			if($resultados['resultado'] ==  1)  //Si el usuario ha aprobado y...
 			{
 				if($mostrar['resultado_user'] == 1) //El otro usuario aposto a que aprobara
 				{
 					$param_resultadofinal = 1;
-					$param_cantidadresultado = $cantidad_apostada * $cuota_aprobado;
+					$param_cantidadresultado = $mostrar['cantidad_apostada'] * $apuestasdisponibles['cuota_aprobado'];
 				}
 				if($mostrar['resultado_user'] == -1) //EL otro usuario aposto al suspenso
 				{ //POndria else pero mientras sea pendiente puede ser 0
 					$param_resultadofinal = -1;
-					$param_cantidadresultado = -$cantidad_apostada;
+					$param_cantidadresultado = -$mostrar['cantidad_apostada'];
 				}
 			}else{ //En este caso se puede porque si el usuario no tiene la nota no aparece en la base de datos, si el usuario ha suspendido y...
 				if($mostrar['resultado_user'] == 1) //aposto a que aprobaba
 				{
 					$param_resultadofinal = -1;
-					$param_cantidadresultado = -$cantidad_apostada;
+					$param_cantidadresultado = -$mostrar['cantidad_apostada'];
 				}
 				if($mostrar['resultado_user'] == -1) //POndria else pero mientras sea pendiente puede ser 0 //Aposto a que suspendia
 					
 					$param_resultadofinal = 1;
-					$param_cantidadresultado =  $cantidad_apostada * $cuota_suspenso;
+					$param_cantidadresultado =  $mostrar['cantidad_apostada'] * $apuestasdisponibles['cuota_suspenso'];
 				}
-			}
-			
-			if($param_resultadofinal!=0)
-			{
+				
 				$sql = "UPDATE apuestas SET resultado_final = ?, cantidad_resultado = ? WHERE id_apuesta = $id_apuesta_actual";
 				$stmt = mysqli_prepare($link, $sql);
 				mysqli_stmt_bind_param($stmt, "ii",$param_resultadofinal ,$param_cantidadresultado);
 				mysqli_stmt_execute($stmt);
+				if($param_cantidadresultado>0){
+					$pinfcoins_actualizado = $_SESSION['pinfcoins'] + $param_cantidadresultado;
+					$sql2 = "UPDATE users SET pinfcoins = $pinfcoins_actualizado WHERE id = $user_actual";
+					mysqli_query($link,$sql2);
+				}
+				
 			}
-
 		}
 	}
 
@@ -75,6 +73,7 @@ while($resultados = mysqli_fetch_array($qQuery2))
 <?php
 	if (mysqli_num_rows($qQuery) == 0)	// Comprobar que se han hecho apuestas
 	{
+		
 ?>		<div style = "text-align:center"> No hay apuestas que mostrar </div>
 <?php
 	}
@@ -101,6 +100,7 @@ while($resultados = mysqli_fetch_array($qQuery2))
 			</tr>
 
 			<?php 
+			$qQuery = mysqli_query($link,$qRes);    
 			while($mostrar=mysqli_fetch_array($qQuery))
 			{
 				//Sacamos el nombre de la asignatura a partir de su id.
