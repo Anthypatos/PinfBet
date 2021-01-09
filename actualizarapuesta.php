@@ -13,7 +13,7 @@ $qRes2 = "SELECT * FROM resultados";
 $qQuery2 = mysqli_query($link,$qRes2);   
 
 
-
+//hey
 
 //Vamos a actualizar toda la informacion de la apuesta incluida la ganancia/perdida de pinfcoins
 
