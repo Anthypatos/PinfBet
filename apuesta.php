@@ -26,16 +26,24 @@ $amigos_consulta = mysqli_query($link, "SELECT id, username FROM users, amistade
 if(isset($_POST['id_apuesta']))
 {
    $id_apuesta = $_POST['id_apuesta'];
-    
+   $id_apostado = $_POST['objetivo'];
+
    $numero =$id_apuesta; //Con esto sabremos la longitud de la id de apuesta para general el codigo de apuesta.
+   $numero2 = $id_apostado;
     $id_apuesta_long = 1;
+    $id_apostado_long = 1;
     do{
 	    $numero = floor($numero / 10);
-	    $id_apuesta_long = $id_apuesta_long*10;
+        $id_apuesta_long = $id_apuesta_long*10;
     } while ($numero > 0);
+    do{
+        $numero2 = floor($numero2/10);
+        $id_apostado_long = $id_apostado_long*10;
+    }while($numero2 > 0);
 
     $cod_apuesta = ($id_user * 100 * $id_apuesta_long) + $id_apuesta; //Con esto, deberiamos tener siempre un código único, por ejemplo, usuario 154 y cod apuesta 3.
-    // cod apuesta = (154 * 100 * 10)+3, por lo que tendriamos 15400003
+    $cod_apuesta = ($cod_apuesta * 100 * $id_apostado_long)+ $id_apostado;
+    // cod apuesta = (154 * 100 * 10)+3, por lo que tendriamos 154003
    
 }
 
