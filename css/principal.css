@@ -16,27 +16,29 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-/*--------------------
-Leaderboard
---------------------*/
-.leaderboard {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  background: linear-gradient(to bottom, #2c1a15, #130b09);
-  border-radius: 10px;
-  box-shadow: 0 7px 30px rgb(0 0 0 / 64%)
 
+.navegacion .elemento{
+    display: inline-block;
+    padding: 0px 13px 5px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: #f0cec2;
+    text-align: center;
 }
 
- .avatar {
-    width: 200px;
-    position: absolute;
-    top: -67px;
-    left: 200px;
-  }
+.navegacion .elemento-perfil{
+  float: right;
+}
+
+.avatar {
+    width: 100px;
+    border-radius: 0%;
+}
+
+img {
+  border-radius: 50%;
+}
 
 .leaderboard h1 {
   font-size: 27px;
