@@ -15,7 +15,7 @@ body hr{
 
 .CajaBusqueda{
     background: linear-gradient(to bottom, #1a0e0a, #73112b);
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0 7px 30px rgb(0 0 0 / 64%)
 }
 
@@ -150,7 +150,7 @@ body hr{
 
 .CajaChat{
     width: 600px;
-    height: 400px;
+    height: 445px;
     background: linear-gradient(to bottom, #1a0e0a, #630f28);
     color: #f3d6cd;
     top: 53.5%;
@@ -160,6 +160,7 @@ body hr{
     box-sizing: border-box;
     padding: 60px 30px 20px;
     box-shadow: 0 7px 30px rgb(0 0 0 / 64%);
+    border-radius: 5px;
 }
 
 .CajaChat .avatar {
@@ -195,6 +196,16 @@ body hr{
     padding: 6.5px;
 }
 
+.CajaChat input[type="submit"]:hover {
+    border: none;
+    width: 14%;
+    background: #EC8464;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 6.5px;
+}
+
 .CajaChat input[type="text"] {
     border: 1px solid rgba(255, 255, 255, 0.274);
     background: transparent;
@@ -203,13 +214,14 @@ body hr{
     height: 40px;
     color: #f8d8cd;
     font-size: 15px;
+    padding-left: 5px;
 }
 
 .CajaChat .Conversacion{
     border:1px solid #f3f3f37e;
     width: 540px;
     height: 160px;
-    padding:10px;
+    padding: 10px;
     overflow: auto;
 
 }
@@ -235,4 +247,28 @@ body hr{
     color: #f8d8cd;
     font-size: 15px;
     overflow: visible;
+}
+
+.CajaChat .boton {
+    text-decoration: none;
+    display: table;
+    margin: 15px auto;
+    padding: 5px;
+    font-size: 21px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #227dfa;
+    border-radius: 6px;
+}
+
+.CajaChat .boton:hover {
+    text-decoration: none;
+    display: table;
+    margin: 15px auto;
+    padding: 5px;
+    font-size: 21px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #7cadf3;
+    border-radius: 6px;
 }

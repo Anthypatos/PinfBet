@@ -86,6 +86,16 @@
      padding-bottom: 20px;
 
 }
+
+.slider-contant h4 {
+    font-size: 20px;
+    font-weight: 500;
+    text-shadow: none;
+    color: #fff;
+    text-align: left;
+    letter-spacing: -1px;
+}
+
  #carousel-example-generic .carousel-caption {
      right: 10%;
      left: 10%;
@@ -183,7 +193,7 @@
      color: #fff;
      font-size: 13px;
      background: #7a2822;
-     border-radius: 50px;
+     border-radius: 10px;
      float: left;
 }
  .login li a:hover, .login li a:focus {

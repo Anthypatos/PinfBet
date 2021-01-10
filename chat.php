@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/social2.css">
     <script src = "js/jquery-3.5.1.js"></script>
 
     <script type = "text/javascript">
@@ -98,25 +98,28 @@
     <!-- Barra de navegación -->
     <?php include "barra_navegacion.php"; ?>
 
-    <div class="CajaChat"> 
-        <a href="index.php"><img src="images/logo.png" class="avatar" alt="Imagen Avatar"></a>             
-        <h1>Chat</h1>
-<?php
-        $username_otro = mysqli_fetch_array(mysqli_query($link, "SELECT username FROM users WHERE id = '$user_otro'"))['username'];
-        echo "Chateando con <i>" . $username_otro . "</i>";
-?>
-        <!-- Contenedor de conversación -->
-        <div class = "Conversacion" id = "caja_chat"></div>
-        <br>
-        <h2>Escribe a continuación</h2>
-        <!-- Formulario de envío -->
-        <form id = "formulario" method = "post" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . "?id=" . $user_otro; ?>">
-            <input type = "text" id = "mensaje" name = "mensaje" placeholder = "Escribe tu mensaje..." value = "">
-            <input type = "hidden" id = "user_actual" name = "user_actual" value = "<?php echo $user_actual; ?>">
-            <input type = "hidden" id = "user_otro" name = "user_otro" value = "<?php echo $user_otro; ?>">
-            <input type = "submit" value = "Enviar">
-        </form>
-    </div>
+        <div class="CajaChat"> 
+            <a href="index.php"><img src="images/logo.png" class="avatar" alt="Imagen Avatar"></a>             
+            <h1>Chat</h1>
+    <?php
+            $username_otro = mysqli_fetch_array(mysqli_query($link, "SELECT username FROM users WHERE id = '$user_otro'"))['username'];
+            echo "Chateando con <i>" . $username_otro . "</i>";
+    ?>
+            <!-- Contenedor de conversación -->
+            <div class = "Conversacion" id = "caja_chat"></div>
+            <br>
+            <h2>Escribe a continuación</h2>
+            <!-- Formulario de envío -->
+            <form id = "formulario" method = "post" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . "?id=" . $user_otro; ?>">
+                <input type = "text" id = "mensaje" name = "mensaje" placeholder = "Escribe tu mensaje..." value = "">
+                <input type = "hidden" id = "user_actual" name = "user_actual" value = "<?php echo $user_actual; ?>">
+                <input type = "hidden" id = "user_otro" name = "user_otro" value = "<?php echo $user_otro; ?>">
+                <input type = "submit" value = "Enviar">
+                <div class="form-group">
+                    <p><a href="main.php" class="boton">Volver</a></p>
+                </div>
+            </form>
+        </div>
 </body>
 </html>
 
