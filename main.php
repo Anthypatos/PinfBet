@@ -30,7 +30,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/all.css" > <!-- Iconos de FontAwesome -->
   <link rel="stylesheet" href="css/principal.css">
-  <link rel="stylesheet" href="css/BarraNavegacion.css">
+
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
@@ -59,51 +59,46 @@
       </div>
       <br>
     
-  <!-- Lista de amigos -->
-  <?php if ($privacidad_user && !($amigos) && $id_user != $_SESSION['id'])
-        {
-  ?>
-          </div>
-          <div style = "text-align:center; margin-top:150px;"><i class="fas fa-user-lock"></i> Este perfil es privado</div>
-  <?php
-        }
-        else
-        {
-          include "lista_amigos.php";
-  ?>
+    <!-- Lista de amigos -->
+    <?php if ($privacidad_user && !($amigos) && $id_user != $_SESSION['id'])
+          {
+    ?>
+            </div>
+            <div style = "text-align:center; margin-top:150px;"><i class="fas fa-user-lock"></i> Este perfil es privado</div>
+    <?php
+          }
+          else
+          {
+            include "lista_amigos.php";
+    ?>
     
 <!-- End Left Column -->
-</div>
+  </div>
     
-          <div class="w3-col m9">
+    <div class="w3-col m9">
 
-            <div class="w3-row-padding">
-              <div class="w3-col m12">
-                <div class="w3-card w3-round w3-white">
-                  <div class="w3-container w3-padding">
-                    <h4>Últimas Apuestas</h4>
-                    <?php require __DIR__ . '/actualizarapuesta.php'; ?>
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h4>Últimas Apuestas</h4>
+              <?php require __DIR__ . '/actualizarapuesta.php'; ?>
                     
-                  </div>
-                </div>
-              </div>
             </div>
-            
-            <!-- Muros de perfil -->
-            <hr>
-            <?php include "muros.php"; ?>
-
           </div>
-    
-          <!-- End Middle Column -->
-  
-          
-    
-    <!-- Right Column -->
-   
-  
-<!-- End Page Container -->
+        </div>
+      </div>
+            
+      <!-- Muros de perfil -->
+      <hr>
+      <?php include "muros.php"; ?>
 
+    </div>
+    
+      <!-- End Middle Column -->
+    <!-- Right Column -->
+<!-- End Page Container -->
+</div>
 
 <!-- Footer -->
 

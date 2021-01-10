@@ -23,11 +23,14 @@
 
 <!DOCTYPE html>
 <html lang="es">
+<head>
+  <link rel="stylesheet" href="css/BarraNavegacion.css">
+</head>
 <body>
   <!-- Navbar -->
   <nav class="navegacion">
     <ol>
-      <li class="navegacion-item elemento"><img src="images/logo.png" class="avatar" alt="Imagen Avatar"></li>
+      <li class="navegacion-item elemento"><a href="main.php" style="text-decoration:none;"><img src="images/logo.png" class="avatar" alt="Imagen Avatar"></li>
       <li class="navegacion-item"><a href="apuesta.php" title="Apostar"><i class="fas fa-coins w3-margin-right"></i>Apostar</a></li>
       <li class="navegacion-item"><a href="rankingmain.php" title="Ranking"><i class="fas fa-list-ol w3-margin-right"></i>Ranking</a></li>
       <li class="navegacion-item"><a href="social.php" title="Social"><i class="fas fa-grin-wink w3-margin-right"></i>Social</a></li>
@@ -69,7 +72,7 @@
       
       <li class="navegacion-item elemento-perfil"><a href="perfil.php" title="Mi cuenta">
         <?php echo $_SESSION["username"]?>
-        <img src="<?php echo 'imagenesperfil/' . $_SESSION["profile_image"] ?>" class="w3-circle w3-margin-left" style="height:23px;width:23px" alt="Mi avatar"></a>
+        <img src="<?php echo 'imagenesperfil/' . $_SESSION["profile_image"] ?>" class="w3-circle w3-margin-left" style="width:23px" alt="Mi avatar"></a>
       </li>
     </ol>
   </nav>

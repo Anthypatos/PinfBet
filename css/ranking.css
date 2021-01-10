@@ -21,7 +21,7 @@ Leaderboard
 --------------------*/
 .leaderboard {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 600px;
@@ -41,7 +41,7 @@ Leaderboard
 .leaderboard h1 {
   font-size: 27px;
   color: #e1e1e1;
-  padding: 12px 13px 18px;
+  padding: 6px 13px 6px;
   text-align: center;
 }
 .leaderboard h1 .moneda {
