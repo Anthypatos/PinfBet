@@ -29,18 +29,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/all.css" > <!-- Iconos de FontAwesome -->
+  <link rel="stylesheet" href="css/principal.css">
+  <link rel="stylesheet" href="css/BarraNavegacion.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-  <style>
-    html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
-    img 
-    {
-      border-radius: 50%;
-    }
-  </style>
 </head>
-<body class="w3-theme-l5">
+<body>
 
 <?php include "barra_navegacion.php"; ?>
 
@@ -58,7 +53,7 @@
          <p class="w3-center"><img src="<?php echo 'imagenesperfil/' . $profile_image_user ?>" width="90" height="90" alt=""></p>
          <hr>
          <p><i class="fas fa-user-circle fa-fw w3-margin-right w3-text-theme"></i><?php echo $name_user;?></p>
-         <p><i class="fas fa-money-bill fa-fw w3-margin-right w3-text-theme"></i><?php echo $pinfcoins_user;?> PinfCoins</p>
+         <p><i class="fas fa-coins fa-fw w3-margin-right w3-text-theme"></i><?php echo $pinfcoins_user;?> PinfCoins</p>
          <p><i class="fas fa-comment-dots fa-fw w3-margin-right w3-text-theme"></i><?php echo $bio_user;?></p>
         </div>
       </div>

@@ -63,13 +63,11 @@
                      <div class="col-md-6">
                         <div class="right_top_section">
                            <!-- button section -->
-<?php
+                           <?php
                            // Si el usuario está logueado se le da la bienvenida y cambian los iconos
                            if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
                            {
-                              $nombre = $_SESSION['username'];
-                              echo "Bienvenido, $nombre";
-?>
+                           ?>
                               <ul class="login">
                                  <li class="login-modal">
                                     <a href="main.php" class="login"><i class="fa fa-user"></i>Menú principal</a>
@@ -80,11 +78,11 @@
                                     </div>
                                  </li>
                               </ul>
-<?php
+                           <?php
                            }
                            else
                            {
-?>
+                           ?>
                               <ul class="login">
                                  <li class="login-modal">
                                     <a href="login.php" class="login"><i class="fas fa-sign-in-alt"></i>Iniciar sesión</a>
@@ -95,10 +93,9 @@
                                     </div>
                                  </li>
                               </ul>
-<?php
+                           <?php
                            }
-?>
-
+                           ?>
                            <!-- end button section -->
                         </div>
                      </div>
@@ -119,7 +116,6 @@
                                           <span class="icon-bar"></span>
                                           <span class="icon-bar"></span>
                                           </button>
-                                          <a class="navbar-brand" href="#"> ACCEDER</a>
                                        </div>
                                     </div>
                                     <div class="collapse navbar-collapse js-navbar-collapse">
@@ -148,7 +144,15 @@
                         <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"></div>
                         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                            <div class="slider-contant" data-animation="animated fadeInRight">
+                              <?php
+                              // Si el usuario está logueado se le da la bienvenida y cambian los iconos
+                              if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){?>
+                                 <h3>Bienvenido,<br><span style="color: #ec8464"><?php $nombre = $_SESSION['username']; echo $nombre;?></span></h3>
+                              <?php 
+                              } else {
+                              ?>
                               <h3>Donde <span style="color: #ec8464;">apuestan</span><br>los que <span style="color: #ec8464">aprueban</span></h3>
+                              <?php } ?>
                               <button class="btn btn-primary btn-lg"><a href="main.php">Apuesta ya</a></button>
                            </div>
                         </div>
@@ -179,17 +183,11 @@
                   <div class="full">
                      <div class="footer-widget">
                         <div class="footer-logo">
-                           <a href="#"><img src="images/footer-logo.png" alt="#" /></a>
+                           <img src="images/footer-logo.png" alt="#" />
                         </div>
                         <p>Juega con responsabilidad.<br>+18<br><br>
-                        <i class="fas fa-quote-left fa-pull-left fa-2x"></i>
-                        "La suerte, mala o buena, siempre está<br> con nosotros. Pero tiene una manera de favorecer a los inteligentes y darle la espalda<br>a la estupidez."</p>
-                        <ul class="social-icons style-4 pull-left">
-                           <!--<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                           <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                           <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                           <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a></li>-->
-                        </ul>
+                        <i class="fas fa-quote-left fa-pull-left"></i>
+                        La suerte, mala o buena, siempre está<br> con nosotros. Pero tiene una manera de favorecer a los inteligentes y darle la espalda a la estupidez.</p>
                      </div>
                   </div>
                </div>
@@ -199,24 +197,23 @@
                         <h3>Mapa del sitio</h3>
                         <ul class="footer-menu">
                            <li><a href="#top">Inicio</a></li>
-<?php
+                           <?php
                            if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
                            {
                               
-?>
+                           ?> 
                               <li><a href="main.php" target="_self">Menú principal</a></li>
-<?php
+                           <?php
                            }
                            else
                            {
-?>
+                           ?> 
                               <li><a href="login.php" target="_self">Iniciar sesión</a></li>
                               <li><a href="register.php" target="_self">Registrarse</a></li>
-<?php
+                           <?php
                            }
-?>
+                           ?>
                            <li><a href="terminosYcondiciones-5&Bet.pdf" target="_blank">Términos y condiciones</a></li>
-                           <li>Acerca de</li>
                         </ul>
                      </div>
                   </div>
