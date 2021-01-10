@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(../images/FondoLogin.jpg) no-repeat center top;
+    background-size: cover;
+    font-family: sans-serif;
+    height: 100vh;
+}
+
+body hr{
+    border-top:0px;
+    margin: 30px 0;
+}
+
+
+.CajaBusqueda{
+    background: linear-gradient(to bottom, #1a0e0a, #73112b);
+    border-radius: 10px;
+    box-shadow: 0 7px 30px rgb(0 0 0 / 64%)
+}
+
+.CajaBusqueda h1{
+    margin: 10px;
+    text-align: center;
+    font-size: 25px;
+    color: #f8d8cd;
+}
+
+.CajaBusqueda h2{
+    margin: 10px;
+    text-align: center;
+    font-size: 18px;
+    color: #f8d8cd;
+}
+
+
+.CajaBusqueda p{
+    font-size: 15px;
+    text-align: center;
+    color: #d3b7ad;
+    line-height: 28px;
+}
+
+.CajaBusqueda th{
+    font-size: 14px;
+    text-align: center;
+    color: #d3b7ad;
+    line-height: 28px;
+}
+
+.CajaBusqueda td{
+    font-size: 15px;
+    text-align: center;
+    color: #d3b7ad;
+    padding: 5px;
+    line-height: 28px;
+}
+
+.CajaBusqueda td .perfil{
+    font-size: 18px;
+    text-align: center;
+    font-weight: 700;
+    color: #d3b7ad;
+    line-height: 28px;
+}
+
+.CajaBusqueda input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.CajaBusqueda img{
+    border-radius: 25%;
+}
+
+.tabla{
+    --bs-table-bg: transparent;
+    --bs-table-striped-color: #212529;
+    --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+    --bs-table-active-color: #212529;
+    --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+    --bs-table-hover-color: #212529;
+    --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    /* vertical-align: top; */
+    border-color: #dee2e646;
+}
+
+.CajaBusqueda .table-bordered>:not(caption)>*>* {
+    border-width: 0 1px;
+}
+
+
+
+.CajaBusqueda input[type="search"] {
+    border: none;
+    border-bottom: 1px solid  #f8d8cd;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #f8d8cd;
+    font-size: 15px;
+}
+
+.CajaBusqueda input[type="submit"] {
+    border: none;
+    outline: none;
+    margin: 0 auto;
+    margin-bottom: 12px;
+    display: block;
+    width: 50%;
+    background: #94163b;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.CajaBusqueda tr input[type="submit"] {
+    border: none;
+    display: block;
+    margin: 2px auto;
+    outline: none;
+    width: 80%;
+    color: #fff;
+    background: #b90f42;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.CajaBusqueda input[type="submit"]:hover {
+    cursor: pointer;
+    background: #EC8464;
+  }
