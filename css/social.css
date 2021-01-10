@@ -129,7 +129,110 @@ body hr{
     border-radius: 4px;
 }
 
+.CajaBusqueda ::placeholder {
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    padding-left: 2px;
+    height: 50px;
+    width: 100%;
+    color: #f8d8cd;
+    font-size: 15px;
+    overflow: visible;
+}
+
 .CajaBusqueda input[type="submit"]:hover {
     cursor: pointer;
     background: #EC8464;
+}
+
+/********* PARTE DEL CHAT *********/
+
+.CajaChat{
+    width: 600px;
+    height: 400px;
+    background: linear-gradient(to bottom, #1a0e0a, #630f28);
+    color: #f3d6cd;
+    top: 53.5%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 60px 30px 20px;
+    box-shadow: 0 7px 30px rgb(0 0 0 / 64%);
+}
+
+.CajaChat .avatar {
+    width: 200px;
+    position: absolute;
+    top: -60px;
+    left: 200px;
   }
+
+.CajaChat h1{
+    text-align: center;
+    font-size: 35px;
+    color: #f8d8cd;
+}
+
+.CajaChat i{
+    color: #ff7e52;
+}
+
+.CajaChat h2{
+    font-size: 13px;
+    color: #f8d8cd;
+    margin-top: -2px;
+}
+
+.CajaChat input[type="submit"] {
+    border: none;
+    width: 14%;
+    background: #94163b;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 6.5px;
+}
+
+.CajaChat input[type="text"] {
+    border: 1px solid rgba(255, 255, 255, 0.274);
+    background: transparent;
+    outline: none;
+    width: 85%;
+    height: 40px;
+    color: #f8d8cd;
+    font-size: 15px;
+}
+
+.CajaChat .Conversacion{
+    border:1px solid #f3f3f37e;
+    width: 540px;
+    height: 160px;
+    padding:10px;
+    overflow: auto;
+
+}
+
+.CajaChat textarea[type="text"] {
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 55px;
+    width: 100%;
+    color: #f8d8cd;
+    font-size: 15px;
+    overflow: visible;
+}
+
+.CajaChat ::placeholder {
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    padding-left: 2px;
+    height: 50px;
+    width: 100%;
+    color: #f8d8cd;
+    font-size: 15px;
+    overflow: visible;
+}

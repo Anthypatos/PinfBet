@@ -75,25 +75,43 @@
 
             });
         })
+
+        //Load the file containing the chat log
+	    function loadLog(){		
+		var oldscrollHeight = $("#caja_chat").attr("scrollHeight") - 20; //Scroll height before the request
+		$.ajax({
+			success: function(cargar_log){		
+				$("#caja_chat").html(datos_rec); //Insert chat log into the #chatbox div	
+				
+				//Auto-scroll			
+				var newscrollHeight = $("#caja_chat").attr("scrollHeight") - 20; //Scroll height after the request
+				if(newscrollHeight > oldscrollHeight){
+					$("#caja_chat").animate({ scrollTop: newscrollHeight }, 'normal'); //Autoscroll to bottom of div
+				}				
+		  	},
+		});
+	}
     </script>
 </head>
 <body>
                 
     <!-- Barra de navegación -->
     <?php include "barra_navegacion.php"; ?>
-    <div class="w3-container w3-content" style="margin-top:80px"> 
-        <h1 style = "margin-top:75px;">Chat</h1>
+
+    <div class="CajaChat"> 
+        <a href="index.php"><img src="images/logo.png" class="avatar" alt="Imagen Avatar"></a>             
+        <h1>Chat</h1>
 <?php
         $username_otro = mysqli_fetch_array(mysqli_query($link, "SELECT username FROM users WHERE id = '$user_otro'"))['username'];
         echo "Chateando con <i>" . $username_otro . "</i>";
 ?>
         <!-- Contenedor de conversación -->
-        <div class = "container" id = "caja_chat" style = "border:1px solid black; padding:20px; margin-top:10px;"></div>
+        <div class = "Conversacion" id = "caja_chat"></div>
         <br>
-
+        <h2>Escribe a continuación</h2>
         <!-- Formulario de envío -->
         <form id = "formulario" method = "post" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . "?id=" . $user_otro; ?>">
-            <input type = "text" id = "mensaje" name = "mensaje" placeholder = "Escribe un mensaje..." value = "">
+            <input type = "text" id = "mensaje" name = "mensaje" placeholder = "Escribe tu mensaje..." value = "">
             <input type = "hidden" id = "user_actual" name = "user_actual" value = "<?php echo $user_actual; ?>">
             <input type = "hidden" id = "user_otro" name = "user_otro" value = "<?php echo $user_otro; ?>">
             <input type = "submit" value = "Enviar">
