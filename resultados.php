@@ -52,7 +52,7 @@ if(isset($_POST['resultado']))
         mysqli_stmt_bind_param($stmt, "iiii", $param_codapuesta,$param_iduser, $param_apuesta, $param_resultado);
         
         // Ponemos los parametros con sus respectivos valores.
-        $param_iduser = $id_user;
+        $param_iduser = $_POST['objetivo'];
         $param_apuesta = $id_apuesta;    
         $param_resultado = $resultado;
         $param_codapuesta = $cod_apuesta;
