@@ -3,10 +3,11 @@
 session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
+
 include_once "config.php";
 
 $query = mysqli_query($link,"SELECT id_apuesta,nombre FROM apuestasdisponibles");
@@ -52,7 +53,7 @@ if(isset($_POST['resultado']))
         mysqli_stmt_bind_param($stmt, "iiii", $param_codapuesta,$param_iduser, $param_apuesta, $param_resultado);
         
         // Ponemos los parametros con sus respectivos valores.
-        $param_iduser = $id_user;
+        $param_iduser = $_POST['objetivo'];
         $param_apuesta = $id_apuesta;    
         $param_resultado = $resultado;
         $param_codapuesta = $cod_apuesta;
