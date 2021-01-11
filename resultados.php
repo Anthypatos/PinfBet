@@ -3,10 +3,11 @@
 session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false && $_SESSION["admin"] != 1){
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
+if()
 include_once "config.php";
 
 $query = mysqli_query($link,"SELECT id_apuesta,nombre FROM apuestasdisponibles");
