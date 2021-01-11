@@ -71,7 +71,7 @@ if(empty($cantidad_err)){
     
     // Preparamos la consulta que vamos a introducir a la base de datos.
     $sql = "INSERT INTO apuestas (id_user, id_apuesta, id_apostado, cod_apuesta, cantidad_apostada, resultado_user) VALUES (?,?,?,?,?,?)";
-     
+
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
         mysqli_stmt_bind_param($stmt, "iiiiii",$param_iduser, $param_apuesta, $param_apostado, $param_codapuesta, $param_cantidad, $param_resultado);
@@ -120,34 +120,46 @@ mysqli_close($link);
 <head>
     <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />      
     <meta charset="UTF-8">
-    <title>Zona de Apuestas</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
+    <title>5&Bet - Zona de Apuestas</title>
+    <link rel="stylesheet" href="css/principal.css">
+    <link rel="stylesheet" href="css/all.css" > <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="css/social.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="css/social2.css">
+
 </head>
 <body>
-    <div class="wrapper">
-        <h2>Apuesta</h2>
-        <p>Rellena estos datos para poder apostar.</p>
+
+    <?php include "barra_navegacion.php"; ?>
+
+<div class="container" style="max-width:1400px;margin-top:100px">
+    <div class="Apuesta">
+        <a href="main.php"><img src="images/logo.png" class="avatar" alt="Imagen Avatar"></a>             
+        <h1>Apuesta</h1>
+        <h2>Rellena estos datos para poder apostar.</h2>
         <form action="apuesta.php" method="post">
             <div class="form-group"> 
-            <label>Asignatura</label>
-                <select name="id_apuesta">
-                <?php     
-                    while($datos = mysqli_fetch_array($query))
-                    {
-                ?>
-                    <option value="<?php echo $datos['id_apuesta']?>"> <?php echo $datos['nombre']?> </option>
-                <?php    
-                    }
-                ?>
-                </select>
+                <h3>Asignatura</h3>
+                <div class="content-select">
+                    <select class="select" name="id_apuesta" required>
+                        <option value="">Seleccione una Asignatura</option>
+                        <?php     
+                            while($datos = mysqli_fetch_array($query))
+                            {
+                        ?>
+                            <option value="<?php echo $datos['id_apuesta']?>"> <?php echo $datos['nombre']?> </option>
+                        <?php    
+                            }
+                        ?>
+                    </select>
+                </div>
             </div>
-
+            <i></i>
             <div class="form-group">
-                <label>Objetivo de la apuesta</label>
+                <h3>Objetivo de la apuesta</h3>
+                <div class="content-select">
                     <select id="objetivo" name="objetivo" required>
                         <option value = "">---</option>
                         <option value = "<?php echo $_SESSION['id']?>">Tú (apuesta personal)</option>
@@ -162,26 +174,32 @@ mysqli_close($link);
                             }
                         ?>
                     </select>
+                </div>
             </div>
-           
-            <div class="form-group <?php echo (!empty($cantidad_err)) ? 'has-error' : ''; ?>">
-                <label>Cantidad (PinfCoins)</label>
-                <input type="text" name="cantidad" class="form-control" value="<?php echo $cantidad; ?>">
-                <span class="help-block"><?php echo $cantidad_err; ?></span>
-                <?php echo "Tus pinfcoins: $pinfcoins"; ?>
+            <i></i>
+            <div class="two-columns">
+                <div class="form-group <?php echo (!empty($cantidad_err)) ? 'has-error' : ''; ?>">       
+                        <h3>Cantidad (PinfCoins)</h3>
+                        <input type="text" name="cantidad" class="form-control" placeholder= "Máx. 50 PinfCoins" value="<?php echo $cantidad; ?>"> 
+                        <h4><span class="help-block"><?php echo $cantidad_err; ?></span></h4>
+                </div>
+                <div class="form-group <?php echo (!empty($cantidad_err)) ? 'has-error' : ''; ?>">    
+                    <h3>Resultado</h3>
+                    <div class="content-select">
+                        <select id="resultado" name="resultado">
+                            <option value=1>Aprobado</option>
+                            <option value=-1>Suspenso</option>
+                        </select>
+                        <h4><?php echo "Tus pinfcoins: $pinfcoins"; ?></h4>
+                    </div>
+                </div>
             </div>
-            <div class="form-group <?php echo (!empty($cantidad_err)) ? 'has-error' : ''; ?>">
-            <label>Resultado</label>
-            <select id="resultado" name="resultado">
-                <option value=1>Aprobado</option>
-                <option value=-1>Suspenso</option>
-            </select>
-            </div>  
-
+            <div style="text-align:center;">
                 <input type="submit" class="btn btn-primary" value="Apostar">
-                <a href="main.php" class="btn btn-primary">Cancelar</a>
-            
+                <a href="main.php" id="boton" class="btn btn-primary">Cancelar</a>   
+            </div>
         </form>
-    </div>    
+    </div> 
+</div>   
 </body>
 </html>
