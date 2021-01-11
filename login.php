@@ -102,7 +102,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
    <!-- Mobile Metas -->
    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
    <!-- Site Metas -->
-   <title>Iniciar Sesion</title>
+   <title>5&Bet - Iniciar Sesion</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
@@ -130,7 +130,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <body>
         <div class = "register-box">
             <a href="index.php"><img src="images/logo.png" class="avatar" alt="Imagen Avatar"></a>             
-            <h1>5&Bet - Iniciar Sesión</h1>          
+            <h1>Iniciar Sesión</h1>          
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                     <label for="username">Usuario</label>

@@ -152,6 +152,7 @@
                               } else {
                               ?>
                               <h3>Donde <span style="color: #ec8464;">apuestan</span><br>los que <span style="color: #ec8464">aprueban</span></h3>
+                              <h4>(Y los que no, se <span style="color: #ec8464;">divierten</span>)</h4>
                               <?php } ?>
                               <button class="btn btn-primary btn-lg"><a href="main.php">Apuesta ya</a></button>
                            </div>
