@@ -7,7 +7,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
-if()
+
 include_once "config.php";
 
 $query = mysqli_query($link,"SELECT id_apuesta,nombre FROM apuestasdisponibles");
