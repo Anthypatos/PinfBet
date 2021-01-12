@@ -16,6 +16,7 @@
 
         mysqli_query($link, "UPDATE users SET privacidad = '$privacidad' WHERE id = $id");
     }
+    include_once "actualizardatos.php"; 
 ?>
  
 <!DOCTYPE html>
