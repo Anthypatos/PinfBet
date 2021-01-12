@@ -9,6 +9,7 @@
   }
 
   include_once "actualizardatos.php"; 
+  include_once 'actualizarapuesta.php';
 
   $user_actual = $_SESSION['id']; // Usuario cliente
 
