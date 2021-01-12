@@ -19,8 +19,6 @@ while($resultados = mysqli_fetch_array($qQuery2))
 {
 	while($mostrar = mysqli_fetch_array($qQuery))
 	{
-		
-		
 		if($resultados['id_user'] == $mostrar['id_apostado'] && $resultados['id_apuesta'] == $mostrar['id_apuesta'] && $mostrar['resultado_final'] == 0) //Coincide el resultado guardado con alguna apuesta realizada
 		{	
 
