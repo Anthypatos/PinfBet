@@ -1,27 +1,43 @@
 <?php
 include_once 'config.php';
-include_once 'actualizardatos.php';
 
 $user_actual = $_SESSION['id'];
 $id_apuesta = $cantidad = $resultado = $cod_apuesta = "";
 $cantidad_err = "";
 $param_resultadofinal = $param_cantidadresultado= 0;
+$pinfcoins_actualizado =0;
 
-$qRes = "SELECT * FROM apuestas WHERE id_user = $id_user";
+$qRes = "SELECT * FROM apuestas";
 $qQuery = mysqli_query($link,$qRes);    
 
 $qRes2 = "SELECT * FROM resultados";
 $qQuery2 = mysqli_query($link,$qRes2);   
-$veces = 0;
+
 //Vamos a actualizar toda la informacion de la apuesta incluida la ganancia/perdida de pinfcoins
 
+
+$i=0;
+$j=0;
 while($resultados = mysqli_fetch_array($qQuery2))
 {
-	while($mostrar = mysqli_fetch_array($qQuery))
-	{
+	$resultadoss[]=$resultados;
+	$i++;
+}
+while($mostrar = mysqli_fetch_array($qQuery))
+{
+	$mostrars[]=$mostrar;
+	$j++;
+}
+
+for($cont1 = 0; $cont1 < $i; $cont1++)
+{                                                                                   
+	$resultados = $resultadoss[$cont1];
+	for($cont2 = 0; $cont2 < $j ; $cont2++)
+	{	
+		$mostrar = $mostrars[$cont2];	
+		//echo $mostrar['resultado_final'];
 		if($resultados['id_user'] == $mostrar['id_apostado'] && $resultados['id_apuesta'] == $mostrar['id_apuesta'] && $mostrar['resultado_final'] == 0) //Coincide el resultado guardado con alguna apuesta realizada
 		{	
-
 			$id_apuesta_actual = $resultados['id_apuesta'];
 			$qRes3 = "SELECT * FROM apuestasdisponibles WHERE id_apuesta = $id_apuesta_actual";
 			$qQuery3 = mysqli_query($link,$qRes3);
@@ -46,25 +62,32 @@ while($resultados = mysqli_fetch_array($qQuery2))
 					$param_cantidadresultado = -$mostrar['cantidad_apostada'];
 				}
 				if($mostrar['resultado_user'] == -1) //POndria else pero mientras sea pendiente puede ser 0 //Aposto a que suspendia
-					
+				{
 					$param_resultadofinal = 1;
 					$param_cantidadresultado =  $mostrar['cantidad_apostada'] * $apuestasdisponibles['cuota_suspenso'];
+
 				}
+					
+			}
+
+				$pinfcoins_actualizado = $pinfcoins_actualizado + $param_cantidadresultado;
 				$resultado_user = $resultados['id_user'];
 				$sql = "UPDATE apuestas SET resultado_final = ?, cantidad_resultado = ? WHERE id_apuesta = $id_apuesta_actual AND id_user = $user_actual AND id_apostado = $resultado_user";
 				$stmt = mysqli_prepare($link, $sql);
 				mysqli_stmt_bind_param($stmt, "ii",$param_resultadofinal ,$param_cantidadresultado);
 				mysqli_stmt_execute($stmt);
-				if($param_cantidadresultado>0){
-				$pinfcoins_actualizado = $_SESSION['pinfcoins'] + $param_cantidadresultado;
-				$sql2 = "UPDATE users SET pinfcoins = $pinfcoins_actualizado WHERE id = $user_actual";
-				mysqli_query($link,$sql2);
-				}
-				
-			}
+			
 		}
+			
 	}
+	
+}	
 
+if($param_cantidadresultado>0){
+$pinfcoins_actualizado = $_SESSION['pinfcoins'] + $pinfcoins_actualizado;
+$sql2 = "UPDATE users SET pinfcoins = $pinfcoins_actualizado WHERE id = $user_actual";
+mysqli_query($link,$sql2);
+}
 	
 
 ?>
