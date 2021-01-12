@@ -6,42 +6,31 @@
 <!DOCTYPE html>
 <html lang="es">
    <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />
-   <!-- Basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <!-- Mobile Metas -->
    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-   <!-- Site Metas -->
    <title>5&Bet - Casa de Apuestas</title>
    <meta name="keywords" content="Apuestas">
    <meta name="description" content="Casa de apuestas de 5&Bet">
    <meta name="author" content="5&Bet">
    
       <link rel="stylesheet" href="css/master.css?n=1">
-      <!-- Site Icons -->
       <link rel="stylesheet" href="css/all.css" > <!-- Iconos de FontAwesome -->
       <link rel="shortcut icon" href="" type="image/x-icon" />
       <link rel="apple-touch-icon" href="">
-      <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="css/bootstrap.min.css">
-      <!-- Site CSS -->
       <link rel="stylesheet" href="style.css">
-      <!-- Colors CSS -->
-      <link rel="stylesheet" href="css/colors.css">
-      <!-- ALL VERSION CSS -->	
+      <link rel="stylesheet" href="css/colors.css">	
       <link rel="stylesheet" href="css/versions.css">
-      <!-- Responsive CSS -->
       <link rel="stylesheet" href="css/responsive.css">
-      <!-- Custom CSS -->
       <link rel="stylesheet" href="css/custom.css">
-      <!-- font family -->
       <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-      <!-- end font family -->
       <link rel="stylesheet" href="css/3dslider.css" />
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
       <script src="js/3dslider.js"></script>
    </head>
+   
    <body class="CasaDeApuestas" data-spy="scroll" data-target=".header">
       <!-- LOADER -->
       <div id="preloader">

@@ -24,28 +24,17 @@
         <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />  
         <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- Mobile Metas -->
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <!-- Site Metas -->
         <title>5&Bet - Perfil</title>
-        <!-- Site Icons -->
         <link rel="shortcut icon" href="" type="image/x-icon" />
         <link rel="apple-touch-icon" href="">
-        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <!-- Site CSS -->
         <link rel="stylesheet" href="style.css">
-        <!--Login CSS -->
         <link rel="stylesheet" href="css/registro.css">
-        <!-- Colors CSS -->
-        <link rel="stylesheet" href="css/colors.css">
-        <!-- ALL VERSION CSS -->	
+        <link rel="stylesheet" href="css/colors.css">	
         <link rel="stylesheet" href="css/versions.css">
-        <!-- Responsive CSS -->
         <link rel="stylesheet" href="css/responsive.css">
-        <!-- Custom CSS -->
         <link rel="stylesheet" href="css/custom.css">
-        <!-- font family -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
    </head>
@@ -69,11 +58,13 @@
                     <p><i class="fas fa-comment"></i><span style="color: #337ab7; font-size: 16px; font-weight: 600"> Bio: </span> "<?php echo $_SESSION["bio"];?>"</p>
                 
             <p>
-                <a href = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']) . "?p=" . (($_SESSION['privacidad']) ? "0" : "1"); ?>" class = "btn2 btn-warning">Cambiar privacidad</a>
-                <a href="reset-password.php" class="btn2 btn-warning">Cambiar contraseña</a>
-                <a href="form.php" class="btn2 btn-warning">Editar perfil</a>
-                <a href="logout.php" class="btn2 btn-danger">Cerrar sesión</a>
-                <a href="main.php" class="btn2 btn-primary">Volver</a>
+                <div class="Links">
+                    <a href = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']) . "?p=" . (($_SESSION['privacidad']) ? "0" : "1"); ?>" class = "btn2 btn-warning">Cambiar privacidad</a>
+                    <a href="reset-password.php" class="btn2 btn-warning">Cambiar contraseña</a>
+                    <a href="form.php" class="btn2 btn-warning">Editar perfil</a>
+                    <a href="logout.php" class="btn2 btn-danger">Cerrar sesión</a>
+                    <a href="main.php" class="btn2 btn-primary">Volver</a>
+                </div>
             </p>
         </div>
     </body>

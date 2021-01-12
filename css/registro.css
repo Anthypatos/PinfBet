@@ -18,7 +18,7 @@ body {
     box-sizing: border-box;
     padding: 60px 30px 10px;
   }
-  
+ 
   .register-box .avatar {
     width: 200px;
     position: absolute;
@@ -77,13 +77,18 @@ body {
     outline: none;
     background: #94163b;
     color: #fff;
-    width: 50%;
+    width: 44%;
     text-align: center;
     margin: 0 auto;
     display: block;
-    font-size: 20px;
+    font-size: 14px;
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .register-box span{
+    font-size: 13px;
   }
   
   .register-box input[type="submit"]:hover {
@@ -120,13 +125,26 @@ body {
     width: 50%;
     background:  #227dfa;
     color: #fff;
-    font-size: 18px;
+    font-size: 14px;
     border-radius: 5px;
   }
 
   .register-box .boton:hover {
     background-color: #7cadf3;
   }
+
+  #boton{
+    border: none;
+    outline: none;
+    margin: 0 auto;
+    margin-left: 10px;
+    margin-top: 20px;
+    display: inline-block;
+    background:  #227dfa;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 5px;
+}
 
   /*************** CONTROL DEL PERFIL ***************/
   
@@ -166,8 +184,8 @@ body {
   }
   
   .control-usuario hr {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 12px;
+    margin-bottom: 12px;
     border: 0;
     border-top: 1px solid #ff5e5e;
   }
@@ -176,7 +194,7 @@ body {
     color: #fff;
     padding: 5px 15px;
     font-size: 15px;
-    border-radius: 50px;
+    border-radius: 8px;
     margin-top: 5px;
     font-weight: 500;
   }
@@ -219,5 +237,130 @@ body {
     color: #f8d8cd;
     line-height: 28px;
   }
+
+  .control-usuario .Links{
+    margin-left: 39px;
+  }
+
+@media only screen and (max-width: 750px){
+  
+  .register-box {
+    width: 320px;
+    background: linear-gradient(to bottom, #1a0e0a, #630f28);
+    color: #f3d6cd;
+    top: 53.5%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 60px 30px 10px;
+  }
+  
+  .register-box .avatar {
+    width: 200px;
+    position: absolute;
+    top: -50px;
+    left: 60px;
+  }
+
+  /************PARTE PERFIL***********/
+
+  .control-usuario {
+    width: 300px;
+    height: 460px;
+    background: linear-gradient(to bottom, #1a0e0a, #630f28);
+    color: #f3d6cd;
+    top: 57%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 60px 30px 20px;
+    
+  }
+    
+  .control-usuario .avatar {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: -90px;
+    left: 90px;
+  }
+
+  .control-usuario h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
+    color: #f8d8cd;
+  }
+
+  .control-usuario h3 {
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 700;
+  }
+  
+  .control-usuario hr {
+    margin-top: 1px;
+    margin-bottom: 6px;
+    border: 0;
+    border-top: 1px solid #ff5e5e;
+  }
+
+  .control-usuario .btn2 {
+    color: #fff;
+    padding: 5px 15px;
+    font-size: 10px;
+    border-radius: 8px;
+    margin-top: 5px;
+    font-weight: 500;
+  }
+
+  .control-usuario .btn-warning {
+    color: #fff;
+    background-color: #e9931b;
+  }
+  
+  .control-usuario .btn-warning:hover {
+    color: #fff;
+    background-color: #ffa11e;
+  }
+
+  .control-usuario .btn-danger {
+    color: #fff;
+    background-color: #9c1a3d;
+  }
+  
+  .control-usuario .btn-danger:hover {
+    color: #fff;
+    background-color: #d40c41;
+
+  }
+
+  .control-usuario .btn-primary {
+    color: #fff;
+    background-color: #0073d5;
+  }
+  
+  .control-usuario .btn-primary:hover {
+    color: #fff;
+    background-color: #027fec;
+
+  }
+   
+  .control-usuario p{
+    font-size: 13px;
+    text-align: center;
+    color: #f8d8cd;
+    line-height: 28px;
+  }
+
+  .control-usuario .Links{
+    display: grid;
+    text-align: center;
+    margin-left: 0;
+  }
+}
   
 

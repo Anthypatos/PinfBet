@@ -20,20 +20,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Validate new password
     if(empty(trim($_POST["new_password"]))){
-        $new_password_err = "Please enter the new password.";     
-    } elseif(strlen(trim($_POST["new_password"])) < 6){
-        $new_password_err = "Password must have atleast 6 characters.";
+        $new_password_err = "Por favor, introduce una contraseña nueva.";     
+    } elseif(strlen(trim($_POST["new_password"])) < 8){
+        $new_password_err = "Minimo, 8 caracteres.";
     } else{
         $new_password = trim($_POST["new_password"]);
     }
     
     // Validate confirm password
     if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm the password.";
+        $confirm_password_err = "Por favor, confirma tu contraseña.";
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
         if(empty($new_password_err) && ($new_password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
+            $confirm_password_err = "Contraseña no encontrada.";
         }
     }
         
@@ -71,10 +71,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
  
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />
+    <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
+    <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />
     <title>5&Bet - Cambiar Contraseña</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <!-- Site Icons -->
@@ -99,7 +99,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 
 <body>
-    <div class="register-box">
+    <div class="register-box" id=ResetPassword>
         <img src="images/logo.png" class="avatar" alt="Imagen Avatar">           
         <h1>Cambiar Contraseña</h1>
         <p>Por favor, rellena los campos para cambiar la contraseña.</p>
@@ -114,8 +114,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="password" placeholder="Confirmar Contraseña" name="confirm_password" class="form-control">
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
-            <input type="submit" value="Aceptar">
-            <a href="perfil.php">Cancelar</a>
+            <div style="margin-left: 20px;">
+                <input type="submit" class="btn btn-primary" value="Aceptar">
+                <a href="perfil.php" id="boton" class="btn btn-primary">Cancelar</a>
+            </div>
         </form>
     </div>    
 </body>
