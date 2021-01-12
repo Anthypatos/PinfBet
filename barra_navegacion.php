@@ -72,7 +72,7 @@
       
       <li class="navegacion-item elemento-perfil"><a href="perfil.php" title="Mi cuenta">
         <?php echo $_SESSION["username"]?>
-        <img src="<?php echo 'imagenesperfil/' . $_SESSION["profile_image"] ?>" class="w3-circle w3-margin-left" style="width:25px" alt="Mi avatar"></a>
+        <img src="<?php echo 'imagenesperfil/' . $_SESSION["profile_image"] ?>" class="w3-circle w3-margin-left" style="width:25px; height:25px;" alt="Mi avatar"></a>
       </li>
     </ol>
   </nav>

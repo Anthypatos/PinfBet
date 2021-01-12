@@ -16,7 +16,7 @@ body {
     position: absolute;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
-    padding: 60px 30px 20px;
+    padding: 60px 30px 10px;
   }
   
   .register-box .avatar {
@@ -27,7 +27,6 @@ body {
   }
   
   .register-box h1 {
-    margin: 0;
     text-align: center;
     font-size: 24px;
     color: #f8d8cd;
@@ -78,8 +77,12 @@ body {
     outline: none;
     background: #94163b;
     color: #fff;
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
     font-size: 20px;
-    border-radius: 20px;
+    border-radius: 5px;
     margin-top: 10px;
   }
   
@@ -107,25 +110,22 @@ body {
   }
 
   .register-box .boton {
+    border: none;
     text-decoration: none;
-    padding: 0px 92px;
-    font-weight: 300;
-    font-size: 21px;
-    font-weight: 400;
-    color: #ffffff;
-    background-color: #227dfa;
-    border-radius: 15px;
+    outline: none;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 5px;
+    display: inline-block;
+    width: 50%;
+    background:  #227dfa;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
   }
 
   .register-box .boton:hover {
-    text-decoration: none;
-    padding: 0px 92px;
-    font-weight: 300;
-    font-size: 21px;
-    font-weight: 400;
-    color: #ffffff;
     background-color: #7cadf3;
-    border-radius: 15px;
   }
 
   /*************** CONTROL DEL PERFIL ***************/

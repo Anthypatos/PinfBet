@@ -99,7 +99,7 @@ if(empty($cantidad_err)){
             
            
         } else{
-            echo "Error, Puede que ya hayas apostado en esta asignatura, solo puedes apostar 1 vez.";
+            $cantidad_err = "Error, Puede que ya hayas apostado en esta asignatura, solo puedes apostar 1 vez.";
         }
         
        

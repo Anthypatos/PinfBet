@@ -1,7 +1,15 @@
 .form-div { margin-top: 100px; border: 1px solid #e0e0e0; }
-#profileDisplay { display: block; width: 60%; margin: 0px auto; border-radius: 50%; }
+
+#profileDisplay { 
+  display: block;
+  width: 156px;
+  height: 156px;
+  margin: 0px auto;
+  border-radius: 50%;
+}
+
 .img-placeholder {
-  width: 60%;
+  width: 60.5%;
   color: white;
   height: 156px;
   background: black;
@@ -13,8 +21,13 @@
   transform: translateX(-50%);
   display: none;
 }
+
+.register-box a h1{
+  margin-bottom: 10%;
+}
+
 .img-placeholder h4 {
-  margin-top: 40%;
+  margin-top: 33%;
   color: white;
 }
 .img-div:hover .img-placeholder {

@@ -23,6 +23,6 @@ $i++;
 }
 	echo '</ul>';
 }else{
-	echo '<ul class="list-group"><li class="list-group-item text-center"><span>Nenhum <b>usuário</b> foi classificado ainda.</span></li></ul>';
+	echo '<ul class="list-group"><li class="list-group-item text-center"><span>Ningún <b>usuario</b> ha sido clasificado.</span></li></ul>';
 }
 ?>

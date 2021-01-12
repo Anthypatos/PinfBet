@@ -14,26 +14,12 @@ mysqli_close($link);
 <html lang="es">
 <head>
     <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="">
-    <!--Login CSS -->
-    <link rel="stylesheet" href="css/registro.css">
-    <!-- ALL VERSION CSS -->
-    <link rel="stylesheet" href="css/versions.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
-    <!-- font family -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>5&Bet - Editar Perfil</title>
-    <!-- Bootstrap CSS -->
+    <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/registro.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="main.css">
 </head>
@@ -57,7 +43,7 @@ mysqli_close($link);
                     <div class="text-center img-placeholder" onClick="triggerClick()">
                         <h4>Cambiar imagen</h4>
                     </div>
-                    <img src="<?php echo 'imagenesperfil/' . $_SESSION["profile_image"] ?>" onClick="triggerClick()" id="profileDisplay">
+                    <img src="<?php echo 'imagenesperfil/' . $_SESSION["profile_image"] ?>" onClick="triggerClick()" width="" id="profileDisplay">
                 </span>
                     <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" accept="image/*">
                     <h2>Imagen de perfil</h2>
