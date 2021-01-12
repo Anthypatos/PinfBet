@@ -10,6 +10,7 @@
 
   include_once "actualizardatos.php"; 
 
+
   $user_actual = $_SESSION['id']; // Usuario cliente
 
   /* Consultar si el usuario que hay en pantalla es amigo del cliente */
