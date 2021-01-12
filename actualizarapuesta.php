@@ -19,12 +19,11 @@ while($resultados = mysqli_fetch_array($qQuery2))
 {
 	while($mostrar = mysqli_fetch_array($qQuery))
 	{
-		$resultado_user = $resultados['id_user'];
-		$apuesta_apostado = $mostrar['id_apostado'];
-		if($resultado_user == $apuesta_apostado && $resultados['id_apuesta'] == $mostrar['id_apuesta'] && $mostrar['resultado_final'] == 0) //Coincide el resultado guardado con alguna apuesta realizada
+		
+		
+		if($resultados['id_user'] == $mostrar['id_apostado'] && $resultados['id_apuesta'] == $mostrar['id_apuesta'] && $mostrar['resultado_final'] == 0) //Coincide el resultado guardado con alguna apuesta realizada
 		{	
-			$veces++;
-			echo $veces;
+
 			$id_apuesta_actual = $resultados['id_apuesta'];
 			$qRes3 = "SELECT * FROM apuestasdisponibles WHERE id_apuesta = $id_apuesta_actual";
 			$qQuery3 = mysqli_query($link,$qRes3);
@@ -53,7 +52,7 @@ while($resultados = mysqli_fetch_array($qQuery2))
 					$param_resultadofinal = 1;
 					$param_cantidadresultado =  $mostrar['cantidad_apostada'] * $apuestasdisponibles['cuota_suspenso'];
 				}
-				
+				$resultado_user = $resultados['id_user'];
 				$sql = "UPDATE apuestas SET resultado_final = ?, cantidad_resultado = ? WHERE id_apuesta = $id_apuesta_actual AND id_user = $user_actual AND id_apostado = $resultado_user";
 				$stmt = mysqli_prepare($link, $sql);
 				mysqli_stmt_bind_param($stmt, "ii",$param_resultadofinal ,$param_cantidadresultado);
