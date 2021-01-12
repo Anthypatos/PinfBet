@@ -8,6 +8,7 @@ $link = mysqli_connect("localhost", "root", "", "pinf");
 $perfil_sql = "SELECT `name`, bio FROM users WHERE id = $id";
 $perfil = mysqli_fetch_array(mysqli_query($link, $perfil_sql));
 mysqli_close($link);
+include_once "actualizardatos.php"; 
 ?>
 
 <!DOCTYPE html>
