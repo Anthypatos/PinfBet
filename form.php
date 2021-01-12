@@ -63,9 +63,9 @@ include_once "actualizardatos.php";
             </div>
 
             <!-- Botones -->
-            <div class="form-group">
-                <input type="submit" name="save_profile" value="Guardar">
-                <p><a href="perfil.php" class="boton">Volver</a></p>
+            <div style="margin-left: 20px;">
+                <input type="submit" class="btn btn-primary" value="Aceptar">
+                <a href="perfil.php" id="boton" class="btn btn-primary">Cancelar</a>
             </div>
         </form>
     </div>

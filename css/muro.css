@@ -13,64 +13,64 @@ body hr{
 }
 
 
-.CajaBusqueda{
+.CajaPerfil{
     background: linear-gradient(to bottom, #1a0e0a, #73112b);
     border-radius: 5px;
-    box-shadow: 0 7px 30px rgb(0 0 0 / 64%)
 }
 
-.CajaBusqueda h1{
+.CajaPerfil h1{
     margin: 10px;
     text-align: center;
     font-size: 25px;
     color: #f8d8cd;
 }
 
-.CajaBusqueda h2{
-    margin: 10px;
+.CajaPerfil h2{
     text-align: center;
     font-size: 18px;
     color: #f8d8cd;
 }
 
-
-.CajaBusqueda p{
+.CajaPerfil p{
     font-size: 15px;
     text-align: center;
     color: #d3b7ad;
-    line-height: 28px;
 }
 
-.CajaBusqueda th{
+.CajaPerfil i{
+    color: #f8d8cd;
+}
+
+
+.CajaPerfil th{
     font-size: 14px;
     text-align: center;
     color: #d3b7ad;
     line-height: 28px;
 }
 
-.CajaBusqueda td{
-    font-size: 15px;
+.CajaPerfil td{
+    font-size: 12px;
     text-align: center;
     color: #d3b7ad;
     padding: 5px;
     line-height: 28px;
 }
 
-.CajaBusqueda td .perfil{
-    font-size: 18px;
+.CajaPerfil td .perfil{
+    font-size: 12px;
     text-align: center;
     font-weight: 700;
     color: #d3b7ad;
     line-height: 28px;
-    text-decoration: none;
 }
 
-.CajaBusqueda input {
+.CajaPerfil input {
     width: 100%;
     margin-bottom: 20px;
 }
 
-.CajaBusqueda img{
+.CajaPerfil img{
     border-radius: 25%;
 }
 
@@ -89,13 +89,13 @@ body hr{
     border-color: #dee2e646;
 }
 
-.CajaBusqueda .table-bordered>:not(caption)>*>* {
+.CajaPerfil .table-bordered>:not(caption)>*>* {
     border-width: 0 1px;
 }
 
 
 
-.CajaBusqueda input[type="search"] {
+.CajaPerfil input[type="search"] {
     border: none;
     border-bottom: 1px solid  #f8d8cd;
     background: transparent;
@@ -105,7 +105,26 @@ body hr{
     font-size: 15px;
 }
 
-.CajaBusqueda input[type="submit"] {
+.CajaPerfil label {
+    margin: 0;
+    padding-bottom: 10px;
+    font-weight: bold;
+    display: block;
+    font-size: 12px;
+    Color: #f8d8cd;
+  }
+
+.CajaPerfil textarea[type="bio"] {
+    border: 1px solid rgba(255, 255, 255, 0.308);
+    background: transparent;
+    width: 100%;
+    margin-bottom: 10px;
+    outline: none;
+    color: #f8d8cd;
+    font-size: 15px;
+}
+
+.CajaPerfil input[type="submit"] {
     border: none;
     outline: none;
     margin: 0 auto;
@@ -118,7 +137,7 @@ body hr{
     border-radius: 5px;
 }
 
-.CajaBusqueda tr input[type="submit"] {
+.CajaPerfil tr input[type="submit"] {
     border: none;
     display: block;
     margin: 2px auto;
@@ -130,8 +149,8 @@ body hr{
     border-radius: 4px;
 }
 
-.CajaBusqueda ::placeholder {
-    border-bottom: 1px solid #fff;
+.CajaPerfil ::placeholder {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.384);
     background: transparent;
     outline: none;
     padding-left: 2px;
@@ -142,7 +161,7 @@ body hr{
     overflow: visible;
 }
 
-.CajaBusqueda input[type="submit"]:hover {
+.CajaPerfil input[type="submit"]:hover {
     cursor: pointer;
     background: #EC8464;
 }
