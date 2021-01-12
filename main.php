@@ -30,75 +30,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/all.css" > <!-- Iconos de FontAwesome -->
   <link rel="stylesheet" href="css/principal.css">
-
+  <link rel="stylesheet" href="css/muro.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+  <link rel="stylesheet" href="css/social2.css">
 </head>
-<body>
+<body style="display: block;">
 
 <?php include "barra_navegacion.php"; ?>
 
 <!-- Page Container -->
-<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
+<div class="w3-container w3-content" style="max-width:2000px;margin-top:80px">    
   <!-- The Grid -->
   <div class="w3-row">
-    <!-- Left Column -->
-    <div class="w3-col m3">
-      <!-- Profile -->
-      <div class="w3-card w3-round w3-white">
-        
-        <div class="w3-container">
-         <h4 class="w3-center"><b><?php echo htmlspecialchars($username_user); ?></b> <?php if ($privacidad_user) { ?><i class="fas fa-lock" title = "Este perfil es privado"></i><?php } ?></h4>
-         <p class="w3-center"><img src="<?php echo 'imagenesperfil/' . $profile_image_user ?>" width="90" height="90" alt=""></p>
-         <hr>
-         <p><i class="fas fa-user-circle fa-fw w3-margin-right w3-text-theme"></i><?php echo $name_user;?></p>
-         <p><i class="fas fa-coins fa-fw w3-margin-right w3-text-theme"></i><?php echo $pinfcoins_user;?> PinfCoins</p>
-         <p><i class="fas fa-comment-dots fa-fw w3-margin-right w3-text-theme"></i><?php echo $bio_user;?></p>
+      <!-- Left Column -->
+      <div class="w3-col" style="width:17%;">
+        <!-- Profile -->
+        <div class="CajaPerfil">
+          <div class="w3-container">
+          <h1 class="w3-center"><b><?php echo htmlspecialchars($username_user); ?></b> <?php if ($privacidad_user) { ?><i class="fas fa-lock" title = "Este perfil es privado"></i><?php } ?></h1>
+          <p class="w3-center"><img src="<?php echo 'imagenesperfil/' . $profile_image_user ?>" width="90" height="90" alt=""></p>
+          <p><i class="fas fa-user-circle fa-fw"></i><span style="color: #337ab7; font-size: 16px; font-weight: 600"> Nombre: </span><?php echo $name_user;?></p>
+          <p><i class="fas fa-coins fa-fw"></i><span style="color: #337ab7; font-size: 16px; font-weight: 600"> Creditos: </span><?php echo $pinfcoins_user;?> PinfCoins</p>
+          <p><i class="fas fa-comment-dots fa-fw"></i><span style="color: #337ab7; font-size: 16px; font-weight: 600"> Bio: </span><?php echo $bio_user;?></p>
+          </div>
         </div>
+        <br>
+      
+      <!-- Lista de amigos -->
+      <?php if ($privacidad_user && !($amigos) && $id_user != $_SESSION['id'])
+            {
+      ?>
       </div>
-      <br>
-    
-    <!-- Lista de amigos -->
-    <?php if ($privacidad_user && !($amigos) && $id_user != $_SESSION['id'])
-          {
-    ?>
+      <div style = "text-align:center; margin-top:150px;"><i class="fas fa-user-lock"></i> Este perfil es privado</div>
+      <?php
+            }
+            else
+            {
+              include "lista_amigos.php";
+      ?>
+      
+  <!-- End Left Column -->
+    </div>
+      <div class="w3-col" style="width:58%">
+        <div class="w3-row-padding">
+          <div class="w3-col">
+            <div class="CajaPerfil">
+              <div class="w3-container w3-padding">
+                <h2><b>Últimas Apuestas</b></h2>
+                <?php require __DIR__ . '/actualizarapuesta.php'; ?>
+                      
+              </div>
             </div>
-            <div style = "text-align:center; margin-top:150px;"><i class="fas fa-user-lock"></i> Este perfil es privado</div>
-    <?php
-          }
-          else
-          {
-            include "lista_amigos.php";
-    ?>
-    
-<!-- End Left Column -->
-  </div>
-    
-    <div class="w3-col m9">
-
-      <div class="w3-row-padding">
-        <div class="w3-col m12">
-          <div class="w3-card w3-round w3-white">
-            <div class="w3-container w3-padding">
-              <h4>Últimas Apuestas</h4>
-              <?php require __DIR__ . '/actualizarapuesta.php'; ?>
-                    
+          </div>
+        </div>      
+        <!-- Muros de perfil -->
+      </div>
+      <div class="w3-col" style="width:25%">
+          <div class="w3-col m12">
+            <div class="CajaPerfil">
+              <?php include "muros.php"; ?>    
             </div>
           </div>
         </div>
       </div>
-            
-      <!-- Muros de perfil -->
-      <hr>
-      <?php include "muros.php"; ?>
-
-    </div>
-    
-      <!-- End Middle Column -->
-    <!-- Right Column -->
-<!-- End Page Container -->
-</div>
+      
+        <!-- End Middle Column -->
+      <!-- Right Column -->
+  <!-- End Page Container -->
+  </div>
 
 <!-- Footer -->
 

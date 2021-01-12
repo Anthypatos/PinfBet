@@ -143,7 +143,7 @@
                                         { 
                         ?>
                                             <tr>
-                                                <td> <a title = "Acceder a perfil" href = "<?php echo "main.php" . "?id=" . $elem_busq['id']; ?>"><img src = "<?php echo 'imagenesperfil/' . $elem_busq['profile_image'] ?>" width = "50" height="50" alt = "Avatar de <?php echo $elem_busq['username'] ?>"></a> </td>
+                                                <td> <a title = "Acceder a perfil"  href = "<?php echo "main.php" . "?id=" . $elem_busq['id']; ?>"><img src = "<?php echo 'imagenesperfil/' . $elem_busq['profile_image'] ?>" width = "50" height="50" alt = "Avatar de <?php echo $elem_busq['username'] ?>"></a> </td>
                                                 <td> <a class="perfil" title = "Acceder a perfil" href = "<?php echo "main.php" . "?id=" . $elem_busq['id']; ?>"><?php echo $elem_busq['username']; ?></a> </td>
                                                 <td>
                         <?php

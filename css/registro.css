@@ -77,7 +77,8 @@ body {
     outline: none;
     background: #94163b;
     color: #fff;
-    width: 44%;
+    width: 43%;
+    padding: 10.5px;
     text-align: center;
     margin: 0 auto;
     display: block;
@@ -141,10 +142,15 @@ body {
     margin-top: 20px;
     display: inline-block;
     background:  #227dfa;
+    padding: 10px 20px;
     color: #fff;
     font-size: 14px;
     border-radius: 5px;
-}
+  }
+
+  #boton:hover{
+    background-color: #7cadf3;
+  }
 
   /*************** CONTROL DEL PERFIL ***************/
   
