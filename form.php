@@ -1,6 +1,6 @@
 <?php
 include_once('processForm.php');
-
+header('Content-Type: text/html; charset=ISO-8859-1');
 $id = $_SESSION["id"];
 $link = mysqli_connect("localhost", "root", "", "pinf");
 
