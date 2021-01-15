@@ -21,7 +21,7 @@ Leaderboard
 --------------------*/
 .leaderboard {
   position: absolute;
-  top: 55%;
+  top: 53%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 600px;
@@ -32,10 +32,10 @@ Leaderboard
 }
 
  .avatar {
-    width: 200px;
+    width: 160px;
     position: absolute;
-    top: -67px;
-    left: 200px;
+    top: -49px;
+    left: 223px;
   }
 
 .leaderboard h1 {
@@ -308,4 +308,107 @@ Leaderboard
     line-height: 1.5;
     border-radius: .25rem;
 
+}
+
+@media (max-width:666px){
+
+  .body{
+    display: inline;
+  }
+
+  .leaderboard {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    background: linear-gradient(to bottom, #2c1a15, #130b09);
+    border-radius: 10px;
+    box-shadow: 0 7px 30px rgb(0 0 0 / 64%)
+  
+  }
+  
+  .avatar {
+    width: 100px;
+    position: absolute;
+    top: -32px;
+    left: 33.7%;
+  }
+
+  
+  .leaderboard h1 {
+    font-size: 17px;
+    color: #e1e1e1;
+    padding: 6px 13px 6px;
+    text-align: center;
+  }
+  .leaderboard h1 .moneda {
+      width: 35px;
+      position: relative;
+      top: 9px;
+      margin-right: 5px;
+      margin-left: 5px;
+      vertical-align: baseline;
+  }
+  
+  .leaderboard ol li {
+    position: relative;
+    z-index: 1;
+    font-size: 12px;
+    counter-increment: leaderboard;
+    padding: 18px 10px 18px 50px;
+    cursor: pointer;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    transform: translateZ(0) scale(1, 1);
+  }
+  .leaderboard ol li::before {
+    content: counter(leaderboard);
+    position: absolute;
+    z-index: 2;
+    left: 15px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    color: #c24448;
+    background: #fff;
+    border-radius: 20px;
+    text-align: center;
+  }
+  .leaderboard ol li mark {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 16px 10px 18px 50px;
+    margin: 0;
+    background: none;
+    color: #fff;
+  }
+  .leaderboard ol li mark::before, .leaderboard ol li mark::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: -11px;
+    left: -9px;
+    border-top: 10px solid #bb7000;
+    border-left: 10px solid transparent;
+    transition: all 0.1s ease-in-out;
+    opacity: 0;
+  }
+  .leaderboard ol li mark::after {
+    left: auto;
+    right: -9px;
+    border-left: none;
+    border-right: 10px solid transparent;
+  }
+  .leaderboard ol li small {
+    position: relative;
+    z-index: 2;
+    display: block;
+    text-align: right;
+    color: transparent;
+  }
 }

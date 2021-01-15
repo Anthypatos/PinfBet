@@ -16,7 +16,8 @@ body hr{
 .CajaBusqueda{
     background: linear-gradient(to bottom, #1a0e0a, #73112b);
     border-radius: 5px;
-    box-shadow: 0 7px 30px rgb(0 0 0 / 64%)
+    box-shadow: 0 7px 30px rgb(0 0 0 / 64%);
+    margin-top: 30px;
 }
 
 .CajaBusqueda h1{
