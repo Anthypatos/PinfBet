@@ -6,6 +6,7 @@
     header("location: login.php");
     exit;
 }
+   $cantidad = $cantidad_err = "";
    $target_file = 
    $id_user =  $_SESSION['id'];
    if(isset($_FILES['image'])){
@@ -28,9 +29,10 @@
       }
       
       // Check if file already exists
-      if (file_exists($file_tmp)) {
+      
+      if (file_exists("expedientes/".$id_user.".pdf")) {
         $errors[]='Ya existe tu expediente en la base.';
-       }
+      }
 
        if(empty ($_POST["cantidad"])){
         $errors[] = "Introduce tus creditos aprobados";     
@@ -43,30 +45,37 @@
       if(empty($errors)==true){
          move_uploaded_file($file_tmp,"expedientes/".$id_user.".pdf");
          echo "Success";
-         $sql2 = "UPDATE users SET pinfcoins = $pinfcoins_actualizado WHERE id = $user_actual";
+         $sql2 = "UPDATE users SET pinfcoins = $cantidad WHERE id = $id_user";
          mysqli_query($link,$sql2);
-         header("main.php") ;
+         header("main.php");
 
       }else{
-         print_r($errors);
+         $i = 0;
+         while(!empty($errors[$i]))
+         {
+            echo $errors[$i];
+            $i++;
+
+         }
       }
    }
 
 ?>
 <html>
    <body>
-   <div class="form-group <?php echo (!empty($cantidad_err)) ? 'has-error' : ''; ?>">       
+   <form action="expediente.php" method="POST" enctype="multipart/form-data">
+    <div class="form-group <?php echo (!empty($cantidad_err)) ? 'has-error' : ''; ?>">       
         <h3>Cantidad (PinfCoins)</h3>
         <p>AVISO: La cantidad introducida debe corresponder con los créditos aprobados.</p>
         <p>Un moderador revisará que la cantidad introducida corresponde con el expediente, en el caso de que no coincidan será excluido del uso de esta plataforma y perderá todas las ganancias obtenidas con ese credito.</p>
-        <input type="text" name="cantidad" class="form-control" placeholder= "Máx. 50 PinfCoins" value="<?php echo $cantidad; ?>"> 
+        <input type="text" name="cantidad" class="form-control" placeholder= "Introduce tus creditos" value=""> 
         <h4><span class="help-block"><?php echo $cantidad_err; ?></span></h4>
      
-      <form action="expediente.php" method="POST" enctype="multipart/form-data">
+      
          <input type="file" name="image" />
          <input type="submit"/>
       </form>
-      
+      <a href="main.php" id="boton" class="btn btn-primary">Volver</a>
    </body>
 </html>
 
