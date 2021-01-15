@@ -41,7 +41,7 @@
     } else{
         $errors = "Introduce un valor numérico superior a 0"; 
     }
-
+    
       if(empty($errors)==true){
          move_uploaded_file($file_tmp,"expedientes/".$id_user.".pdf");
          echo "Success";
