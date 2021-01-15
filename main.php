@@ -1,6 +1,7 @@
 <?php
 // Initialize the session
 session_start();
+header('Content-Type: text/html; charset=UTF-8');
 
 // Check if the user is logged in, if not then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
@@ -28,7 +29,7 @@ else $amigos = false;
 <head>
     <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />
     <title>5&Bet - Menu Principal</title>
-    <meta charset="UTF-8">
+    <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/all.css"> <!-- Iconos de FontAwesome -->
     <link rel="stylesheet" href="css/principal.css">

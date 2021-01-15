@@ -68,6 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["bio"] = $bio;
                             $_SESSION["privacidad"] = $privacidad;
                             $_SESSION["admin"] = $admin;
+                        
                             // Redirect user to welcome page
                             header("location: index.php");
                         } else{

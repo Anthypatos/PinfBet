@@ -19,6 +19,7 @@ $pinfcoins_user = $_SESSION["pinfcoins"] = $mostrar["pinfcoins"];
 $profile_image_user = $_SESSION["profile_image"] = $mostrar["profile_image"];
 $bio_user = $_SESSION["bio"] = $mostrar["bio"];
 $privacidad_user = $_SESSION["privacidad"] = $mostrar["privacidad"];
+
 // Ejecuta la orden
 
 // Usuario específico
@@ -44,6 +45,7 @@ if (isset($_GET['id']))
                 $profile_image_user = $datos['profile_image'];
                 $bio_user = $datos['bio'];
                 $privacidad_user = $datos['privacidad'];
+
         }
         else    header("location: main.php");   // Si el id introducido no existe
 }
