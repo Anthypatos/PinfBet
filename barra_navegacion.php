@@ -42,7 +42,7 @@
       ?>
         <li class="navegacion-item">
           <a><i class="fas fa-envelope w3-margin-right"></i>Notificaciones</a>
-            <span class="w3-badge w3-right w3-small w3-green">
+            <span class="w3-badge w3-right w3-small w3-deep-orange">
               <?php echo $contador_notis; ?>
             </span>
             <ol class="sub-navegacion">

@@ -100,10 +100,14 @@ mysqli_query($link,$sql2);
 ?>		<div style = "text-align:center"> <h2>No hay apuestas que mostrar </h2></div>
 <?php
 	}
+	else if ($privacidad_user && !($amigos) && $id_user != $_SESSION['id'])
+	{
+		?><h2 style="color:tomato">Este Perfil es privado. Solo sus amigos pueden ver las apuestas.</h2><?php
+	}
 	else
 	{
 ?>
-	<div style="overflow:scroll; max-height:500px;">
+	<div style="overflow:auto; max-height:610px;">
 		<table class="tabla table-bordered">
 				<tr>
 					<td>Asignatura</td>
@@ -198,7 +202,9 @@ mysqli_query($link,$sql2);
 				</tr>
 			<?php 
 				}
-		}
 			?>
 		</table>
 	</div>
+	<?php
+	}
+	?>
