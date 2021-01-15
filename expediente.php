@@ -47,7 +47,7 @@
          echo "Success";
          $sql2 = "UPDATE users SET pinfcoins = $cantidad WHERE id = $id_user";
          mysqli_query($link,$sql2);
-         header("main.php");
+         header("location: main.php");
 
       }else{
          $i = 0;

@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT id, `name`, username, `password`, profile_image, pinfcoins, bio, privacidad,admin,expediente FROM users WHERE username = ?";
+        $sql = "SELECT id, `name`, username, `password`, profile_image, pinfcoins, bio, privacidad,admin FROM users WHERE username = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -52,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Check if username exists, if yes then verify password
                 if(mysqli_stmt_num_rows($stmt) == 1){                    
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $name, $username, $hashed_password,$profile_image,$pinfcoins,$bio, $privacidad,$admin,$expediente);
+                    mysqli_stmt_bind_result($stmt, $id, $name, $username, $hashed_password,$profile_image,$pinfcoins,$bio, $privacidad,$admin);
                     if(mysqli_stmt_fetch($stmt)){
                         if(password_verify($password, $hashed_password)){
                             // Password is correct, so start a new session
@@ -68,7 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["bio"] = $bio;
                             $_SESSION["privacidad"] = $privacidad;
                             $_SESSION["admin"] = $admin;
-                            $_SESSION["expediente"] = $expediente;
+                        
                             // Redirect user to welcome page
                             header("location: index.php");
                         } else{
