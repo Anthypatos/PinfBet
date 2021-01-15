@@ -28,11 +28,11 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
     <link rel="stylesheet" href="css/social2.css">
 </head>
-<body>
+<body class="social">
 
 <?php include "barra_navegacion.php"; ?>
 
-<div class="container" style="max-width:1400px;margin-top:100px">
+<div class="container" style="max-width:1400px;margin-top:70px">
 
 <?php
         if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -267,7 +267,6 @@
                         </div>
                     </div>
                 </div>
-                <hr>
                 <div class="w3-row-padding">
                     <div class="w3-col m12">
                         <div class="CajaBusqueda">

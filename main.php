@@ -39,7 +39,7 @@ else $amigos = false;
     <link rel="stylesheet" href="css/social2.css">
 </head>
 
-<body>
+<body class="main">
 
     <?php include "barra_navegacion.php"; ?>
 

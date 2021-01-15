@@ -130,7 +130,7 @@ mysqli_close($link);
     <link rel="stylesheet" href="css/social2.css">
 
 </head>
-<body>
+<body class="apuesta">
 
     <?php include "barra_navegacion.php"; ?>
 

@@ -488,7 +488,15 @@ body * {
 }
 @media (max-width: 666px) {
   
-  body{
+  body.main{
+    display: inline;
+  }
+
+  body.apuesta{
+    display: flex;
+  }
+
+  body.social{
     display: inline;
   }
 
