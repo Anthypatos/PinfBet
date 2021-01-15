@@ -107,7 +107,7 @@
         <div class="w3-row">
             <div class="w3-col m6">
                 <div class="CajaBusqueda">
-                    <div class="w3-container">
+                    <div class="w3-container" style="max-height:600px">
                         <h1>Buscador</h1>
                         <!-- Hay distintos tipos de formularios en la página para realizar las distintas acciones -->
                         <!-- FORMULARIO DE BÚSQUEDA, siempre se muestra -->
@@ -213,7 +213,7 @@
                 <div class="w3-row-padding">
                     <div class="w3-col m12">
                         <div class="CajaBusqueda">
-                            <div class="w3-container w3-padding">
+                            <div class="w3-container w3-padding" style="max-height:250px">
                                 <h1>Solicitud de Amistades Recibidas</h1>
                                     <!-- Tabla de solicitudes recibidas -->
                                     <div class="container">
@@ -271,10 +271,10 @@
                 <div class="w3-row-padding">
                     <div class="w3-col m12">
                         <div class="CajaBusqueda">
-                            <div class="w3-container w3-padding">
+                            <div class="w3-container w3-padding" style="max-height:350px">
                                 <h1>Lista de Amigos</h1>
                                 <!-- Tabla de lista de amigos -->
-                                    <div class="container">
+                                    <div class="container" style="overflow: auto; max-height:250px;">
                                     <table class = "tabla table-bordered">
                                         <thead>
                                         </thead>

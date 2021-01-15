@@ -5,6 +5,7 @@ body {
     background-size: cover;
     font-family: sans-serif;
     height: 100vh;
+    display: block;
 }
 
 body hr{
@@ -12,10 +13,10 @@ body hr{
     margin: 30px 0;
 }
 
-
 .CajaPerfil{
     background: linear-gradient(to bottom, #1a0e0a, #73112b);
     border-radius: 5px;
+    margin-top: 15px;
 }
 
 .CajaPerfil h1{
@@ -30,6 +31,13 @@ body hr{
     font-size: 18px;
     color: #f8d8cd;
 }
+
+.CajaPerfil h5{
+    font-size: 14px;
+    text-align: left;
+    color: #d3b7ad;
+}
+
 
 .CajaPerfil p{
     font-size: 15px;
@@ -56,6 +64,7 @@ body hr{
     padding: 5px;
     line-height: 28px;
 }
+
 
 .CajaPerfil td .perfil{
     font-size: 12px;
@@ -121,7 +130,7 @@ body hr{
     margin-bottom: 10px;
     outline: none;
     color: #f8d8cd;
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .CajaPerfil input[type="submit"] {
@@ -293,168 +302,18 @@ body hr{
     border-radius: 6px;
 }
 
-/********** PARTE DE APUESTAS **************/
-
-.Apuesta{
-    width: 600px;
-    height: 469px;
-    background: linear-gradient(to bottom, #1a0e0a, #630f28);
-    color: #f3d6cd;
-    top: 53.5%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-    padding: 60px 30px 20px;
-    box-shadow: 0 7px 30px rgb(0 0 0 / 64%);
-    border-radius: 5px;
+::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */
+    height: 8px;    /* Tamaño del scroll en horizontal */
 }
 
-.Apuesta .avatar {
-    width: 200px;
-    position: absolute;
-    top: -60px;
-    left: 200px;
-  }
-
-.Apuesta h1{
-    text-align: center;
-    font-size: 35px;
-    color: #f8d8cd;
+::-webkit-scrollbar-thumb {
+    background: #dd144a;
+    border-radius: 4px;
 }
 
-.Apuesta h2{
-    font-size: 20px;
-    text-align: center;
-    color: #f8d8cd;
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
 }
 
-.Apuesta h3{
-    font-size: 15px;
-    color: #f8d8cd;
-}
-
-.Apuesta h4{
-    color: #ff7e52;
-    font-size: 12px;
-
-}
-
-.Apuesta i{
-    color: #ff7e52;
-    padding: 2px;
-}
-
-.Apuesta span{
-    margin-top: 10px;
-}
-
-
-.Apuesta input[type="submit"] {
-    border: none;
-    outline: none;
-    margin: 0 auto;
-    margin-top: 30px;
-    display: inline-block;
-    width: 20%;
-    background: #b90f42;
-    color: #fff;
-    font-size: 18px;
-    border-radius: 5px;
-}
-
-.Apuesta input[type="submit"]:hover {
-    cursor: pointer;
-    background: #EC8464;
-}
-
-.Apuesta input[type="text"] {
-    border: 1px solid rgba(255, 255, 255, 0.274);
-    background:  #000000a2;
-    outline: none;
-    width: 66%;
-    height: 30px;
-    color: #f8d8cd;
-    font-size: 15px;
-    margin-bottom: 5px;
-    padding-left: 5px;
-    border-radius: 0%;
-    text-overflow: ellipsis;
-}
-
-.Apuesta input[type="text"]:hover {
-	background: #1a1a1a;
-}
-
-.Apuesta select{
-    border: 1px solid rgba(255, 255, 255, 0.274);
-    background: #000000a2;
-    outline: none;
-    width: 100%;
-    height: 30px;
-    color: #f8d8cd;
-    font-size: 15px;
-    padding-left: 5px;
-}
-
-.Apuesta #resultado{
-    border: 1px solid rgba(255, 255, 255, 0.274);
-    background: #000000a2;
-    outline: none;
-    width: 100%;
-    height: 30px;
-    color: #f8d8cd;
-    margin-bottom: 5px;
-    font-size: 15px;
-    padding-left: 5px;
-}
-
-.Apuesta .aprobar{
-    display: inline;
-}
-
-.Apuesta .two-columns{
-    -webkit-column-count: 2;
-    column-count: 2;
-    -moz-column-count: 2;
-}
-
-select{
-    border: 1px solid rgba(255, 255, 255, 0.274);
-    background:  #000000a2;
-    outline: none;
-    width: 26%;
-    height: 30px;
-    color: #f8d8cd;
-    font-size: 15px;
-    padding-left: 5px;
-    overflow: auto;
-    text-overflow: ellipsis;
-}
-
-.select{
-    height: 100px;
-    overflow: scroll;
-}
-
-.Apuesta #boton{
-    border: none;
-    outline: none;
-    margin: 0 auto;
-    margin-top: 30px;
-    display: inline-block;
-    width: 20%;
-    background:  #227dfa;
-    color: #fff;
-    font-size: 18px;
-    border-radius: 5px;
-}
-
-.Apuesta #boton:hover{
-    cursor: pointer;
-    background: #529aff;
-}
-
-.content-select select:hover{
-	background: #1a1a1a;
-}
