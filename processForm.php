@@ -74,5 +74,5 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       $msg_class = "alert-success";
     }
     mysqli_close($conn);
-  }else echo "Error, no se ha detectado una imagen nueva";
+  }
 ?>
