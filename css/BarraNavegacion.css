@@ -497,7 +497,7 @@ body * {
   }
 
   body.social{
-    display: inline;
+    display: inline-table;
   }
 
   body nav {
