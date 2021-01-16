@@ -70,8 +70,7 @@
                <p class="Warning">Un moderador revisará que la cantidad introducida corresponde con el expediente, en el caso de que no coincidan será excluido del uso de esta plataforma y perderá todas las ganancias obtenidas con ese credito.</p>
                <input type="text" name="cantidad" class="form-control Expediente" placeholder= "Introduce tus creditos" value=""> 
                <span class="help-block Expediente"><?php echo $cantidad_err; ?></span>
-            
-               
+      
                   <input type="file" name="image" />
                   <div style="text-align:center">
                      <input type="submit" class="btn btn-primary Expediente" value="Aceptar">
