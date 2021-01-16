@@ -45,7 +45,7 @@ else $amigos = false;
     <?php include "barra_navegacion.php"; ?>
 
     <!-- Page Container -->
-    <div style="margin-top:70px; width:90%">
+    <div style="margin-top:70px; width:100%">
         <div class="w3-col w3-container m3 l3">
             <div class="CajaPerfil w3-padding">
                 <h1 class="w3-center"><b><?php echo htmlspecialchars($username_user); ?></b> <?php if ($privacidad_user) { ?><i class="fas fa-lock" title="Este perfil es privado"></i><?php } ?></h1>

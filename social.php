@@ -32,7 +32,7 @@
 
 <?php include "barra_navegacion.php"; ?>
 
-<div style="margin-top:70px; width:90%">
+<div style="margin-top:70px; width:100%">
 
     <?php
         if($_SERVER["REQUEST_METHOD"] == "POST")
