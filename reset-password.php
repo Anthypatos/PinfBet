@@ -77,24 +77,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />
     <title>5&Bet - Cambiar Contraseña</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <!-- Site Icons -->
    <link rel="shortcut icon" href="" type="image/x-icon" />
    <link rel="apple-touch-icon" href="">
-   <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="css/bootstrap.min.css">
-   <!-- Site CSS -->
    <link rel="stylesheet" href="style.css">
-   <!--Login CSS -->
    <link rel="stylesheet" href="css/registro.css">
-   <!-- Colors CSS -->
    <link rel="stylesheet" href="css/colors.css">
-   <!-- ALL VERSION CSS -->	
    <link rel="stylesheet" href="css/versions.css">
-   <!-- Responsive CSS -->
    <link rel="stylesheet" href="css/responsive.css">
-   <!-- Custom CSS -->
    <link rel="stylesheet" href="css/custom.css">
-   <!-- font family -->
    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 </head>
 

@@ -109,8 +109,19 @@
                                     </div>
                                     <div class="collapse navbar-collapse js-navbar-collapse">
                                        <ul class="nav navbar-nav">
-                                          <li><a class ="login" href="login.php"><i class = "fa fa-user"></i>  INICIAR SESION</a></li>
-                                          <li><a href="register.php"><i class = "fa fa-user"></i>  REGISTRARSE</a></li>
+                                          <?php
+                                          // Si el usuario está logueado se le da la bienvenida y cambian los iconos
+                                          if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
+                                          {
+                                          ?>
+                                             <li><a class ="login" href="main.php"><i class = "fa fa-user"></i>  Menu Principal</a></li>
+                                             <li><a href="logout.php"><i class = "fa fa-user"></i> Cerrar Sesion</a></li>
+                                          <?php
+                                          } else {
+                                          ?>
+                                             <li><a class ="login" href="login.php"><i class = "fa fa-user"></i>  Iniciar Sesion</a></li>
+                                             <li><a href="register.php"><i class = "fa fa-user"></i> Registrarse</a></li>
+                                          <?php } ?>
                                        </ul>
                                     </div>
                                     <!-- /.nav-collapse -->

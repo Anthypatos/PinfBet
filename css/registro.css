@@ -7,6 +7,10 @@ body {
     height: 100vh;
   }
 
+body.Expediente{
+  display: inline;
+}
+
   .register-box {
     width: 320px;
     background: linear-gradient(to bottom, #1a0e0a, #630f28);
@@ -63,6 +67,10 @@ body {
     font-size: 15px;
   }
 
+  .register-box input[type="text"].Expediente {
+    height: 32px;
+  }
+
   .register-box textarea[type="bio"] {
     border-bottom: 1px solid #fff;
     background: transparent;
@@ -88,8 +96,18 @@ body {
     margin-bottom: 10px;
   }
 
+  .register-box input[type="submit"].Expediente {
+    display: inline;
+    padding: 12px;
+  }
+
   .register-box span{
     font-size: 13px;
+  }
+
+  .register-box span.Expediente{
+    font-size: 13px;
+    padding-bottom: 25px;
   }
   
   .register-box input[type="submit"]:hover {
@@ -107,6 +125,13 @@ body {
   .register-box p{
     font-size: 15px;
     text-align: center;
+    color: #e7235e;
+    line-height: 28px;
+  }
+
+  .register-box p.Warning{
+    font-size: 15px;
+    text-align: justify;
     color: #e7235e;
     line-height: 28px;
   }
@@ -134,6 +159,10 @@ body {
     background-color: #7cadf3;
   }
 
+  input::placeholder{
+    color:rgba(255, 99, 71, 0.555);
+  }
+
   #boton{
     border: none;
     outline: none;
@@ -146,6 +175,13 @@ body {
     color: #fff;
     font-size: 14px;
     border-radius: 5px;
+  }
+
+  #boton.Expediente{
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 43%;
+    padding: 12px;
   }
 
   #boton:hover{

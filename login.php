@@ -97,34 +97,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html lang="es"> 
 <!-- Basic -->
-    <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />
-    <meta charset="utf-8">
+   <link rel="icon" type="image/x-icon" href="images/MonedaFinal-ConvertImage.ico" />
+   <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <!-- Mobile Metas -->
    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-   <!-- Site Metas -->
    <title>5&Bet - Iniciar Sesion</title>
-   <meta name="keywords" content="">
-   <meta name="description" content="">
-   <meta name="author" content="">
-   <!-- Site Icons -->
    <link rel="shortcut icon" href="" type="image/x-icon" />
    <link rel="apple-touch-icon" href="">
-   <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="css/bootstrap.min.css">
-   <!-- Site CSS -->
    <link rel="stylesheet" href="style.css">
-   <!--Login CSS -->
-  <link rel="stylesheet" href="css/registro.css">
-   <!-- Colors CSS -->
+   <link rel="stylesheet" href="css/registro.css">
    <link rel="stylesheet" href="css/colors.css">
-   <!-- ALL VERSION CSS -->	
    <link rel="stylesheet" href="css/versions.css">
-   <!-- Responsive CSS -->
    <link rel="stylesheet" href="css/responsive.css">
-   <!-- Custom CSS -->
    <link rel="stylesheet" href="css/custom.css">
-   <!-- font family -->
    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
    </head>
     
