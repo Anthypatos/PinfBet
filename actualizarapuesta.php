@@ -8,10 +8,10 @@ $cantidad_err = "";
 $param_resultadofinal = $param_cantidadresultado= 0;
 $pinfcoins_actualizado =0;
 
-$qRes3 = "SELECT * FROM apuestas WHERE id_user = $user_actual";
+$qRes3 = "SELECT * FROM apuestas WHERE id_user = $id_user";
 $qQuery3 = mysqli_query($link,$qRes);    
 
-$qRes = "SELECT * FROM apuestas WHERE id_user = $id_user";
+$qRes = "SELECT * FROM apuestas WHERE id_user = $user_actual";
 $qQuery = mysqli_query($link,$qRes);   
 
 $qRes2 = "SELECT * FROM resultados";
