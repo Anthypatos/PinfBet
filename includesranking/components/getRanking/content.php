@@ -12,12 +12,12 @@ $qReplace = number_format($qRow['pinfcoins'], 0, '.', '.'); //shows the pinfcoin
 $i++;
 ?>
 <li>
-	<mark><?php echo $qRow['name'];echo ", '";echo $qRow['username'];echo "'"; $cont++; ?></mark>
+	<a title = "Acceder a perfil"  style="text-decoration:none;" class="perfil" href = "<?php echo "main.php" . "?id=" . $qRow['id']; ?>"><mark><?php echo $qRow['name'];echo ", '";echo $qRow['username'];echo "'"; $cont++; ?></mark>
     <small class="badge badge-primary badge-pill">
 		<span><?php echo levelRank($qRow['pinfcoins']); ?></span>
 		&mdash;
 		<?php echo $qReplace; ?> PinfCoins
-	</small>
+	</small></a>
 </li>
 <?php 
 }
