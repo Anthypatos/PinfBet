@@ -45,14 +45,14 @@ else $amigos = false;
     <?php include "barra_navegacion.php"; ?>
 
     <!-- Page Container -->
-    <div class="w3-container" style="margin-top:70px">
+    <div style="margin-top:70px; width:90%">
         <div class="w3-col w3-container m3 l3">
             <div class="CajaPerfil w3-padding">
                 <h1 class="w3-center"><b><?php echo htmlspecialchars($username_user); ?></b> <?php if ($privacidad_user) { ?><i class="fas fa-lock" title="Este perfil es privado"></i><?php } ?></h1>
                 <p class="w3-center"><img src="<?php echo 'imagenesperfil/' . $profile_image_user ?>" width="90" height="90" alt=""></p>
                 <p><i class="fas fa-user-circle fa-fw"></i><span style="color: #337ab7; font-size: 16px; font-weight: 600"> Nombre: </span><?php echo $name_user; ?></p>
                 <?php
-                if($pinfcoins_user == 0){ ?>
+                if($pinfcoins_user == 0 && $id_user == $_SESSION['id']){ ?>
                     <p><i class="fas fa-coins fa-fw"></i><span style="color: #337ab7; font-size: 16px; font-weight: 600"> Tienes 0 PinfCoins...</p>
                     <p><a href="expediente.php" class="coins btn btn-danger">Sube tu expediente y empieza a apostar</a></p>
                 <?php
