@@ -1,6 +1,6 @@
 <?php
 include_once 'config.php';
-include_once "actualizardatos.php";
+
 
 $user_actual = $_SESSION['id'];
 $id_apuesta = $cantidad = $resultado = $cod_apuesta = "";
@@ -8,10 +8,10 @@ $cantidad_err = "";
 $param_resultadofinal = $param_cantidadresultado= 0;
 $pinfcoins_actualizado =0;
 
-$qRes3 = "SELECT * FROM apuestas WHERE id_user = $id_user";
+$qRes3 = "SELECT * FROM apuestas WHERE id_user = $user_actual";
 $qQuery3 = mysqli_query($link,$qRes);    
 
-$qRes = "SELECT * FROM apuestas WHERE id_user = $user_actual";
+$qRes = "SELECT * FROM apuestas WHERE id_user = $id_user";
 $qQuery = mysqli_query($link,$qRes);   
 
 $qRes2 = "SELECT * FROM resultados";
