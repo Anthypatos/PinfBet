@@ -107,7 +107,7 @@ mysqli_query($link,$sql2);
 	else
 	{
 ?>
-	<div style="overflow:auto; max-height:610px;">
+	<div style="overflow:auto; max-height:532px;">
 		<table class="tabla table-bordered">
 				<tr>
 					<td>Asignatura</td>

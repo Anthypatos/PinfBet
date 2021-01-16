@@ -267,6 +267,7 @@
                         </div>
                     </div>
                 </div>
+                <hr>
                 <div class="w3-row-padding">
                     <div class="w3-col m12">
                         <div class="CajaBusqueda">
