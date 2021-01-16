@@ -54,7 +54,7 @@ else $amigos = false;
                 <?php
                 if($pinfcoins_user == 0){ ?>
                     <p><i class="fas fa-coins fa-fw"></i><span style="color: #337ab7; font-size: 16px; font-weight: 600"> Tienes 0 PinfCoins...</p>
-                    <a href="expediente.php" class="">Sube tu expediente y empieza a apostar</a>
+                    <p><a href="expediente.php" class="coins btn btn-danger">Sube tu expediente y empieza a apostar</a></p>
                 <?php
                 } else {?>
                     <p><i class="fas fa-coins fa-fw"></i><span style="color: #337ab7; font-size: 16px; font-weight: 600"> Creditos: </span><?php echo $pinfcoins_user;?> PinfCoins</p>
