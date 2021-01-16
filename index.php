@@ -242,7 +242,7 @@
          </div>
          <div class="footer-bottom">
             <div class="container">
-               <p>Copyright © 2020 5&Bet.com Derechos Reservados.</p>
+               <p>Copyright © 2021 5&Bet.com Derechos Reservados.</p>
             </div>
          </div>
       </footer>
