@@ -8,9 +8,6 @@ $cantidad_err = "";
 $param_resultadofinal = $param_cantidadresultado= 0;
 $pinfcoins_actualizado =0;
 
-$qRes3 = "SELECT * FROM apuestas WHERE id_user = $user_actual";
-$qQuery3 = mysqli_query($link,$qRes);    
-
 $qRes = "SELECT * FROM apuestas WHERE id_user = $id_user";
 $qQuery = mysqli_query($link,$qRes);   
 
@@ -27,7 +24,7 @@ while($resultados = mysqli_fetch_array($qQuery2))
 	$resultadoss[]=$resultados;
 	$i++;
 }
-while($mostrar = mysqli_fetch_array($qQuery3))
+while($mostrar = mysqli_fetch_array($qQuery))
 {
 	$mostrars[]=$mostrar;
 	$j++;
