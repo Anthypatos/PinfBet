@@ -91,6 +91,12 @@
 		  	},
 		});
 	}
+
+        // Para evitar el reenvío de formularios al actualizar o moverse por las páginas
+        if (window.history.replaceState)
+        {
+            window.history.replaceState(null, null, window.location.href);
+        }
     </script>
 </head>
 <body>
@@ -103,8 +109,9 @@
             <h1>Chat</h1>
     <?php
             $username_otro = mysqli_fetch_array(mysqli_query($link, "SELECT username FROM users WHERE id = '$user_otro'"))['username'];
-            echo "Chateando con <i>" . $username_otro . "</i>";
     ?>
+            Chateando con <i><a href = "main.php?id=<?php echo $user_otro; ?>" target = "_self"><?php echo $username_otro; ?></a></i>;
+
             <!-- Contenedor de conversación -->
             <div class = "Conversacion" id = "caja_chat"></div>
             <br>
