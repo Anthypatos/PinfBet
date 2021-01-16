@@ -40,13 +40,8 @@
     } else{
         $cantidad_err = "Introduce un valor numérico superior a 0"; 
     }
-<<<<<<< HEAD
-    
-      if(empty($errors)==true){
-=======
 
       if(empty($cantidad_err)==true){
->>>>>>> e471d832fca2138478ee5ebbe89ad9fc6065cbc7
          move_uploaded_file($file_tmp,"expedientes/".$id_user.".pdf");
          echo "Success";
          $sql2 = "UPDATE users SET pinfcoins = $cantidad WHERE id = $id_user";
