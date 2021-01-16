@@ -51,10 +51,23 @@ body.Expediente{
     font-size: 17px;
   }
 
+  .register-box label#lacajita {
+    margin: 0;
+    padding: 0;
+    padding-top: 5px;
+    font-weight: 500;
+    font-size: 14.6px;
+  }
   
   .register-box input {
     width: 100%;
     margin-bottom: 20px;
+  }
+
+  .register-box input#lacajita {
+    width: 5%;
+    margin-right: 5px;
+    margin-bottom: 0px;
   }
   
   .register-box input[type="text"], .register-box input[type="password"], .register-box input[type="email"] {
@@ -105,6 +118,11 @@ body.Expediente{
     font-size: 13px;
   }
 
+  .register-box span#lacajita{
+    font-size: 13px;
+    margin-top: 0px;
+  }
+
   .register-box span.Expediente{
     font-size: 13px;
     padding-bottom: 25px;
@@ -119,7 +137,7 @@ body.Expediente{
     text-decoration: none;
     font-size: 14.6px;
     line-height: 20px;
-    color: darkgrey;
+    color: #00d5ea;
   }
 
   .register-box p{
