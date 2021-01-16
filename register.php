@@ -4,7 +4,7 @@ require_once "config.php";
  
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $email = $fecha_nacim = "";
-$username_err = $password_err = $confirm_password_err = $email_err = $cajita_err = $fecha_err = "";
+$username_err = $password_err = $confirm_password_err = $email_err = $cajita_err = $fecha_err = $cajita_err2 = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -99,27 +99,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
-    /* Validar fecha de nacimiento
-    if (empty(trim($_POST['fecha'])))
-    {
-        $fecha_err = "Introduce tu fecha de nacimiento";
-    }
-    else
-    {
-        $fecha_nacim = new DateTime($_POST['fecha']);
-        $fecha_actual = new DateTime(date("Y-m-d"));
-        
-        if ($fecha_actual->diff($fecha_nacim)->format("%y") < 18)
-        {
-            $fecha_err = "Debes ser mayor de 18 años";
-        }
-        $fecha_nacim = $_POST['fecha'];
-    }*/
-    
     // Validar aceptación de los términos
     if (!(isset($_POST["lacajita"]))) 
     {
         $cajita_err = "Debe aceptar los términos del servicio.";
+    }
+
+    // Validar aceptación de la descarga
+    if (!(isset($_POST["lacajita2"]))) 
+    {
+        $cajita_err2 = "Debe aceptar la descarga de responsabilidades.";
     }
 
     // Check input errors before inserting in database
@@ -184,7 +173,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
    <!-- font family -->
    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">    
 </head>
-<body>
+<body style="display:inline-table">
     <div class="register-box">
         <a href="index.php"><img src="images/logo.png" class="avatar" alt="Imagen Avatar"></a>             
         <h1>Registro</h1>
@@ -218,20 +207,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
 
-            <!-- Fecha de nacimiento
-            <div class="form-group <?php /*echo (!empty($fecha_err)) ? 'has-error' : ''; ?>">
-                <label for = "fecha">Fecha de nacimiento</label>
-                <input type="date" id = "fecha" name="fecha" class="form-control" value="<?php echo $fecha_nacim; ?>">
-                <span class="help-block"><?php echo $fecha_err;*/ ?></span>
-            </div>-->
-
-            <br>
-
             <!-- Confirmar términos -->
             <div class="form-group <?php echo (!empty($cajita_err)) ? 'has-error' : ''; ?>">
-                <label for="lacajita">He leído y acepto los <a href="terminosYcondiciones-5&Bet.pdf" target="_blank">términos y condiciones</a></label> 
-                <input type="checkbox" id = "lacajita" name="lacajita">
-                <span class="help-block"><?php echo $cajita_err; ?></span>
+                <label id="lacajita"><input type="checkbox" id="lacajita" name="lacajita">He leído y acepto los <a href="terminosYcondiciones-5&Bet.pdf" target="_blank">términos y condiciones</a></label> 
+                <span class="help-block" id="lacajita"><?php echo $cajita_err; ?></span>
+            </div>
+            
+            <!-- Confirmar Descarga Responsibilidades -->
+            <div class="form-group <?php echo (!empty($cajita_err2)) ? 'has-error' : ''; ?>">
+                <label id="lacajita"><input type="checkbox" id="lacajita" name="lacajita2">He leído y acepto la <a href="Descarga de Responsabilidades-5&Bet.pdf" target="_blank">Descarga de Responsabilidades</a></label> 
+                <span class="help-block" id="lacajita"><?php echo $cajita_err2; ?></span>
             </div>
 
             <!-- Submit -->
