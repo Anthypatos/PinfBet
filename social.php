@@ -130,7 +130,7 @@
                     ?>
                             <h2>Resultados de búsqueda</h2>
                             <!-- Tabla con los resultados de búsqueda -->
-                            <div class="container">
+                            <div style="overflow:auto; max-height:211px;">
                                 <table class = "tabla table-bordered">
                                     <thead>
                                         <th colspan = "2">Usuario</th>
@@ -211,7 +211,7 @@
             <div style="max-height:250px">
                 <h1>Solicitud de Amistades Recibidas</h1>
                 <!-- Tabla de solicitudes recibidas -->
-                <div class="container">
+                <div style="overflow:auto; max-height:211px;">
                     <table class = "tabla table-bordered">
                         <tbody>
 <?php
@@ -261,7 +261,7 @@
             <div style="max-height:350px">
                 <h1>Lista de Amigos</h1>
                 <!-- Tabla de lista de amigos -->
-                <div class="container" style="overflow: auto; max-height:250px;">
+                <div style="overflow: auto; max-height:250px;">
                     <table class = "tabla table-bordered">
                         <tbody>
 <?php
